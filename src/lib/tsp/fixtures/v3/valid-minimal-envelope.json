@@ -1,0 +1,66 @@
+{
+  "tsp": "3.0",
+  "content": {
+    "type": "text",
+    "value": "TSP verifies evidence integrity, not truth.",
+    "hash": "bd3690b39907c10da9e8a1a8f4164a7c91fbc662e45dae4395b5df001d506eef"
+  },
+  "declaration": {
+    "primarySource": {
+      "type": "official-document",
+      "url": "https://example.test/tsp-fixture/source",
+      "title": "TSP vNext protocol fixture source",
+      "retrieved": "2026-06-28T00:00:00Z"
+    },
+    "citations": [
+      {
+        "url": "https://example.test/tsp-fixture/source#p1",
+        "paragraph": "p1",
+        "quote": "Fixture text used for deterministic protocol conformance.",
+        "retrieved": "2026-06-28T00:00:00Z"
+      }
+    ]
+  },
+  "process": {
+    "model": {
+      "provider": "fixture-provider",
+      "name": "fixture-model",
+      "version": "1.0.0",
+      "temperature": 0,
+      "contextWindow": 8192
+    },
+    "systemPrompt": {
+      "hash": "0000000000000000000000000000000000000000000000000000000000000000",
+      "redacted": true,
+      "reason": "fixture prompt omitted"
+    }
+  },
+  "alignment": {
+    "uncertainty": [],
+    "humanReviewRequired": false,
+    "policy": {
+      "id": "fixture-policy",
+      "version": "1.0.0"
+    }
+  },
+  "timestamp": {
+    "claimed": "2026-06-28T00:00:00Z",
+    "tsaToken": "__fixture_no_tsa__",
+    "tsaUrl": "https://placeholder.invalid/no-tsa"
+  },
+  "ledger": {
+    "id": "019789d6-4c00-7000-8000-000000000001",
+    "prevHash": "0000000000000000000000000000000000000000000000000000000000000000",
+    "hash": "2e6abad867e2ab719360185a3705455887258bd3f9596f48fcad80777d2ed181"
+  },
+  "signatures": [
+    {
+      "role": "instance",
+      "algorithm": "ed25519",
+      "keyRef": "https://example.test/.well-known/tsp-manifest.json#fixture-ed25519-v3-001",
+      "signature": "0qLnLks0xGsTCQEjVcjBfA+L9OQHVjBVzgnN/wzyJWRedxBvqXk4E7Ewou0Y6fFbXzEeYkbYgrD7O/+mTzjlBw==",
+      "certChain": []
+    }
+  ]
+}
+

@@ -1,0 +1,25 @@
+{
+  "name": "tsp-web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Public website for the Trust Standard Protocol (truststandardprotocol.com).",
+  "license": "Apache-2.0",
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1",
+    "build": "astro build",
+    "preview": "astro preview --host 127.0.0.1",
+    "check": "astro check",
+    "claim-scan": "node scripts/claim-scan.mjs",
+    "verify-selftest": "bun scripts/verify-selftest.mjs",
+    "preflight": "bun scripts/verify-selftest.mjs && node scripts/claim-scan.mjs && astro build"
+  },
+  "dependencies": {
+    "@noble/ed25519": "^2.1.0",
+    "astro": "^5.7.0"
+  },
+  "devDependencies": {
+    "@fontsource/ibm-plex-mono": "^5.1.1",
+    "@fontsource/ibm-plex-sans": "^5.1.1"
+  }
+}

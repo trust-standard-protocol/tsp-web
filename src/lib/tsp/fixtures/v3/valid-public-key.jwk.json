@@ -1,0 +1,13 @@
+{
+  "crv": "Ed25519",
+  "ext": true,
+  "key_ops": [
+    "verify"
+  ],
+  "kty": "OKP",
+  "x": "614-aowd9tajxov2RRpEIfDyUQK_JPipVTmOWh2CfGw",
+  "kid": "fixture-ed25519-v3-001",
+  "alg": "EdDSA",
+  "use": "sig"
+}
+

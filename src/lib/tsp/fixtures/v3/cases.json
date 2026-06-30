@@ -1,0 +1,106 @@
+{
+  "publicKeyPath": "valid-public-key.jwk.json",
+  "cases": [
+    {
+      "id": "valid-minimal",
+      "envelopePath": "valid-minimal-envelope.json",
+      "expected": {
+        "status": "valid",
+        "valid": true,
+        "schema": "passed",
+        "contentHash": "passed",
+        "ledgerHash": "passed",
+        "signature": "passed",
+        "meaning": "evidence-integrity",
+        "doesNotMean": [
+          "truth",
+          "correctness",
+          "legality",
+          "safety",
+          "compliance"
+        ]
+      }
+    },
+    {
+      "id": "tampered-payload",
+      "envelopePath": "tampered-payload-envelope.json",
+      "expected": {
+        "status": "invalid",
+        "valid": false,
+        "schema": "passed",
+        "contentHash": "failed",
+        "ledgerHash": "failed",
+        "signature": "failed",
+        "meaning": "evidence-integrity",
+        "doesNotMean": [
+          "truth",
+          "correctness",
+          "legality",
+          "safety",
+          "compliance"
+        ]
+      }
+    },
+    {
+      "id": "invalid-signature",
+      "envelopePath": "invalid-signature-envelope.json",
+      "expected": {
+        "status": "invalid",
+        "valid": false,
+        "schema": "passed",
+        "contentHash": "passed",
+        "ledgerHash": "failed",
+        "signature": "failed",
+        "meaning": "evidence-integrity",
+        "doesNotMean": [
+          "truth",
+          "correctness",
+          "legality",
+          "safety",
+          "compliance"
+        ]
+      }
+    },
+    {
+      "id": "missing-required-field",
+      "envelopePath": "missing-required-field-envelope.json",
+      "expected": {
+        "status": "invalid",
+        "valid": false,
+        "schema": "failed",
+        "contentHash": "skipped",
+        "ledgerHash": "skipped",
+        "signature": "skipped",
+        "meaning": "evidence-integrity",
+        "doesNotMean": [
+          "truth",
+          "correctness",
+          "legality",
+          "safety",
+          "compliance"
+        ]
+      }
+    },
+    {
+      "id": "unsupported-version",
+      "envelopePath": "unsupported-version-envelope.json",
+      "expected": {
+        "status": "unsupported-version",
+        "valid": false,
+        "schema": "failed",
+        "contentHash": "skipped",
+        "ledgerHash": "skipped",
+        "signature": "skipped",
+        "meaning": "evidence-integrity",
+        "doesNotMean": [
+          "truth",
+          "correctness",
+          "legality",
+          "safety",
+          "compliance"
+        ]
+      }
+    }
+  ]
+}
+
