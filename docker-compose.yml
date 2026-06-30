@@ -1,0 +1,28 @@
+# Docker Compose for the TSP public site. BUILT, NOT EXECUTED here.
+# `docker compose up --build` on the Hetzner host runs Caddy with the static build.
+# No backend, no database in Fase A. Secrets come from the environment, never git.
+services:
+  site:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: tsp-web:latest
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      ACME_EMAIL: ${ACME_EMAIL:?set ACME_EMAIL in .env}
+    volumes:
+      # Persist Caddy's certificates and state across restarts.
+      - caddy_data:/data
+      - caddy_config:/config
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:80/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  caddy_data:
+  caddy_config:

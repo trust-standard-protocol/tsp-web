@@ -1,0 +1,48 @@
+---
+import SealMark from "./SealMark.astro";
+import { primaryNav, site } from "../data/site";
+
+const path = Astro.url.pathname;
+const isCurrent = (href: string) => path === href || (href !== "/" && path.startsWith(href));
+---
+<header class="site-header">
+  <div class="container site-header__bar">
+    <a class="brand" href="/" aria-label={`${site.name} — home`}>
+      <SealMark size={30} />
+      <span class="brand__name">
+        {site.short}
+        <small>Trust Standard Protocol</small>
+      </span>
+    </a>
+
+    <button
+      class="nav-toggle"
+      type="button"
+      aria-expanded="false"
+      aria-controls="site-nav"
+      data-nav-toggle
+    >
+      <span aria-hidden="true">≡</span> Menu
+    </button>
+
+    <nav class="site-nav" id="site-nav" aria-label="Primary">
+      {primaryNav.map((link) => (
+        <a href={link.href} aria-current={isCurrent(link.href) ? "page" : undefined}>{link.label}</a>
+      ))}
+      <a class="btn btn-quiet" href="/verify/" aria-current={isCurrent("/verify/") ? "page" : undefined}>Verify</a>
+      <a class="btn btn-primary" href="/playground/" aria-current={isCurrent("/playground/") ? "page" : undefined}>Playground</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>("[data-nav-toggle]");
+  const nav = document.getElementById("site-nav");
+  if (toggle && nav) {
+    toggle.addEventListener("click", () => {
+      const open = nav.getAttribute("data-open") === "true";
+      nav.setAttribute("data-open", String(!open));
+      toggle.setAttribute("aria-expanded", String(!open));
+    });
+  }
+</script>

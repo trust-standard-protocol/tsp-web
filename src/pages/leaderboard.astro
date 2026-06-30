@@ -1,0 +1,108 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const metrics = [
+  { name: "Verifiability", weight: "0.40", formula: "receipts passing all checks ÷ receipts sampled × 100", note: "Every check — digest recomputes, Ed25519 signature valid, chain intact, issuer key resolves in the registry — is recomputed by the scorer. Can't be gamed." },
+  { name: "Coverage", weight: "0.35", formula: "receipts that verify ÷ decisions in declared scope × 100", note: "The denominator is your declared scope — public and spot-checked." },
+  { name: "Human oversight", weight: "0.25", formula: "receipts with valid human_review ÷ high-risk receipts × 100", note: "Maps to EU AI Act Art 14 — sealed inside the digest, so it can't be added after the fact." }
+];
+
+const tiers = [
+  { name: "Charter", rule: "≥ 95 and fully on (coverage ≥ 99, oversight ≥ 100)" },
+  { name: "Verified", rule: "≥ 85" },
+  { name: "Piloting", rule: "≥ 65" },
+  { name: "Not yet listed", rule: "< 65" }
+];
+
+const steps = [
+  { title: "Register your issuer key", body: "Publish your org and public key to the registry so receipts can be attributed." },
+  { title: "Declare your scope", body: "Name the decision type, jurisdiction and expected volume. This sets the Coverage denominator — public and spot-checked." },
+  { title: "Publish a verification manifest", body: "Expose a public feed of your receipts so anyone — including the scorer — can pull and recompute them." },
+  { title: "Run the conformance check", body: "The public scorer samples your receipts, recomputes digests, resolves keys and scores all four metrics." },
+  { title: "Get listed", body: "A score and tier are assigned, a badge is issued, and you appear on the leaderboard — re-scored continuously." }
+];
+---
+<BaseLayout
+  title="Leaderboard"
+  description="A public trust ranking recomputed from each org's own receipts: Verifiability 0.40, Coverage 0.35, Human oversight 0.25. You can't buy a place, only evidence one."
+>
+  <section class="section section--tight">
+    <div class="container">
+      <p class="eyebrow">Adoption leaderboard</p>
+      <h1>Get listed — and prove you earned it.</h1>
+      <p class="lede">Every score is recomputed from your own receipts. You can't buy a place, inflate a
+        number, or self-report your way up — you can only evidence it.</p>
+    </div>
+  </section>
+
+  <section class="section--tight" style="padding-top:0">
+    <div class="container">
+      <h2>Four numbers. All recomputable from receipts.</h2>
+      <div class="grid grid-3" style="margin-top:1.5rem">
+        {metrics.map((m) => (
+          <article class="card card--teal">
+            <div style="display:flex; align-items:baseline; justify-content:space-between; gap:0.5rem">
+              <h3>{m.name}</h3>
+              <span class="mono" style="color:var(--copper-deep); font-weight:600">w {m.weight}</span>
+            </div>
+            <p class="mono muted" style="font-size:var(--fs-micro)">{m.formula}</p>
+            <p class="muted" style="font-size:var(--fs-small); margin-top:0.5rem">{m.note}</p>
+          </article>
+        ))}
+      </div>
+      <p class="mono muted" style="margin-top:1rem; font-size:var(--fs-small)">
+        Overall = 0.40 × Verifiability + 0.35 × Coverage + 0.25 × Human oversight.
+      </p>
+      <div class="tag-list" style="margin-top:1rem">
+        {tiers.map((t) => <span class="chip">{t.name} · {t.rule}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section--tight section--paper-deep">
+    <div class="container">
+      <h2>Enroll in five steps — and model your score now.</h2>
+      <div id="lb-wizard" class="split" style="margin-top:1.5rem">
+        <ol class="steps">
+          {steps.map((step) => (
+            <li><h3 style="font-size:1.02rem">{step.title}</h3><p class="muted" style="font-size:var(--fs-small)">{step.body}</p></li>
+          ))}
+        </ol>
+
+        <div class="card" style="position:sticky; top:84px; align-self:start">
+          <p class="eyebrow">Your live score</p>
+          <div class="stack">
+            <label>Verifiability — <span id="lb-verif-out" class="mono">90</span>%
+              <input id="lb-verif" type="range" min="0" max="100" value="90" style="width:100%" /></label>
+            <label>Coverage — <span id="lb-cover-out" class="mono">80</span>%
+              <input id="lb-cover" type="range" min="0" max="100" value="80" style="width:100%" /></label>
+            <label>Human oversight — <span id="lb-oversight-out" class="mono">75</span>%
+              <input id="lb-oversight" type="range" min="0" max="100" value="75" style="width:100%" /></label>
+          </div>
+          <div style="display:flex; align-items:baseline; gap:0.75rem; margin-top:1rem">
+            <span id="lb-score" style="font-size:2.6rem; font-weight:600; line-height:1; color:var(--teal)">0</span>
+            <span id="lb-tier" class="chip">—</span>
+          </div>
+          <p class="muted" style="font-size:var(--fs-micro); margin-top:0.6rem">Modeled client-side from the
+            published weights. The real score is recomputed by the scorer from your receipts — recompute, not
+            self-report.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section--tight">
+    <div class="container">
+      <h2>Ready to be measured on what you can prove?</h2>
+      <p class="lede">Charter pilots enroll first. You can't buy a place, only evidence one.</p>
+      <div class="btn-row" style="margin-top:1rem">
+        <a class="btn btn-primary" href="/pricing/">Scope a pilot</a>
+        <a class="btn btn-ghost" href="/playground/">Build a receipt chain</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    import "../islands/leaderboard.ts";
+  </script>
+</BaseLayout>

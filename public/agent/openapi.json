@@ -1,0 +1,53 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Trust Standard Protocol — Verify API (placeholder)",
+    "version": "0.0.0-draft",
+    "description": "Placeholder descriptor for a future hosted verify endpoint. Today verification is offline and client-side; this stub reserves the shape. It is not a live endpoint."
+  },
+  "servers": [{ "url": "https://verify.truststandardprotocol.com" }],
+  "paths": {
+    "/verify": {
+      "post": {
+        "summary": "Verify a TrustEnvelope v3 against an issuer public key.",
+        "operationId": "verifyEnvelope",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["envelope", "publicKey"],
+                "properties": {
+                  "envelope": { "type": "object", "description": "A TrustEnvelope v3." },
+                  "publicKey": { "type": "object", "description": "Issuer Ed25519 public key (OKP JWK)." }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Verification result (evidence integrity only).",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "valid": { "type": "boolean" },
+                    "status": { "type": "string", "enum": ["valid", "invalid", "unsupported-version"] },
+                    "meaning": { "type": "string", "const": "evidence-integrity" },
+                    "doesNotMean": {
+                      "type": "array",
+                      "items": { "type": "string", "enum": ["truth", "correctness", "legality", "safety", "compliance"] }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

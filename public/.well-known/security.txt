@@ -1,0 +1,9 @@
+# Trust Standard Protocol — coordinated disclosure
+# https://www.rfc-editor.org/rfc/rfc9116
+Contact: mailto:security@truststandardprotocol.com
+Expires: 2027-06-30T00:00:00.000Z
+Preferred-Languages: en, no
+Canonical: https://truststandardprotocol.com/.well-known/security.txt
+Policy: https://truststandardprotocol.com/hard-questions/
+# Good-faith research is welcome. No legal threat for coordinated, good-faith disclosure.
+# The standing challenge (forge a receipt that still verifies) is open — report findings here.

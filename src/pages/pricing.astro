@@ -1,0 +1,65 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Boundary from "../components/Boundary.astro";
+
+const tiers = [
+  {
+    name: "Verify",
+    price: "Free, forever",
+    chip: "chip--ok",
+    body: "The browser verifier, the verifier-core packages, the TrustBadge component and sample receipts. Offline verification always works.",
+    cta: { label: "Open the verifier", href: "/verify/" }
+  },
+  {
+    name: "Pilot",
+    price: "Fixed scope · talk to us",
+    chip: "chip--copper",
+    body: "One workflow wired into a signed evidence chain, in weeks. Issuer tooling on a pilot / staging key. Scope and price agreed up front.",
+    cta: { label: "Scope a pilot", href: "/playground/" }
+  },
+  {
+    name: "Evidence Pack",
+    price: "By quote",
+    chip: "chip--teal",
+    body: "Operator modules (Explorer, Dossier, Oversight, Control Plane, Gateway) and ongoing issuance for production-scale workflows.",
+    cta: { label: "Request a quote", href: "/tools/" }
+  }
+];
+---
+<BaseLayout
+  title="Pricing"
+  description="Free to verify, priced to operate. Tiers and contact — official status is a governed grant, never a pricing tier."
+>
+  <section class="section section--tight">
+    <div class="container">
+      <p class="eyebrow">Pricing</p>
+      <h1>Free to verify, priced to operate.</h1>
+      <p class="lede">Verification is free in every runtime. You pay to <em>issue</em> and <em>operate</em> at
+        scale — not to verify. Figures below are deliberately omitted while we validate willingness-to-pay;
+        we'll quote against your scope.</p>
+    </div>
+  </section>
+
+  <section class="section--tight" style="padding-top:0">
+    <div class="container">
+      <div class="grid grid-3">
+        {tiers.map((tier) => (
+          <article class="card card--accent" style="display:flex; flex-direction:column; gap:0.6rem">
+            <span class={`chip ${tier.chip}`}>{tier.name}</span>
+            <p style="font-size:1.4rem; font-weight:600">{tier.price}</p>
+            <p class="muted" style="flex:1">{tier.body}</p>
+            <a class="btn btn-quiet" href={tier.cta.href}>{tier.cta.label}</a>
+          </article>
+        ))}
+      </div>
+
+      <div class="boundary" style="margin-top:2rem">
+        <p><strong>Official status is not a pricing tier.</strong> Issuer authorization, registry listing and
+          official mark usage are governed grants — never unlocked by payment. Payment never grants official
+          status.</p>
+      </div>
+
+      <div style="margin-top:1.5rem"><Boundary compact /></div>
+    </div>
+  </section>
+</BaseLayout>

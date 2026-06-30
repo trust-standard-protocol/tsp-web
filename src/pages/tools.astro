@@ -1,0 +1,109 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site";
+
+const modules = [
+  { name: "Evidence Explorer", body: "Search and filter receipts across a workflow." },
+  { name: "Audit Dossier", body: "Package receipts, reviews and manifests into one exportable bundle." },
+  { name: "Risk Monitor", body: "Flag missing evidence and stale keys — alerts, not a safety verdict." },
+  { name: "Oversight Workflow", body: "Review, escalate and override — every step signed." },
+  { name: "Control Plane", body: "Tenants, licenses, issuers and audit trail — no official status by payment." },
+  { name: "Agent Gateway", body: "Tool-call receipts and policy state — captures, never claims correctness." }
+];
+
+// One signer issues; many verifier cores check. Each verifier is read-only.
+const cores = [
+  { pkg: `${site.pkgScope}/sdk-js`, role: "signer + verifier", note: "the single issuance/signing path" },
+  { pkg: `${site.pkgScope}/sdk-web`, role: "verifier core", note: "browser-safe, verify-only" },
+  { pkg: `${site.pkgScope}/sdk-python`, role: "verifier core", note: "" },
+  { pkg: `${site.pkgScope}/sdk-go`, role: "verifier core", note: "" },
+  { pkg: `${site.pkgScope}/sdk-rust`, role: "verifier core", note: "" },
+  { pkg: `${site.pkgScope}/sdk-java`, role: "verifier core", note: "" },
+  { pkg: `${site.pkgScope}/sdk-csharp`, role: "verifier core", note: "" }
+];
+---
+<BaseLayout
+  title="Tools"
+  description="Operationalize the evidence: verifier cores (one signer, N verifiers), an open MCP server/proxy, TrustBadge, and licensed operator modules."
+>
+  <section class="section section--tight">
+    <div class="container">
+      <p class="eyebrow">Tools &amp; modules</p>
+      <h1>Operationalize the evidence</h1>
+      <p class="lede">Verification is free and offline, in every runtime. Issuance and signing live behind the
+        licensed issuer path (pilot / staging). Official status stays separate — no phone-home, no kill switch
+        for free verification.</p>
+    </div>
+  </section>
+
+  <section class="section--tight" style="padding-top:0">
+    <div class="container">
+      <h2>One signer, many verifier cores</h2>
+      <p class="lede">TSP is one signer and N verifiers. The non-JS SDKs are <strong>verifier cores</strong> —
+        they re-run the cryptography; they do not sign. Signing/issuance is the single licensed path.</p>
+      <div class="grid grid-3" style="margin-top:1.5rem">
+        {cores.map((core) => (
+          <article class="card">
+            <p class="mono" style="font-size:var(--fs-mono); word-break:break-all">{core.pkg}</p>
+            <span class={core.role.startsWith("signer") ? "chip chip--copper" : "chip chip--teal"}>{core.role}</span>
+            {core.note && <p class="muted" style="font-size:var(--fs-small); margin-top:0.5rem">{core.note}</p>}
+          </article>
+        ))}
+      </div>
+      <pre style="margin-top:1.5rem"><code>{`npm i ${site.pkgScope}/sdk-web
+import { verifyTrustEnvelopeV3 } from "${site.pkgScope}/sdk-web";`}</code></pre>
+    </div>
+  </section>
+
+  <section class="section--tight section--paper-deep">
+    <div class="container">
+      <h2>Open MCP server &amp; proxy</h2>
+      <p class="lede">An open Model Context Protocol server and proxy let agents capture tool-call receipts and
+        re-run verification inline. Distributed free with the verifier cores — the open layer of the protocol;
+        the governed seal is the product.</p>
+      <pre style="margin-top:1rem"><code>{`# verify a receipt from an agent loop, offline
+tsp-mcp --proxy   # captures tool-call evidence; re-runs verification`}</code></pre>
+    </div>
+  </section>
+
+  <section class="section--tight">
+    <div class="container">
+      <h2>Operator modules</h2>
+      <p class="lede">Modules ship inactive; an offline license token activates them. Free verification always
+        works.</p>
+      <div class="grid grid-3" style="margin-top:1.5rem">
+        {modules.map((mod) => (
+          <article class="card card--accent">
+            <h3>{mod.name}</h3>
+            <p class="muted">{mod.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section--tight section--paper-deep">
+    <div class="container">
+      <h2>TrustBadge — the evidence entry point</h2>
+      <p class="lede">A drop-in component that links an AI output to its provenance receipt. The resolver
+        decides whether official wording is allowed; the badge itself only ever reflects verification state.</p>
+      <p style="margin-top:1rem"><a class="btn btn-ghost" href="/playground/">See a TrustBadge react to live verification →</a></p>
+    </div>
+  </section>
+
+  <section class="section--tight">
+    <div class="container">
+      <h2>Security posture</h2>
+      <ul class="stack muted" style="list-style:none">
+        <li>· Report to <span class="mono">security@truststandardprotocol.com</span> — coordinated handling, no legal threat for good-faith research.</li>
+        <li>· Separate dev / staging / production keys. Rotation and revocation tested before launch. No production keys in public repos.</li>
+        <li>· No phone-home for self-hosted verification · no hidden telemetry · no remote kill switch for free verification.</li>
+      </ul>
+      <p style="margin-top:1rem" class="muted">
+        Open layer: spec, fixtures, verifier cores and the TrustBadge component are source-available and citable
+        ({site.license.split(" + ")[0]}). The closed seal — issuance tooling and commercial modules — is under a
+        commercial TSP license. Marks (TSP, Trust Standard Protocol, TrustEnvelope, TrustBadge) are controlled.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

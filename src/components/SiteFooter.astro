@@ -1,0 +1,35 @@
+---
+import { footerGroups, site } from "../data/site";
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h2>{site.short}</h2>
+        <p style="max-width: 38ch; color: var(--ink-inverse-muted);">
+          Makes your AI evidence durable, tamper-evident, and verifiable offline.
+          It does <strong style="color: var(--amber);">not</strong> make you compliant.
+        </p>
+        <p class="mono" style="font-size: var(--fs-micro); margin-top: 1rem; color: var(--ink-inverse-muted);">
+          {site.license}
+        </p>
+      </div>
+      {footerGroups.map((group) => (
+        <nav aria-label={group.title}>
+          <h2>{group.title}</h2>
+          <ul>
+            {group.links.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+          </ul>
+        </nav>
+      ))}
+    </div>
+    <div class="footer-bottom">
+      <span>© {year} {site.name}</span>
+      <a href="/.well-known/security.txt">security.txt</a>
+      <a href="/llms.txt">llms.txt</a>
+      <a href="/.well-known/tsp.json">.well-known/tsp.json</a>
+      <span style="margin-left: auto;">Evidence integrity — not truth, not a legal verdict.</span>
+    </div>
+  </div>
+</footer>

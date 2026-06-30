@@ -19,7 +19,9 @@
     "astro": "^5.7.0"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.9",
     "@fontsource/ibm-plex-mono": "^5.1.1",
-    "@fontsource/ibm-plex-sans": "^5.1.1"
+    "@fontsource/ibm-plex-sans": "^5.1.1",
+    "typescript": "^5.9.3"
   }
 }

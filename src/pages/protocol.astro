@@ -1,0 +1,103 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Boundary from "../components/Boundary.astro";
+
+const sections = [
+  { id: "overview", label: "Overview" },
+  { id: "envelope", label: "TrustEnvelope" },
+  { id: "manifest", label: "TrustManifest" },
+  { id: "verification", label: "Verification" },
+  { id: "conformance", label: "Conformance" },
+  { id: "governance", label: "Threat & governance" }
+];
+---
+<BaseLayout
+  title="Protocol"
+  description="How TSP defines evidence: TrustEnvelope, TrustManifest, verification semantics, conformance, and governance — Ed25519 + canonical JSON."
+>
+  <section class="section section--tight">
+    <div class="container">
+      <p class="eyebrow">/protocol · the specification</p>
+      <h1>How TSP defines evidence</h1>
+      <p class="lede">The website explains TSP; the spec and conformance suite define it. This is the human
+        tour — the normative documents live in the protocol package.</p>
+    </div>
+  </section>
+
+  <section class="section--tight" style="padding-top:0">
+    <div class="container">
+      <div class="split" style="--gap:2rem">
+        <nav aria-label="On this page" class="card" style="position:sticky; top:84px; align-self:start;">
+          <p class="eyebrow" style="margin-bottom:0.5rem">On this page</p>
+          <ul class="stack" style="list-style:none; font-size:var(--fs-small);">
+            {sections.map((s) => <li><a href={`#${s.id}`}>{s.label}</a></li>)}
+            <li><a href="/verify/">Try a live verify →</a></li>
+          </ul>
+        </nav>
+
+        <div class="stack-lg">
+          <section id="overview">
+            <h2>Overview</h2>
+            <p>An AI-mediated event is wrapped into a signed record, hashed so any change is detectable, and
+              linked to the record before it. The spec fixes exactly how each step is computed so independent
+              implementations agree byte-for-byte. It is a fixed, auditable definition — not a vendor convention.</p>
+            <p class="mono muted" style="font-size:var(--fs-small)">TrustEnvelope · TrustManifest · VerificationResult · fixtures</p>
+          </section>
+
+          <section id="envelope">
+            <h2>TrustEnvelope</h2>
+            <p>Every receipt is a <strong>TrustEnvelope</strong>: the declared claims about the event, the
+              canonical hash of those claims, a link to the previous record, and the issuer's signature.</p>
+            <pre><code>{`{
+  "tsp": "3.0",
+  "content": { "type": "text", "value": "…", "hash": "<sha256 of canonical content>" },
+  "declaration": { "primarySource": { … }, "citations": [ … ] },
+  "process": { "model": { … }, "systemPrompt": { … } },
+  "alignment": { "humanReviewRequired": true, "policy": { … } },
+  "timestamp": { "claimed": "2026-06-30T10:00:00Z", … },
+  "ledger": { "id": "…", "prevHash": "<prev>", "hash": "<sha256 of ledger domain>" },
+  "signatures": [ { "algorithm": "ed25519", "keyRef": "…", "signature": "<base64>" } ]
+}`}</code></pre>
+            <p class="mono muted" style="font-size:var(--fs-small)">content.hash = SHA-256 over canonical JSON of the content value.</p>
+          </section>
+
+          <section id="manifest">
+            <h2>TrustManifest</h2>
+            <p>A manifest says which keys an issuer signs with and where to find them. A verifier uses it to
+              resolve the key referenced by a receipt — without it you can check integrity but not provenance.</p>
+            <p class="mono muted" style="font-size:var(--fs-small)">Ed25519 (EdDSA) public keys · published or customer-scoped.</p>
+          </section>
+
+          <section id="verification">
+            <h2>Verification semantics</h2>
+            <p>Verification recomputes the hash, checks the Ed25519 signature against the manifest key, and
+              confirms each receipt links to the prior one. It reports an <strong>evidence state</strong> —
+              never a judgement of truth or legality.</p>
+            <div class="checks" style="margin-top:1rem">
+              <div class="check" data-status="passed"><span class="check__icon">✓</span><span>Integrity — canonical hash matches</span><span class="check__detail">sha-256</span></div>
+              <div class="check" data-status="passed"><span class="check__icon">✓</span><span>Signature — signed by the manifest key</span><span class="check__detail">ed25519</span></div>
+              <div class="check" data-status="passed"><span class="check__icon">✓</span><span>Chain — links to the prior receipt</span><span class="check__detail">prevHash</span></div>
+              <div class="check" data-status="passed"><span class="check__icon">✓</span><span>Schema, manifest &amp; redaction state — declared and inspectable</span><span class="check__detail">shape</span></div>
+            </div>
+            <p class="muted" style="margin-top:0.8rem; font-size:var(--fs-small)">Verification ≠ correctness, compliance, or approval.</p>
+          </section>
+
+          <section id="conformance">
+            <h2>Conformance</h2>
+            <p>A public set of immutable fixtures pins canonical examples. Every implementation — JS, Python,
+              Go, Rust, Java, C# — must agree. Independent verifier agreement is the trust anchor. (These
+              non-JS runtimes are <strong>verifier cores</strong>: one signer issues, many verifiers check.)</p>
+          </section>
+
+          <section id="governance">
+            <h2>Threat &amp; governance</h2>
+            <p>The spec defines evidence; it does not grant authority. Payment never grants official status —
+              issuer authorization and registry listing are governed grants, resolved separately from
+              verification.</p>
+            <Boundary />
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

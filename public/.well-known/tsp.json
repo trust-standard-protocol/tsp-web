@@ -1,0 +1,39 @@
+{
+  "protocol": "Trust Standard Protocol",
+  "version": "3.0",
+  "summary": "Tamper-evident, offline-verifiable evidence for AI-mediated events.",
+  "signature": {
+    "algorithm": "ed25519",
+    "canonicalization": "canonical JSON (sorted keys, JCS-style)",
+    "contentHash": "sha-256 over canonical content value",
+    "ledgerHash": "sha-256 over canonical ledger domain (binds signatures)"
+  },
+  "envelope": "TrustEnvelope v3",
+  "surfaces": {
+    "verify": "https://verify.truststandardprotocol.com/",
+    "playground": "https://truststandardprotocol.com/playground/",
+    "protocol": "https://truststandardprotocol.com/protocol/",
+    "agent": "https://agent.truststandardprotocol.com/"
+  },
+  "packages": {
+    "scope": "@trust-standard-protocol",
+    "signer": "@trust-standard-protocol/sdk-js",
+    "verifierCores": [
+      "@trust-standard-protocol/sdk-web",
+      "@trust-standard-protocol/sdk-python",
+      "@trust-standard-protocol/sdk-go",
+      "@trust-standard-protocol/sdk-rust",
+      "@trust-standard-protocol/sdk-java",
+      "@trust-standard-protocol/sdk-csharp"
+    ]
+  },
+  "license": {
+    "open": "Apache-2.0",
+    "closed": "commercial TSP license"
+  },
+  "boundary": {
+    "meaning": "evidence-integrity",
+    "doesNotMean": ["truth", "correctness", "legality", "safety", "compliance"],
+    "officialStatus": "a governed grant, never granted by payment or by verification alone"
+  }
+}

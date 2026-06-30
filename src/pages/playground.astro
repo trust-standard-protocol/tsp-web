@@ -1,0 +1,67 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Boundary from "../components/Boundary.astro";
+---
+<BaseLayout
+  title="Playground"
+  description="Build a real chain of signed AI evidence receipts in your browser, verify it offline, then break one byte and watch verification fail."
+>
+  <section class="section section--tight">
+    <div class="container">
+      <p class="eyebrow">Working slice · end to end</p>
+      <h1>A signed AI evidence chain, verified live</h1>
+      <p class="lede">
+        A loan-onboarding workflow — AI recommendation, human override, decision — sealed as three chained
+        receipts. Real Ed25519 + SHA-256, in your browser. Build it, verify it, then break one byte and watch
+        the cryptography refuse it.
+      </p>
+    </div>
+  </section>
+
+  <section class="section--tight" style="padding-top:0">
+    <div class="container" id="playground">
+      <div class="panel">
+        <div class="panel__head">
+          <span>controls</span>
+          <span id="pg-note" class="muted mono" style="font-size:var(--fs-micro); text-align:right; max-width:42ch;"></span>
+        </div>
+        <div class="panel__body stack">
+          <div class="btn-row">
+            <button id="pg-verify" class="btn btn-primary" type="button">Verify the chain →</button>
+            <label class="mono" style="display:inline-flex; align-items:center; gap:0.4rem; font-weight:600;">
+              Target
+              <select id="pg-target" style="width:auto; min-width:14rem;"></select>
+            </label>
+            <button id="pg-break" class="btn btn-ghost" type="button">⚡ Break one byte</button>
+            <button id="pg-reset" class="btn btn-quiet" type="button">Reset chain</button>
+            <button id="pg-export" class="btn btn-quiet" type="button">Download dossier</button>
+          </div>
+          <div id="pg-verdict" class="verdict" data-state="idle">Building the chain…</div>
+          <div id="pg-badge" class="trustbadge" data-state="idle"></div>
+          <p class="muted" style="font-size:var(--fs-small)">
+            <strong>TrustBadge</strong> above reflects the live verification state. Use
+            <em>Open this receipt in /verify</em> on any card to round-trip it through the standalone verifier.
+          </p>
+        </div>
+      </div>
+
+      <div class="chain" id="pg-chain" style="margin-top:1.25rem"></div>
+    </div>
+  </section>
+
+  <section class="section--tight">
+    <div class="container container-narrow stack">
+      <Boundary />
+      <p class="muted">
+        This is one proven slice of the full vision — one workflow, fully evidenced. The demo signer runs in
+        your browser to <em>build</em> receipts; real issuance is the governed, registry-bound path. See how the
+        receipts map to obligations on the <a href="/eu-ai-act/">EU AI Act</a> page, or read the
+        <a href="/protocol/">protocol spec</a>.
+      </p>
+    </div>
+  </section>
+
+  <script>
+    import "../islands/playground.ts";
+  </script>
+</BaseLayout>

@@ -1,0 +1,20 @@
+Trust Standard Protocol — public website (tsp-web)
+Copyright 2026 Trust Standard Protocol contributors
+
+This product is licensed under the Apache License, Version 2.0 (the "open layer").
+See LICENSE.
+
+The website vendors the verify code from @trust-standard-protocol/protocol
+(also Apache-2.0) under src/lib/tsp/. The closed seal — issuance tooling,
+commercial operator modules, and official status — is governed under a separate
+commercial TSP license and is not part of this repository.
+
+Marks "TSP", "Trust Standard Protocol", "TrustEnvelope", and "TrustBadge" are
+controlled marks; the Apache-2.0 grant covers code, not mark usage.
+
+Third-party components:
+- @noble/ed25519 — audited, permissively licensed Ed25519 implementation, used
+  as a verification fallback and for the in-browser demo signer (see its package
+  for exact license terms).
+- IBM Plex Sans / IBM Plex Mono — SIL Open Font License 1.1 — self-hosted via
+  @fontsource.

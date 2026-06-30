@@ -1,0 +1,26 @@
+# Trust Standard Protocol
+
+> An open protocol that makes AI decision evidence durable, tamper-evident, and verifiable offline — by anyone, without trusting the vendor. It signs a canonical record of an AI-mediated event with Ed25519, hashes it with SHA-256 over canonical (JCS-style) JSON, and chains it to the previous record. TSP reports evidence integrity. It does not make you compliant, prove a model is correct, or confer official status.
+
+## Core surfaces
+- [Verify a receipt](https://truststandardprotocol.com/verify/): Re-run TSP verification in the browser against the issuer public key. Nothing is uploaded; one changed byte fails.
+- [Playground](https://truststandardprotocol.com/playground/): Build a real chain of signed receipts, verify it, and break one byte to see verification fail live.
+- [Protocol](https://truststandardprotocol.com/protocol/): TrustEnvelope, TrustManifest, verification semantics, conformance, governance.
+
+## Reference
+- [Tools](https://truststandardprotocol.com/tools/): Verifier cores (one signer, N verifiers), open MCP server/proxy, TrustBadge, operator modules.
+- [EU AI Act](https://truststandardprotocol.com/eu-ai-act/): How receipts support Art 12 / 14 / 15 / 19 / 50 — as evidence, not a verdict.
+- [Leaderboard](https://truststandardprotocol.com/leaderboard/): Public trust ranking recomputed from an org's own receipts.
+- [Hard questions](https://truststandardprotocol.com/hard-questions/): Privacy, forgery, governance — answered with the threat model in the open.
+- [Pricing](https://truststandardprotocol.com/pricing/): Free to verify, priced to operate. Official status is a governed grant, never a tier.
+- [Docs](https://truststandardprotocol.com/docs/): Quickstart (full reference site in Fase A.2).
+
+## Machine-readable
+- [/.well-known/tsp.json](https://truststandardprotocol.com/.well-known/tsp.json): Protocol surface descriptor.
+- [/.well-known/security.txt](https://truststandardprotocol.com/.well-known/security.txt): Coordinated disclosure contact.
+- [/agent/tsp-manifest.json](https://truststandardprotocol.com/agent/tsp-manifest.json): Demo issuer manifest (public key).
+- [/agent/openapi.json](https://truststandardprotocol.com/agent/openapi.json): Verify API descriptor (placeholder).
+- [/agent/protocol.md](https://truststandardprotocol.com/agent/protocol.md): Protocol summary for agents.
+
+## Boundary
+TSP verifies evidence state — integrity, provenance, custody, signature, manifest. It does not decide truth, correctness, legality, safety, or compliance. A person still decides whether to trust, escalate, audit, or reject. Packages are published under @trust-standard-protocol/*; the open layer is Apache-2.0, the closed seal under a commercial TSP license.

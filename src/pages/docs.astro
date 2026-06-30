@@ -1,0 +1,47 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site";
+
+const steps = [
+  { title: "Register your issuer", code: `tsp issuer init --name "Northbank" --scope lending.credit --jurisdiction EU --key ./keys/k2.pub.jwk` },
+  { title: "Instrument the decision", code: `const payload = tsp.capture({ type: "credit.application", inputs, output, policyVersion: "v4.2" });` },
+  { title: "Seal & chain the receipt", code: `await tsp.seal(payload, { key: k2, prevHash: lastHead }); // Ed25519 + SHA-256` },
+  { title: "Publish to your manifest", code: `tsp manifest publish ./receipts --url https://northbank.example/tsp/manifest` },
+  { title: "Verify — anyone can", code: `tsp verify --manifest <url> --registry <url>` }
+];
+---
+<BaseLayout
+  title="Docs"
+  description="Quickstart for TSP: register an issuer, instrument a decision, seal and chain the receipt, publish, and verify — all with Ed25519."
+>
+  <section class="section section--tight">
+    <div class="container">
+      <p class="eyebrow">Docs · quickstart</p>
+      <h1>From zero to a trail anyone can verify.</h1>
+      <p class="lede">Five steps; each one emits a receipt, so by the end the trail proves itself — no trust in
+        us required. The full reference (Starlight) lands in Fase A.2; the quickstart and protocol tour are here now.</p>
+      <p class="chip chip--copper" style="margin-top:0.75rem">Reference docs site — coming in Fase A.2</p>
+    </div>
+  </section>
+
+  <section class="section--tight" style="padding-top:0">
+    <div class="container">
+      <ol class="steps">
+        {steps.map((step) => (
+          <li>
+            <h3 style="font-size:1.05rem">{step.title}</h3>
+            <pre style="margin-top:0.5rem"><code>{step.code}</code></pre>
+          </li>
+        ))}
+      </ol>
+      <p class="muted" style="margin-top:1.5rem">
+        You now have a public, append-only trail anyone can re-verify from public artifacts — the protocol
+        stands on its own. Read how it's defined in the <a href="/protocol/">protocol spec</a>, browse
+        <a href="/tools/">tools &amp; verifier cores</a>, or try the <a href="/verify/">live verifier</a>.
+      </p>
+      <p class="mono muted" style="font-size:var(--fs-micro); margin-top:1rem">
+        Packages: <span class="mono">{site.pkgScope}/*</span> · open layer {site.license.split(" + ")[0]}.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

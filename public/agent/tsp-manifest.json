@@ -1,0 +1,17 @@
+{
+  "issuer": "Trust Standard Protocol — demo issuer",
+  "note": "Demo/fixture issuer key for the public verify demos. Not a production or official-status key.",
+  "keys": [
+    {
+      "kid": "fixture-ed25519-v3-001",
+      "kty": "OKP",
+      "crv": "Ed25519",
+      "alg": "EdDSA",
+      "use": "sig",
+      "x": "614-aowd9tajxov2RRpEIfDyUQK_JPipVTmOWh2CfGw",
+      "status": "pilot"
+    }
+  ],
+  "verify": "https://verify.truststandardprotocol.com/",
+  "boundary": "Key presence here proves nothing about official status; that is resolved by the governed registry, not by this manifest."
+}

@@ -1,0 +1,75 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Boundary from "../components/Boundary.astro";
+---
+<BaseLayout
+  title="Verify a receipt"
+  description="Re-run TSP verification in your browser against the issuer public key. Nothing is uploaded; change one byte and it fails."
+>
+  <section class="section section--tight">
+    <div class="container">
+      <p class="eyebrow">/verify · runs locally in your browser · nothing is uploaded</p>
+      <h1>Verify a receipt</h1>
+      <p class="lede">
+        Paste or upload a TSP receipt and its issuer public key. The Ed25519 + SHA-256 cryptography is
+        re-run here, in your browser, against that key — nothing trusts the issuer. Change a single byte and it fails.
+      </p>
+    </div>
+  </section>
+
+  <section class="section--tight" style="padding-top:0">
+    <div class="container">
+      <div class="split split--verify">
+        <div class="panel">
+          <div class="panel__head"><span>receipt + public key</span><span class="chip chip--teal">offline</span></div>
+          <div class="panel__body stack">
+            <div>
+              <label for="vf-envelope">TrustEnvelope (JSON) — or a {"{ envelope, publicKey }"} bundle</label>
+              <textarea id="vf-envelope" spellcheck="false" placeholder="Paste a TSP receipt here…"></textarea>
+            </div>
+            <div>
+              <label for="vf-key">Issuer public key (JWK)</label>
+              <textarea id="vf-key" style="min-height:120px" spellcheck="false" placeholder={'{ "kty":"OKP", "crv":"Ed25519", "x":"…" }'}></textarea>
+            </div>
+            <div class="btn-row">
+              <button id="vf-verify" class="btn btn-primary" type="button">Verify cryptographically →</button>
+              <button id="vf-sample" class="btn btn-quiet" type="button">Load a sample</button>
+              <button id="vf-tamper" class="btn btn-ghost" type="button">⚡ Break one byte</button>
+              <button id="vf-clear" class="btn btn-quiet" type="button">Clear</button>
+              <label class="btn btn-quiet" for="vf-file" style="cursor:pointer; margin:0;">
+                Upload .json
+                <input id="vf-file" type="file" accept="application/json,.json" class="visually-hidden" />
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel__head"><span>verification result</span></div>
+          <div class="panel__body stack">
+            <div id="vf-verdict" class="verdict" data-state="idle">Paste a receipt and verify — or load a sample.</div>
+            <div id="vf-checks" class="checks"></div>
+            <p id="vf-warnings" class="muted mono" style="font-size:var(--fs-micro)"></p>
+            <div>
+              <h3 style="font-size:1.02rem; margin-bottom:0.5rem;">What verification does <em>not</em> mean</h3>
+              <ul class="muted stack" style="list-style:none; font-size:var(--fs-small);">
+                <li>✕ that the AI's answer is true or correct</li>
+                <li>✕ that you are legally compliant</li>
+                <li>✕ that the model is approved or safe</li>
+                <li>✕ that the issuer holds official status — that needs authorization</li>
+              </ul>
+            </div>
+            <Boundary compact />
+            <p class="muted" style="font-size:var(--fs-small)">
+              Want to build one end-to-end? <a href="/playground/">Open the playground →</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    import "../islands/verify-workbench.ts";
+  </script>
+</BaseLayout>

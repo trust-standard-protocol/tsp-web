@@ -1,0 +1,52 @@
+# Caddy reverse proxy for the Trust Standard Protocol public surface.
+# Boring, old, stable: one reverse_proxy per subdomain, automatic HTTPS.
+# BUILT, NOT EXECUTED — see DEPLOY.md. The owner runs the deploy explicitly.
+#
+# DNS: all A records -> the Hetzner host. www -> apex redirect.
+
+{
+	# email for Let's Encrypt — set via env at deploy time, not committed.
+	email {$ACME_EMAIL}
+}
+
+# Apex: the static Astro site.
+truststandardprotocol.com {
+	encode zstd gzip
+	root * /srv/site
+	file_server
+	try_files {path} {path}/ {path}.html /index.html
+	header {
+		X-Content-Type-Options nosniff
+		Referrer-Policy strict-origin-when-cross-origin
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+	}
+	# Agent + machine-readable surfaces are plain static files in the build.
+}
+
+# www -> apex
+www.truststandardprotocol.com {
+	redir https://truststandardprotocol.com{uri} permanent
+}
+
+# Verify subdomain: same static build, entry at /verify/.
+verify.truststandardprotocol.com {
+	encode zstd gzip
+	root * /srv/site
+	file_server
+	try_files {path} {path}/ {path}.html /verify/index.html
+}
+
+# Docs subdomain: Starlight build (Fase A.2). Until then, proxy to the main docs page.
+docs.truststandardprotocol.com {
+	encode zstd gzip
+	root * /srv/docs
+	file_server
+	try_files {path} {path}/ {path}.html /index.html
+}
+
+# Agent subdomain: static machine-readable files (llms.txt, openapi.json, manifest, protocol.md).
+agent.truststandardprotocol.com {
+	encode zstd gzip
+	root * /srv/site/agent
+	file_server browse
+}
