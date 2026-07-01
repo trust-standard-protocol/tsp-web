@@ -12,7 +12,7 @@
 // state then propagates downstream, which is the honest behaviour.
 import { generateDemoSigner, ledgerHash, sealEnvelope, verifyTrustEnvelopeV3 } from "../lib/tsp";
 import type { DemoSigner, JwkEd25519Public, TrustEnvelopeV3, VerificationResult } from "../lib/tsp";
-import { renderChecks, tamperOneByte } from "./ui";
+import { icon, renderChecks, tamperOneByte } from "./ui";
 
 const GENESIS = "0".repeat(64);
 
@@ -95,7 +95,9 @@ if (root) {
   function setVerdict(state: string, text: string) {
     if (!verdictEl) return;
     verdictEl.dataset.state = state;
-    verdictEl.textContent = text;
+    if (state === "valid") verdictEl.replaceChildren(icon("check", 16, 90), document.createTextNode(text));
+    else if (state === "invalid") verdictEl.replaceChildren(icon("x", 16, 90), document.createTextNode(text));
+    else verdictEl.textContent = text;
   }
 
   function setNote(text: string) {
@@ -209,10 +211,10 @@ if (root) {
 
     const firstBroken = broken.findIndex((b) => b);
     if (firstBroken === -1) {
-      setVerdict("valid", "\u2713 Chain VERIFIED — every receipt's integrity and signature check out, links intact.");
+      setVerdict("valid", "Chain VERIFIED — every receipt's integrity and signature check out, links intact.");
       setNote("All three receipts verify offline against the demo public key. This is the real protocol verify.");
     } else {
-      setVerdict("invalid", `\u2717 Chain BROKEN at event ${firstBroken + 1} — its evidence, and everything chained after it, can no longer be trusted.`);
+      setVerdict("invalid", `Chain BROKEN at event ${firstBroken + 1} — its evidence, and everything chained after it, can no longer be trusted.`);
       setNote("One altered byte changes the content hash, which breaks the ledger hash and the signature — and the next receipt's prevHash no longer matches the real hash, so the break propagates downstream.");
     }
   }
@@ -236,7 +238,7 @@ if (root) {
 
     const mark = document.createElement("span");
     mark.className = "trustbadge__mark";
-    mark.textContent = allValid ? "\u2713" : "\u2717";
+    mark.appendChild(icon(allValid ? "check" : "x", 16, 95));
 
     const text = document.createElement("span");
     const label = document.createElement("strong");

@@ -1,6 +1,10 @@
 // Shared, XSS-safe DOM rendering for the live verify demos. Everything derived
 // from user-pasted JSON is written via textContent / createElement — never
 // innerHTML — because the Verify workbench parses arbitrary pasted input.
+// Status icons are line-art SVGs built from trusted, static geometry via
+// createElementNS (same shapes as src/icons/check|x|dash.svg), kept decorative
+// (aria-hidden) with the pass/fail/skip state carried as a visually-hidden word
+// so screen-reader users still get the verdict once the glyph is a picture.
 import type { VerificationResult } from "../lib/tsp";
 
 const CHECK_LABELS: Record<keyof VerificationResult["checks"], string> = {
@@ -10,9 +14,38 @@ const CHECK_LABELS: Record<keyof VerificationResult["checks"], string> = {
   signature: "Issuer signature (Ed25519)"
 };
 
-const CHECK_ICON: Record<string, string> = { passed: "\u2713", failed: "\u2717", skipped: "\u00b7" };
-
 const CHECK_ORDER: Array<keyof VerificationResult["checks"]> = ["schema", "contentHash", "ledgerHash", "signature"];
+
+const SVG_NS = "http://www.w3.org/2000/svg";
+// Same coordinate system + geometry as the inlined SVG icons in src/icons/.
+const ICON_PATHS: Record<"check" | "x" | "dash", string[]> = {
+  check: ["M 1020,185.751 L 336.729,869.541", "M 4,536.143 L 336.729,869.541"],
+  x: ["M 224,224 L 800,800", "M 800,224 L 224,800"],
+  dash: ["M 300,512 L 724,512"]
+};
+const STATUS_ICON: Record<string, keyof typeof ICON_PATHS> = { passed: "check", failed: "x", skipped: "dash" };
+const STATUS_WORD: Record<string, string> = { passed: "Passed", failed: "Failed", skipped: "Skipped" };
+
+export function icon(name: keyof typeof ICON_PATHS, size: number, weight: number): SVGSVGElement {
+  const svg = document.createElementNS(SVG_NS, "svg");
+  svg.setAttribute("class", "tsp-icon");
+  svg.setAttribute("viewBox", "-51.5 -51.5 1127 1127");
+  svg.setAttribute("width", String(size));
+  svg.setAttribute("height", String(size));
+  svg.setAttribute("fill", "none");
+  svg.setAttribute("stroke", "currentColor");
+  svg.setAttribute("stroke-width", String(weight));
+  svg.setAttribute("stroke-linecap", "round");
+  svg.setAttribute("stroke-linejoin", "round");
+  svg.setAttribute("aria-hidden", "true");
+  svg.setAttribute("focusable", "false");
+  for (const d of ICON_PATHS[name]) {
+    const path = document.createElementNS(SVG_NS, "path");
+    path.setAttribute("d", d);
+    svg.appendChild(path);
+  }
+  return svg;
+}
 
 export function renderChecks(container: HTMLElement, result: VerificationResult): void {
   container.replaceChildren();
@@ -22,9 +55,13 @@ export function renderChecks(container: HTMLElement, result: VerificationResult)
     row.className = "check";
     row.dataset.status = check.status;
 
-    const icon = document.createElement("span");
-    icon.className = "check__icon";
-    icon.textContent = CHECK_ICON[check.status] ?? "\u00b7";
+    const iconWrap = document.createElement("span");
+    iconWrap.className = "check__icon";
+    iconWrap.appendChild(icon(STATUS_ICON[check.status] ?? "dash", 13, 110));
+    const state = document.createElement("span");
+    state.className = "visually-hidden";
+    state.textContent = `${STATUS_WORD[check.status] ?? "Skipped"}: `;
+    iconWrap.appendChild(state);
 
     const label = document.createElement("span");
     const strong = document.createElement("strong");
@@ -35,22 +72,30 @@ export function renderChecks(container: HTMLElement, result: VerificationResult)
     detail.className = "check__detail";
     detail.textContent = check.detail;
 
-    row.append(icon, label, detail);
+    row.append(iconWrap, label, detail);
     container.append(row);
   }
+}
+
+/** Invalid verdict: red cross icon + message (state="invalid"). Shared with the
+ *  workbench's input-error path so both render the same line-art mark. */
+export function setInvalidVerdict(el: HTMLElement, text: string): void {
+  el.dataset.state = "invalid";
+  el.replaceChildren(icon("x", 16, 90), document.createTextNode(text));
 }
 
 export function applyVerdict(el: HTMLElement, result: VerificationResult): void {
   if (result.status === "valid") {
     el.dataset.state = "valid";
-    el.textContent = "\u2713 VERIFIED — evidence integrity intact";
+    el.replaceChildren(icon("check", 16, 90), document.createTextNode("VERIFIED — evidence integrity intact"));
     return;
   }
-  el.dataset.state = "invalid";
-  el.textContent =
+  setInvalidVerdict(
+    el,
     result.status === "unsupported-version"
-      ? "\u2717 UNSUPPORTED — not a TSP v3 receipt"
-      : "\u2717 FAILED — this receipt was altered or is invalid";
+      ? "UNSUPPORTED — not a TSP v3 receipt"
+      : "FAILED — this receipt was altered or is invalid"
+  );
 }
 
 export function tamperOneByte<T>(envelope: T): T {

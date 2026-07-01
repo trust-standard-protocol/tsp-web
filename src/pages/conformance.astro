@@ -1,0 +1,81 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Boundary from "../components/Boundary.astro";
+import Icon from "../components/Icon.astro";
+import en from "../i18n/en.json";
+
+// /conformance — the conformance program + the "TSP-Certified" mark. TCK model:
+// anyone can implement; only conformant + licensed builds wear the mark. Verified
+// against the register, never self-declared. Payment never grants official status.
+const c = en.conformance;
+const trackChips = ["chip--teal", "chip--copper"];
+---
+<BaseLayout
+  title="Conformance"
+  description="The TSP conformance program and the TSP-Certified mark: open standard, governed mark. Conformance is verified against the public register, not self-declared — and payment never grants official status."
+>
+  <section class="section section--tight">
+    <div class="container">
+      <p class="eyebrow" data-i18n="conformance.kicker">{c.kicker}</p>
+      <h1 data-i18n="conformance.h1">{c.h1}</h1>
+      <p class="lede"><span data-i18n="conformance.lede_a">{c.lede_a}</span><strong data-i18n="conformance.lede_strong">{c.lede_strong}</strong><span data-i18n="conformance.lede_b">{c.lede_b}</span></p>
+    </div>
+  </section>
+
+  <!-- The model: open standard, governed mark -->
+  <section class="section section--paper-deep">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="conformance.model_eyebrow">{c.model_eyebrow}</p>
+        <h2 data-i18n="conformance.model_title">{c.model_title}</h2>
+      </div>
+      <div class="grid grid-2" style="margin-top:1.5rem">
+        {c.tracks.map((track, i) => (
+          <article class={`card ${i === 0 ? "card--teal" : "card--accent"}`} style="display:flex; flex-direction:column; gap:0.6rem">
+            <span class={`chip ${trackChips[i]}`} data-i18n={`conformance.tracks.${i}.label`}>{track.label}</span>
+            <h3 data-i18n={`conformance.tracks.${i}.title`}>{track.title}</h3>
+            <p class="muted" data-i18n={`conformance.tracks.${i}.body`}>{track.body}</p>
+          </article>
+        ))}
+      </div>
+      <p class="muted" style="margin-top:1.2rem; max-width:760px; font-size:var(--fs-small)" data-i18n="conformance.precedent">{c.precedent}</p>
+    </div>
+  </section>
+
+  <!-- How conformance is verified -->
+  <section class="section section--tight">
+    <div class="container">
+      <div class="section-head section-head--left">
+        <p class="eyebrow" data-i18n="conformance.verify_eyebrow">{c.verify_eyebrow}</p>
+        <h2 data-i18n="conformance.verify_title">{c.verify_title}</h2>
+      </div>
+      <ul class="stack not-list" style="list-style:none; margin-top:1.2rem; max-width:760px;">
+        {c.verify_points.map((pt, i) => (
+          <li><Icon name="check" size={16} weight={90} /><span data-i18n={`conformance.verify_points.${i}`}>{pt}</span></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- The mark itself -->
+  <section class="section section--paper-deep">
+    <div class="container">
+      <div class="section-head section-head--left">
+        <p class="eyebrow" data-i18n="conformance.mark_eyebrow">{c.mark_eyebrow}</p>
+        <h2 data-i18n="conformance.mark_title">{c.mark_title}</h2>
+      </div>
+      <p class="lede" style="margin-top:1rem; max-width:760px" data-i18n="conformance.mark_body">{c.mark_body}</p>
+    </div>
+  </section>
+
+  <!-- Boundary + CTA -->
+  <section class="section section--tight">
+    <div class="container container-narrow stack">
+      <Boundary compact />
+      <div class="btn-row" style="margin-top:0.4rem">
+        <a class="btn btn-primary" href="/register/" data-i18n="conformance.cta_a">{c.cta_a}</a>
+        <a class="btn btn-ghost" href="/protocol/" data-i18n="conformance.cta_b">{c.cta_b}</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,77 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Boundary from "../components/Boundary.astro";
+import Icon from "../components/Icon.astro";
+import en from "../i18n/en.json";
+
+// /register — the public transparency-log / backstop: "don't trust us, verify
+// us." Canonical-primary (the product) + a public backstop so evidence survives
+// us. Design-framed and honest: the public log is being stood up; offline
+// verification of every receipt works today without it.
+const reg = en.register;
+---
+<BaseLayout
+  title="Register"
+  description="The public, append-only backstop that lets anyone re-check TSP anchors independently — canonical-primary, plus a public transparency log so your evidence survives us. Don't trust us, verify us."
+>
+  <section class="section section--tight">
+    <div class="container">
+      <p class="eyebrow" data-i18n="register.kicker">{reg.kicker}</p>
+      <h1 data-i18n="register.h1">{reg.h1}</h1>
+      <p class="lede"><span data-i18n="register.lede_a">{reg.lede_a}</span><strong data-i18n="register.lede_strong">{reg.lede_strong}</strong><span data-i18n="register.lede_b">{reg.lede_b}</span></p>
+    </div>
+  </section>
+
+  <section class="section section--paper-deep">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="register.layers_eyebrow">{reg.layers_eyebrow}</p>
+        <h2 data-i18n="register.layers_title">{reg.layers_title}</h2>
+      </div>
+      <div class="grid grid-2" style="margin-top:1.5rem">
+        {reg.layers.map((layer, i) => (
+          <article class={`card ${i === 0 ? "card--teal" : "card--accent"}`} style="display:flex; flex-direction:column; gap:0.6rem">
+            <span class={`chip ${i === 0 ? "chip--teal" : "chip--copper"}`} data-i18n={`register.layers.${i}.label`}>{layer.label}</span>
+            <h3 data-i18n={`register.layers.${i}.title`}>{layer.title}</h3>
+            <p class="muted" data-i18n={`register.layers.${i}.body`}>{layer.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <div class="section-head section-head--left">
+        <p class="eyebrow" data-i18n="register.how_eyebrow">{reg.how_eyebrow}</p>
+        <h2 data-i18n="register.how_title">{reg.how_title}</h2>
+      </div>
+      <ul class="stack not-list" style="list-style:none; margin-top:1.2rem; max-width:760px;">
+        {reg.how_points.map((pt, i) => (
+          <li><Icon name="check" size={16} weight={90} /><span data-i18n={`register.how_points.${i}`}>{pt}</span></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--ground">
+    <div class="container">
+      <div class="section-head section-head--left">
+        <p class="eyebrow" data-i18n="register.survive_eyebrow">{reg.survive_eyebrow}</p>
+        <h2 data-i18n="register.survive_title">{reg.survive_title}</h2>
+      </div>
+      <p class="lede" style="margin-top:1rem; max-width:760px" data-i18n="register.survive_body">{reg.survive_body}</p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container container-narrow stack">
+      <Boundary compact />
+      <p class="muted" style="font-size:var(--fs-small)" data-i18n="register.note">{reg.note}</p>
+      <div class="btn-row" style="margin-top:0.4rem">
+        <a class="btn btn-primary" href="/trust/" data-i18n="register.cta_a">{reg.cta_a}</a>
+        <a class="btn btn-ghost" href="/verify/" data-i18n="register.cta_b">{reg.cta_b}</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

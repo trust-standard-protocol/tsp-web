@@ -1,0 +1,59 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import en from "../i18n/en.json";
+
+// /status — operational continuity / uptime ("evidence survives us"). Honest
+// STATIC placeholder: no live infra to report yet, clearly labelled. When
+// services run this carries real, independently checkable status.
+const st = en.status;
+const stateChip = (s: string): string =>
+  /offline/i.test(s) ? "chip--ok" : /QTSP/i.test(s) ? "chip--teal" : "chip--copper";
+---
+<BaseLayout
+  title="Status"
+  description="Operational continuity for TSP. A clearly-labelled static placeholder until the live status feed is wired — past receipts stay verifiable offline regardless of our uptime."
+>
+  <section class="section section--tight">
+    <div class="container">
+      <p class="eyebrow" data-i18n="status.kicker">{st.kicker}</p>
+      <h1 data-i18n="status.h1">{st.h1}</h1>
+      <p class="lede"><span data-i18n="status.lede_a">{st.lede_a}</span><strong data-i18n="status.lede_strong">{st.lede_strong}</strong><span data-i18n="status.lede_b">{st.lede_b}</span></p>
+      <p class="chip chip--copper" style="margin-top:1rem">Static page · no live infrastructure yet</p>
+    </div>
+  </section>
+
+  <section class="section section--paper-deep">
+    <div class="container">
+      <div class="section-head section-head--left">
+        <p class="eyebrow" data-i18n="status.components_eyebrow">{st.components_eyebrow}</p>
+        <h2 data-i18n="status.components_title">{st.components_title}</h2>
+      </div>
+      <div class="grid grid-2" style="margin-top:1.5rem">
+        {st.components.map((comp, i) => (
+          <article class="card" style="display:flex; flex-direction:column; gap:0.5rem">
+            <div style="display:flex; align-items:baseline; justify-content:space-between; gap:0.75rem">
+              <h3 style="font-size:1.05rem" data-i18n={`status.components.${i}.name`}>{comp.name}</h3>
+              <span class={`chip ${stateChip(comp.state)}`} data-i18n={`status.components.${i}.state`}>{comp.state}</span>
+            </div>
+            <p class="muted" data-i18n={`status.components.${i}.body`}>{comp.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <div class="section-head section-head--left">
+        <p class="eyebrow" data-i18n="status.continuity_eyebrow">{st.continuity_eyebrow}</p>
+        <h2 data-i18n="status.continuity_title">{st.continuity_title}</h2>
+      </div>
+      <p class="lede" style="margin-top:1rem; max-width:760px" data-i18n="status.continuity_body">{st.continuity_body}</p>
+      <p class="muted" style="margin-top:1.2rem; max-width:760px; font-size:var(--fs-small)" data-i18n="status.note">{st.note}</p>
+      <div class="btn-row" style="margin-top:1.2rem">
+        <a class="btn btn-primary" href="/register/" data-i18n="status.cta_a">{st.cta_a}</a>
+        <a class="btn btn-ghost" href="/security/" data-i18n="status.cta_b">{st.cta_b}</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

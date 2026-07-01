@@ -1,0 +1,50 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Icon from "../components/Icon.astro";
+import en from "../i18n/en.json";
+
+// /security — coordinated disclosure + security posture. Real contact; no legal
+// threat for good-faith research. Links to the machine-readable security.txt and
+// tsp.json (also on the agent surface).
+const sec = en.security;
+---
+<BaseLayout
+  title="Security"
+  description="Coordinated vulnerability disclosure for TSP and our security posture: separate keys, no phone-home, no kill switch for free verification, and a published root key. Report to security@truststandardprotocol.com."
+>
+  <section class="section section--tight">
+    <div class="container">
+      <p class="eyebrow" data-i18n="security.kicker">{sec.kicker}</p>
+      <h1 data-i18n="security.h1">{sec.h1}</h1>
+      <p class="lede"><span data-i18n="security.lede_a">{sec.lede_a}</span><a class="textlink textlink--accent" href="mailto:security@truststandardprotocol.com" data-i18n="security.lede_strong">{sec.lede_strong}</a><span data-i18n="security.lede_b">{sec.lede_b}</span></p>
+    </div>
+  </section>
+
+  <section class="section section--paper-deep">
+    <div class="container">
+      <div class="section-head section-head--left">
+        <p class="eyebrow" data-i18n="security.posture_eyebrow">{sec.posture_eyebrow}</p>
+        <h2 data-i18n="security.posture_title">{sec.posture_title}</h2>
+      </div>
+      <ul class="stack not-list" style="list-style:none; margin-top:1.2rem; max-width:760px;">
+        {sec.posture_points.map((pt, i) => (
+          <li><Icon name="shield-lock" size={16} weight={70} /><span data-i18n={`security.posture_points.${i}`}>{pt}</span></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <div class="section-head section-head--left">
+        <p class="eyebrow" data-i18n="security.disclosure_eyebrow">{sec.disclosure_eyebrow}</p>
+        <h2 data-i18n="security.disclosure_title">{sec.disclosure_title}</h2>
+        <p class="lede section-head__body" data-i18n="security.disclosure_body">{sec.disclosure_body}</p>
+      </div>
+      <div class="btn-row" style="margin-top:1.2rem">
+        <a class="btn btn-primary" href="/.well-known/security.txt" data-i18n="security.cta_a">{sec.cta_a}</a>
+        <a class="btn btn-ghost" href="/.well-known/tsp.json" data-i18n="security.cta_b">{sec.cta_b}</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

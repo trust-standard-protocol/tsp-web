@@ -1,6 +1,12 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Boundary from "../components/Boundary.astro";
+import Icon from "../components/Icon.astro";
+import en from "../i18n/en.json";
+
+// Playground — i18n EN (server) → NO (island). Island hooks (ids) unchanged;
+// the <select> stays outside any swapped span. The verdict text is island-driven.
+const pg = en.playground;
 ---
 <BaseLayout
   title="Playground"
@@ -8,13 +14,9 @@ import Boundary from "../components/Boundary.astro";
 >
   <section class="section section--tight">
     <div class="container">
-      <p class="eyebrow">Working slice · end to end</p>
-      <h1>A signed AI evidence chain, verified live</h1>
-      <p class="lede">
-        A loan-onboarding workflow — AI recommendation, human override, decision — sealed as three chained
-        receipts. Real Ed25519 + SHA-256, in your browser. Build it, verify it, then break one byte and watch
-        the cryptography refuse it.
-      </p>
+      <p class="eyebrow" data-i18n="playground.kicker">{pg.kicker}</p>
+      <h1 data-i18n="playground.h1">{pg.h1}</h1>
+      <p class="lede" data-i18n="playground.lede">{pg.lede}</p>
     </div>
   </section>
 
@@ -22,25 +24,24 @@ import Boundary from "../components/Boundary.astro";
     <div class="container" id="playground">
       <div class="panel">
         <div class="panel__head">
-          <span>controls</span>
-          <span id="pg-note" class="muted mono" style="font-size:var(--fs-micro); text-align:right; max-width:42ch;"></span>
+          <span data-i18n="playground.controls">{pg.controls}</span>
+          <span id="pg-note" class="muted mono" style="font-size:var(--fs-micro); text-align:right; max-width:42ch;" role="status" aria-live="polite"></span>
         </div>
         <div class="panel__body stack">
           <div class="btn-row">
-            <button id="pg-verify" class="btn btn-primary" type="button">Verify the chain →</button>
+            <button id="pg-verify" class="btn btn-primary" type="button" data-i18n="playground.btn_verify">{pg.btn_verify}</button>
             <label class="mono" style="display:inline-flex; align-items:center; gap:0.4rem; font-weight:600;">
-              Target
+              <span data-i18n="playground.target_label">{pg.target_label}</span>
               <select id="pg-target" style="width:auto; min-width:14rem;"></select>
             </label>
-            <button id="pg-break" class="btn btn-ghost" type="button">⚡ Break one byte</button>
-            <button id="pg-reset" class="btn btn-quiet" type="button">Reset chain</button>
-            <button id="pg-export" class="btn btn-quiet" type="button">Download dossier</button>
+            <button id="pg-break" class="btn btn-ghost" type="button"><Icon name="bolt" size={15} weight={85} /><span data-i18n="playground.btn_break">{pg.btn_break}</span></button>
+            <button id="pg-reset" class="btn btn-quiet" type="button" data-i18n="playground.btn_reset">{pg.btn_reset}</button>
+            <button id="pg-export" class="btn btn-quiet" type="button" data-i18n="playground.btn_export">{pg.btn_export}</button>
           </div>
-          <div id="pg-verdict" class="verdict" data-state="idle">Building the chain…</div>
+          <div id="pg-verdict" class="verdict" data-state="idle" role="status" aria-live="polite" aria-atomic="true">Building the chain…</div>
           <div id="pg-badge" class="trustbadge" data-state="idle"></div>
           <p class="muted" style="font-size:var(--fs-small)">
-            <strong>TrustBadge</strong> above reflects the live verification state. Use
-            <em>Open this receipt in /verify</em> on any card to round-trip it through the standalone verifier.
+            <strong data-i18n="playground.badge_note_a">{pg.badge_note_a}</strong><span data-i18n="playground.badge_note_b">{pg.badge_note_b}</span>
           </p>
         </div>
       </div>
@@ -52,12 +53,11 @@ import Boundary from "../components/Boundary.astro";
   <section class="section--tight">
     <div class="container container-narrow stack">
       <Boundary />
-      <p class="muted">
-        This is one proven slice of the full vision — one workflow, fully evidenced. The demo signer runs in
-        your browser to <em>build</em> receipts; real issuance is the governed, registry-bound path. See how the
-        receipts map to obligations on the <a href="/eu-ai-act/">EU AI Act</a> page, or read the
-        <a href="/protocol/">protocol spec</a>.
-      </p>
+      <p class="muted" data-i18n="playground.outro">{pg.outro}</p>
+      <div class="btn-row">
+        <a class="btn btn-ghost" href="/why/" data-i18n="playground.outro_cta_a">{pg.outro_cta_a}</a>
+        <a class="btn btn-ghost" href="/protocol/" data-i18n="playground.outro_cta_b">{pg.outro_cta_b}</a>
+      </div>
     </div>
   </section>
 

@@ -1,6 +1,13 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Boundary from "../components/Boundary.astro";
+import Icon from "../components/Icon.astro";
+import en from "../i18n/en.json";
+
+// Verify — i18n EN (server) → NO (island). Island hooks (ids) are unchanged;
+// only static copy carries data-i18n. The file-input label keeps its <input>
+// child outside the swapped span so the island never destroys it.
+const vf = en.verify;
 ---
 <BaseLayout
   title="Verify a receipt"
@@ -8,61 +15,57 @@ import Boundary from "../components/Boundary.astro";
 >
   <section class="section section--tight">
     <div class="container">
-      <p class="eyebrow">/verify · runs locally in your browser · nothing is uploaded</p>
-      <h1>Verify a receipt</h1>
-      <p class="lede">
-        Paste or upload a TSP receipt and its issuer public key. The Ed25519 + SHA-256 cryptography is
-        re-run here, in your browser, against that key — nothing trusts the issuer. Change a single byte and it fails.
-      </p>
+      <p class="eyebrow" data-i18n="verify.kicker">{vf.kicker}</p>
+      <h1 data-i18n="verify.h1">{vf.h1}</h1>
+      <p class="lede" data-i18n="verify.lede">{vf.lede}</p>
     </div>
   </section>
 
   <section class="section--tight" style="padding-top:0">
     <div class="container">
       <div class="split split--verify">
-        <div class="panel">
-          <div class="panel__head"><span>receipt + public key</span><span class="chip chip--teal">offline</span></div>
-          <div class="panel__body stack">
-            <div>
-              <label for="vf-envelope">TrustEnvelope (JSON) — or a {"{ envelope, publicKey }"} bundle</label>
-              <textarea id="vf-envelope" spellcheck="false" placeholder="Paste a TSP receipt here…"></textarea>
+        <div class="vf-input stack">
+          <div class="panel panel--terminal">
+            <div class="panel__head">
+              <span class="proof__dots" aria-hidden="true"><span></span><span></span><span></span></span>
+              <span class="mono">receipt.json</span>
+              <span class="panel__head-meta">offline · in-browser</span>
             </div>
-            <div>
-              <label for="vf-key">Issuer public key (JWK)</label>
-              <textarea id="vf-key" style="min-height:120px" spellcheck="false" placeholder={'{ "kty":"OKP", "crv":"Ed25519", "x":"…" }'}></textarea>
-            </div>
-            <div class="btn-row">
-              <button id="vf-verify" class="btn btn-primary" type="button">Verify cryptographically →</button>
-              <button id="vf-sample" class="btn btn-quiet" type="button">Load a sample</button>
-              <button id="vf-tamper" class="btn btn-ghost" type="button">⚡ Break one byte</button>
-              <button id="vf-clear" class="btn btn-quiet" type="button">Clear</button>
-              <label class="btn btn-quiet" for="vf-file" style="cursor:pointer; margin:0;">
-                Upload .json
-                <input id="vf-file" type="file" accept="application/json,.json" class="visually-hidden" />
-              </label>
-            </div>
+            <label class="visually-hidden" for="vf-envelope" data-i18n="verify.envelope_label">TrustEnvelope (JSON) — or a {"{ envelope, publicKey }"} bundle</label>
+            <textarea id="vf-envelope" spellcheck="false" placeholder="Paste a TSP receipt JSON here…"></textarea>
+          </div>
+          <div>
+            <label for="vf-key" data-i18n="verify.key_label">{vf.key_label}</label>
+            <textarea id="vf-key" style="min-height:120px" spellcheck="false" placeholder={'{ "kty":"OKP", "crv":"Ed25519", "x":"…" }'}></textarea>
+          </div>
+          <div class="btn-row">
+            <button id="vf-verify" class="btn btn-primary" type="button" data-i18n="verify.btn_verify">{vf.btn_verify}</button>
+            <button id="vf-sample" class="btn btn-quiet" type="button" data-i18n="verify.btn_sample">{vf.btn_sample}</button>
+            <button id="vf-tamper" class="btn btn-ghost" type="button"><Icon name="bolt" size={15} weight={85} /><span data-i18n="verify.btn_tamper">{vf.btn_tamper}</span></button>
+            <button id="vf-clear" class="btn btn-quiet" type="button" data-i18n="verify.btn_clear">{vf.btn_clear}</button>
+            <label class="btn btn-quiet" for="vf-file" style="cursor:pointer; margin:0;">
+              <span data-i18n="verify.btn_upload">{vf.btn_upload}</span>
+              <input id="vf-file" type="file" accept="application/json,.json" class="visually-hidden" />
+            </label>
           </div>
         </div>
 
         <div class="panel">
-          <div class="panel__head"><span>verification result</span></div>
+          <div class="panel__head"><span data-i18n="verify.result_label">{vf.result_label}</span></div>
           <div class="panel__body stack">
-            <div id="vf-verdict" class="verdict" data-state="idle">Paste a receipt and verify — or load a sample.</div>
+            <div id="vf-verdict" class="verdict" data-state="idle" role="status" aria-live="polite" aria-atomic="true" data-i18n="verify.result_idle">{vf.result_idle}</div>
             <div id="vf-checks" class="checks"></div>
-            <p id="vf-warnings" class="muted mono" style="font-size:var(--fs-micro)"></p>
+            <p id="vf-warnings" class="muted mono" style="font-size:var(--fs-micro)" role="status" aria-live="polite"></p>
             <div>
-              <h3 style="font-size:1.02rem; margin-bottom:0.5rem;">What verification does <em>not</em> mean</h3>
-              <ul class="muted stack" style="list-style:none; font-size:var(--fs-small);">
-                <li>✕ that the AI's answer is true or correct</li>
-                <li>✕ that you are legally compliant</li>
-                <li>✕ that the model is approved or safe</li>
-                <li>✕ that the issuer holds official status — that needs authorization</li>
+              <h3 style="font-size:1.02rem; margin-bottom:0.5rem;" data-i18n="verify.not_title">{vf.not_title}</h3>
+              <ul class="muted stack not-list" style="list-style:none; font-size:var(--fs-small);">
+                {vf.not_items.map((item, i) => (
+                  <li><Icon name="x" size={14} weight={100} /><span data-i18n={`verify.not_items.${i}`}>{item}</span></li>
+                ))}
               </ul>
             </div>
             <Boundary compact />
-            <p class="muted" style="font-size:var(--fs-small)">
-              Want to build one end-to-end? <a href="/playground/">Open the playground →</a>
-            </p>
+            <p class="muted" style="font-size:var(--fs-small)"><a href="/playground/" data-i18n="verify.build_cta">{vf.build_cta}</a></p>
           </div>
         </div>
       </div>

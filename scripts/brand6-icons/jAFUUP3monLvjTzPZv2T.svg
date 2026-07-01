@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="-51.5 -51.5 1127.0 1127.0">
+  <g fill="none" stroke="#15403d" stroke-width="45" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 847.231,1019.051 C 904.897,961.285 912.957,951.746 919.209,941.689 C 925.708,926.658 929.21,911.844 930.1,897.063 L 930.215,862.807" data-line="nan" stroke-width="45.0"></path>
+    <path d="M 169.639,4.134 C 150.607,5.359 137.567,10.02 127.935,15.683 C 118.457,23.151 106.526,36.415 100.546,46.301 C 95.771,60.591 94.141,74.935 93.799,104.156" data-line="nan" stroke-width="45.0"></path>
+    <path d="M 93.972,901.821 C 94.873,916.473 97.028,926.092 103.366,940.808 C 109.766,950.682 122.752,965.179 178.219,1019.527" data-line="nan" stroke-width="45.0"></path>
+    <path d="M 847.231,1019.051 L 734.714,908.434" data-line="1.0" stroke-width="45.0"></path>
+    <path d="M 734.714,908.434 L 623.095,1019.073" data-line="2.0" stroke-width="45.0"></path>
+    <path d="M 623.095,1019.073 L 517.066,912.233" data-line="3.0" stroke-width="45.0"></path>
+    <path d="M 502.229,918.038 L 517.066,912.233" data-line="4.0" stroke-width="45.0"></path>
+    <path d="M 502.229,918.038 L 401.283,1020.0" data-line="5.0" stroke-width="45.0"></path>
+    <path d="M 401.283,1020.0 L 290.269,908.797" data-line="6.0" stroke-width="45.0"></path>
+    <path d="M 290.269,908.797 L 178.219,1019.527" data-line="7.0" stroke-width="45.0"></path>
+    <path d="M 930.215,862.807 L 930.074,84.578" data-line="13.0" stroke-width="45.0"></path>
+    <path d="M 93.799,104.156 L 93.972,901.821" data-line="15.0" stroke-width="45.0"></path>
+    <path d="M 273.837,257.366 L 742.517,257.532" data-line="24.0" stroke-width="45.0"></path>
+    <path d="M 274.338,462.32 L 608.733,462.27" data-line="25.0" stroke-width="45.0"></path>
+    <path d="M 272.707,664.617 L 646.258,664.865" data-line="26.0" stroke-width="45.0"></path>
+    <path d="M 929.8240412492763,84.55354644687843 A 74.38346202673263,74.38346202673263 0 0,0 835.7613046719131,5.676039737474525" data-line="27.0" stroke-width="45.0"></path>
+    <path d="M 835.294,4.005 L 169.639,4.134" data-line="28.0" stroke-width="45.0"></path>
+  </g>
+</svg>

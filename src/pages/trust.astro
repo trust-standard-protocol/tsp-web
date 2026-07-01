@@ -1,0 +1,95 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Boundary from "../components/Boundary.astro";
+import Icon from "../components/Icon.astro";
+import en from "../i18n/en.json";
+
+// /trust — who's behind it + neutrality + credible-commitment + eIDAS/QTSP status
+// + governance transition + "evidence survives us". For the CISO / auditor / DPO
+// buyer. Honest: commitments labelled Live / In design / Planned / On the path.
+const tr = en.trust;
+// Chip colour is semantic and fixed at build (the status TEXT still translates).
+const statusChip = (s: string): string =>
+  s === "Live" ? "chip--ok" : s === "On the path" ? "chip--teal" : "chip--copper";
+---
+<BaseLayout
+  title="Trust"
+  description="Who stands behind TSP, and the credible commitments a CISO, auditor or DPO can point to: a public register, payment never grants official status, the doesNotMean boundary, governance, liability, and the eIDAS / QTSP path."
+>
+  <section class="section section--tight">
+    <div class="container">
+      <p class="eyebrow" data-i18n="trust.kicker">{tr.kicker}</p>
+      <h1 data-i18n="trust.h1">{tr.h1}</h1>
+      <p class="lede"><span data-i18n="trust.lede_a">{tr.lede_a}</span><strong data-i18n="trust.lede_strong">{tr.lede_strong}</strong><span data-i18n="trust.lede_b">{tr.lede_b}</span></p>
+    </div>
+  </section>
+
+  <!-- Neutrality by determinism -->
+  <section class="section section--paper-deep">
+    <div class="container">
+      <div class="section-head section-head--left">
+        <p class="eyebrow" data-i18n="trust.neutral_eyebrow">{tr.neutral_eyebrow}</p>
+        <h2 data-i18n="trust.neutral_title">{tr.neutral_title}</h2>
+      </div>
+      <p class="lede" style="margin-top:1rem; max-width:760px" data-i18n="trust.neutral_body">{tr.neutral_body}</p>
+    </div>
+  </section>
+
+  <!-- Credible-commitment bands -->
+  <section class="section section--tight">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="trust.bands_eyebrow">{tr.bands_eyebrow}</p>
+        <h2 data-i18n="trust.bands_title">{tr.bands_title}</h2>
+        <p class="lede section-head__body" data-i18n="trust.bands_intro">{tr.bands_intro}</p>
+      </div>
+      <div class="grid grid-3" style="margin-top:1.5rem">
+        {tr.bands.map((band, i) => (
+          <article class="card">
+            <span class={`chip ${statusChip(band.status)}`} data-i18n={`trust.bands.${i}.status`}>{band.status}</span>
+            <h3 style="margin-top:0.6rem; font-size:1.05rem" data-i18n={`trust.bands.${i}.title`}>{band.title}</h3>
+            <p class="muted" data-i18n={`trust.bands.${i}.body`}>{band.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- eIDAS / QTSP status -->
+  <section class="section section--paper-deep">
+    <div class="container">
+      <div class="section-head section-head--left">
+        <p class="eyebrow" data-i18n="trust.eidas_eyebrow">{tr.eidas_eyebrow}</p>
+        <h2 data-i18n="trust.eidas_title">{tr.eidas_title}</h2>
+        <p class="lede section-head__body" data-i18n="trust.eidas_body">{tr.eidas_body}</p>
+      </div>
+      <ul class="stack not-list" style="list-style:none; margin-top:1.2rem; max-width:760px;">
+        {tr.eidas_points.map((pt, i) => (
+          <li><Icon name="shield-lock" size={16} weight={70} /><span data-i18n={`trust.eidas_points.${i}`}>{pt}</span></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Evidence survives us (navy anchor) -->
+  <section class="section section--ground">
+    <div class="container">
+      <div class="section-head section-head--left">
+        <p class="eyebrow" data-i18n="trust.survive_eyebrow">{tr.survive_eyebrow}</p>
+        <h2 data-i18n="trust.survive_title">{tr.survive_title}</h2>
+      </div>
+      <p class="lede" style="margin-top:1rem; max-width:760px" data-i18n="trust.survive_body">{tr.survive_body}</p>
+      <div class="btn-row" style="margin-top:1.4rem">
+        <a class="btn btn-primary" href="/register/" data-i18n="trust.cta_a">{tr.cta_a}</a>
+        <a class="btn btn-ghost" href="/status/" data-i18n="trust.cta_b">{tr.cta_b}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Honest boundary -->
+  <section class="section section--tight">
+    <div class="container container-narrow">
+      <Boundary />
+    </div>
+  </section>
+</BaseLayout>

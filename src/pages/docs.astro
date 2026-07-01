@@ -1,13 +1,18 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { site } from "../data/site";
+import en from "../i18n/en.json";
 
-const steps = [
-  { title: "Register your issuer", code: `tsp issuer init --name "Northbank" --scope lending.credit --jurisdiction EU --key ./keys/k2.pub.jwk` },
-  { title: "Instrument the decision", code: `const payload = tsp.capture({ type: "credit.application", inputs, output, policyVersion: "v4.2" });` },
-  { title: "Seal & chain the receipt", code: `await tsp.seal(payload, { key: k2, prevHash: lastHead }); // Ed25519 + SHA-256` },
-  { title: "Publish to your manifest", code: `tsp manifest publish ./receipts --url https://northbank.example/tsp/manifest` },
-  { title: "Verify — anyone can", code: `tsp verify --manifest <url> --registry <url>` }
+// Docs quickstart — i18n EN (server) → NO (island). Code samples stay verbatim;
+// only the prose translates. Closing reframed: the free trail is local, public
+// anchoring is the paid Seal layer (copy-fix #1).
+const dc = en.docs;
+const stepCode = [
+  `tsp issuer init --name "Northbank" --scope lending.credit --jurisdiction EU --key ./keys/k2.pub.jwk`,
+  `const payload = tsp.capture({ type: "credit.application", inputs, output, policyVersion: "v4.2" });`,
+  `await tsp.seal(payload, { key: k2, prevHash: lastHead }); // Ed25519 + SHA-256`,
+  `tsp manifest publish ./receipts --url https://northbank.example/tsp/manifest`,
+  `tsp verify --manifest <url> --registry <url>`
 ];
 ---
 <BaseLayout
@@ -16,28 +21,25 @@ const steps = [
 >
   <section class="section section--tight">
     <div class="container">
-      <p class="eyebrow">Docs · quickstart</p>
-      <h1>From zero to a trail anyone can verify.</h1>
-      <p class="lede">Five steps; each one emits a receipt, so by the end the trail proves itself — no trust in
-        us required. The full reference (Starlight) lands in Fase A.2; the quickstart and protocol tour are here now.</p>
-      <p class="chip chip--copper" style="margin-top:0.75rem">Reference docs site — coming in Fase A.2</p>
+      <p class="eyebrow" data-i18n="docs.kicker">{dc.kicker}</p>
+      <h1 data-i18n="docs.h1">{dc.h1}</h1>
+      <p class="lede" data-i18n="docs.lede">{dc.lede}</p>
+      <p class="chip chip--copper" style="margin-top:0.75rem" data-i18n="docs.chip">{dc.chip}</p>
     </div>
   </section>
 
   <section class="section--tight" style="padding-top:0">
     <div class="container">
       <ol class="steps">
-        {steps.map((step) => (
+        {dc.steps.map((step, i) => (
           <li>
-            <h3 style="font-size:1.05rem">{step.title}</h3>
-            <pre style="margin-top:0.5rem"><code>{step.code}</code></pre>
+            <h3 style="font-size:1.05rem" data-i18n={`docs.steps.${i}.title`}>{step.title}</h3>
+            <pre style="margin-top:0.5rem"><code>{stepCode[i]}</code></pre>
           </li>
         ))}
       </ol>
       <p class="muted" style="margin-top:1.5rem">
-        You now have a public, append-only trail anyone can re-verify from public artifacts — the protocol
-        stands on its own. Read how it's defined in the <a href="/protocol/">protocol spec</a>, browse
-        <a href="/tools/">tools &amp; verifier cores</a>, or try the <a href="/verify/">live verifier</a>.
+        <span data-i18n="docs.closing_a">{dc.closing_a}</span><a href="/seal/" data-i18n="docs.closing_seal">{dc.closing_seal}</a><span data-i18n="docs.closing_b">{dc.closing_b}</span><a href="/protocol/" data-i18n="docs.closing_spec">{dc.closing_spec}</a><span data-i18n="docs.closing_c">{dc.closing_c}</span><a href="/tools/" data-i18n="docs.closing_tools">{dc.closing_tools}</a><span data-i18n="docs.closing_d">{dc.closing_d}</span><a href="/verify/" data-i18n="docs.closing_verify">{dc.closing_verify}</a><span data-i18n="docs.closing_e">{dc.closing_e}</span>
       </p>
       <p class="mono muted" style="font-size:var(--fs-micro); margin-top:1rem">
         Packages: <span class="mono">{site.pkgScope}/*</span> · open layer {site.license.split(" + ")[0]}.

@@ -1,26 +1,12 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import en from "../i18n/en.json";
 
-const metrics = [
-  { name: "Verifiability", weight: "0.40", formula: "receipts passing all checks ÷ receipts sampled × 100", note: "Every check — digest recomputes, Ed25519 signature valid, chain intact, issuer key resolves in the registry — is recomputed by the scorer. Can't be gamed." },
-  { name: "Coverage", weight: "0.35", formula: "receipts that verify ÷ decisions in declared scope × 100", note: "The denominator is your declared scope — public and spot-checked." },
-  { name: "Human oversight", weight: "0.25", formula: "receipts with valid human_review ÷ high-risk receipts × 100", note: "Maps to EU AI Act Art 14 — sealed inside the digest, so it can't be added after the fact." }
-];
-
-const tiers = [
-  { name: "Charter", rule: "≥ 95 and fully on (coverage ≥ 99, oversight ≥ 100)" },
-  { name: "Verified", rule: "≥ 85" },
-  { name: "Piloting", rule: "≥ 65" },
-  { name: "Not yet listed", rule: "< 65" }
-];
-
-const steps = [
-  { title: "Register your issuer key", body: "Publish your org and public key to the registry so receipts can be attributed." },
-  { title: "Declare your scope", body: "Name the decision type, jurisdiction and expected volume. This sets the Coverage denominator — public and spot-checked." },
-  { title: "Publish a verification manifest", body: "Expose a public feed of your receipts so anyone — including the scorer — can pull and recompute them." },
-  { title: "Run the conformance check", body: "The public scorer samples your receipts, recomputes digests, resolves keys and scores all four metrics." },
-  { title: "Get listed", body: "A score and tier are assigned, a badge is issued, and you appear on the leaderboard — re-scored continuously." }
-];
+// Leaderboard — i18n EN (server) → NO (island). The score wizard's island reads
+// the sliders/outputs by id; label text lives in tagged spans so the swap never
+// destroys the <input>/<span id>. Weights are numeric (not translated).
+const lb = en.leaderboard;
+const weights = ["0.40", "0.35", "0.25"];
 ---
 <BaseLayout
   title="Leaderboard"
@@ -28,64 +14,62 @@ const steps = [
 >
   <section class="section section--tight">
     <div class="container">
-      <p class="eyebrow">Adoption leaderboard</p>
-      <h1>Get listed — and prove you earned it.</h1>
-      <p class="lede">Every score is recomputed from your own receipts. You can't buy a place, inflate a
-        number, or self-report your way up — you can only evidence it.</p>
+      <p class="eyebrow" data-i18n="leaderboard.kicker">{lb.kicker}</p>
+      <h1 data-i18n="leaderboard.h1">{lb.h1}</h1>
+      <p class="lede" data-i18n="leaderboard.lede">{lb.lede}</p>
     </div>
   </section>
 
   <section class="section--tight" style="padding-top:0">
     <div class="container">
-      <h2>Four numbers. All recomputable from receipts.</h2>
+      <h2 data-i18n="leaderboard.metrics_title">{lb.metrics_title}</h2>
       <div class="grid grid-3" style="margin-top:1.5rem">
-        {metrics.map((m) => (
+        {lb.metrics.map((m, i) => (
           <article class="card card--teal">
             <div style="display:flex; align-items:baseline; justify-content:space-between; gap:0.5rem">
-              <h3>{m.name}</h3>
-              <span class="mono" style="color:var(--copper-deep); font-weight:600">w {m.weight}</span>
+              <h3 data-i18n={`leaderboard.metrics.${i}.name`}>{m.name}</h3>
+              <span class="mono" style="color:var(--copper-deep); font-weight:600">w {weights[i]}</span>
             </div>
-            <p class="mono muted" style="font-size:var(--fs-micro)">{m.formula}</p>
-            <p class="muted" style="font-size:var(--fs-small); margin-top:0.5rem">{m.note}</p>
+            <p class="mono muted" style="font-size:var(--fs-micro)" data-i18n={`leaderboard.metrics.${i}.formula`}>{m.formula}</p>
+            <p class="muted" style="font-size:var(--fs-small); margin-top:0.5rem" data-i18n={`leaderboard.metrics.${i}.note`}>{m.note}</p>
           </article>
         ))}
       </div>
-      <p class="mono muted" style="margin-top:1rem; font-size:var(--fs-small)">
-        Overall = 0.40 × Verifiability + 0.35 × Coverage + 0.25 × Human oversight.
-      </p>
+      <p class="mono muted" style="margin-top:1rem; font-size:var(--fs-small)" data-i18n="leaderboard.overall">{lb.overall}</p>
       <div class="tag-list" style="margin-top:1rem">
-        {tiers.map((t) => <span class="chip">{t.name} · {t.rule}</span>)}
+        {lb.tiers.map((t, i) => (
+          <span class="chip"><span data-i18n={`leaderboard.tiers.${i}.name`}>{t.name}</span> · <span data-i18n={`leaderboard.tiers.${i}.rule`}>{t.rule}</span></span>
+        ))}
       </div>
     </div>
   </section>
 
   <section class="section--tight section--paper-deep">
     <div class="container">
-      <h2>Enroll in five steps — and model your score now.</h2>
+      <h2 data-i18n="leaderboard.enroll_title">{lb.enroll_title}</h2>
+      <p class="muted" style="max-width:640px; margin-top:0.6rem"><span data-i18n="leaderboard.enroll_note_a">{lb.enroll_note_a}</span><a href="/seal/" data-i18n="leaderboard.enroll_note_link">{lb.enroll_note_link}</a><span data-i18n="leaderboard.enroll_note_b">{lb.enroll_note_b}</span></p>
       <div id="lb-wizard" class="split" style="margin-top:1.5rem">
         <ol class="steps">
-          {steps.map((step) => (
-            <li><h3 style="font-size:1.02rem">{step.title}</h3><p class="muted" style="font-size:var(--fs-small)">{step.body}</p></li>
+          {lb.steps.map((step, i) => (
+            <li><h3 style="font-size:1.02rem" data-i18n={`leaderboard.steps.${i}.title`}>{step.title}</h3><p class="muted" style="font-size:var(--fs-small)" data-i18n={`leaderboard.steps.${i}.body`}>{step.body}</p></li>
           ))}
         </ol>
 
         <div class="card" style="position:sticky; top:84px; align-self:start">
-          <p class="eyebrow">Your live score</p>
+          <p class="eyebrow" data-i18n="leaderboard.score_label">{lb.score_label}</p>
           <div class="stack">
-            <label>Verifiability — <span id="lb-verif-out" class="mono">90</span>%
+            <label><span data-i18n="leaderboard.verif_label">{lb.verif_label}</span> — <span id="lb-verif-out" class="mono">90</span>%
               <input id="lb-verif" type="range" min="0" max="100" value="90" style="width:100%" /></label>
-            <label>Coverage — <span id="lb-cover-out" class="mono">80</span>%
+            <label><span data-i18n="leaderboard.cover_label">{lb.cover_label}</span> — <span id="lb-cover-out" class="mono">80</span>%
               <input id="lb-cover" type="range" min="0" max="100" value="80" style="width:100%" /></label>
-            <label>Human oversight — <span id="lb-oversight-out" class="mono">75</span>%
+            <label><span data-i18n="leaderboard.oversight_label">{lb.oversight_label}</span> — <span id="lb-oversight-out" class="mono">75</span>%
               <input id="lb-oversight" type="range" min="0" max="100" value="75" style="width:100%" /></label>
           </div>
           <div style="display:flex; align-items:baseline; gap:0.75rem; margin-top:1rem">
             <span id="lb-score" style="font-size:2.6rem; font-weight:600; line-height:1; color:var(--teal)">0</span>
             <span id="lb-tier" class="chip">—</span>
           </div>
-          <p class="muted" style="font-size:var(--fs-micro); margin-top:0.6rem">Modeled client-side from the
-            published weights. The real score is recomputed by the scorer from your receipts — recompute, not
-            self-report.</p>
+          <p class="muted" style="font-size:var(--fs-micro); margin-top:0.6rem" data-i18n="leaderboard.score_note">{lb.score_note}</p>
         </div>
       </div>
     </div>
@@ -93,11 +77,11 @@ const steps = [
 
   <section class="section--tight">
     <div class="container">
-      <h2>Ready to be measured on what you can prove?</h2>
-      <p class="lede">Charter pilots enroll first. You can't buy a place, only evidence one.</p>
+      <h2 data-i18n="leaderboard.final_title">{lb.final_title}</h2>
+      <p class="lede" data-i18n="leaderboard.final_lede">{lb.final_lede}</p>
       <div class="btn-row" style="margin-top:1rem">
-        <a class="btn btn-primary" href="/pricing/">Scope a pilot</a>
-        <a class="btn btn-ghost" href="/playground/">Build a receipt chain</a>
+        <a class="btn btn-primary" href="/pricing/" data-i18n="leaderboard.final_cta_a">{lb.final_cta_a}</a>
+        <a class="btn btn-ghost" href="/playground/" data-i18n="leaderboard.final_cta_b">{lb.final_cta_b}</a>
       </div>
     </div>
   </section>

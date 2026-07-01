@@ -1,0 +1,163 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Boundary from "../components/Boundary.astro";
+import Icon from "../components/Icon.astro";
+import en from "../i18n/en.json";
+
+// /why — the regulatory deep-dive. The live-now pressure (EU AI Act phased to
+// 2027, DORA live since Jan 2025, US state/city laws now, insurance today) PLUS
+// the redesign's substance: the EU AI Act alignment table, the legal-precedent
+// docket, and the regulatory stress test. The canonical home for all of it, so
+// the homepage stays focused. Every translatable run carries data-i18n (EN→NO).
+const why = en.why;
+// Decorative EU-flag star ring (12 stars, 30° apart), aria-hidden.
+const euStars = Array.from({ length: 12 }, (_, i) => `translate(-50%,-50%) rotate(${i * 30}deg) translateY(-46px)`);
+---
+<BaseLayout
+  title="Why now"
+  description="The regulatory deep-dive: EU AI Act alignment, legal precedent, a regulatory stress test, plus DORA, US state laws and insurance — TSP as inspectable evidence, never a legal verdict."
+>
+  <section class="section section--tight">
+    <div class="container">
+      <p class="eyebrow" data-i18n="why.kicker">{why.kicker}</p>
+      <h1 data-i18n="why.h1">{why.h1}</h1>
+      <p class="lede"><span data-i18n="why.lede_a">{why.lede_a}</span><strong data-i18n="why.lede_strong">{why.lede_strong}</strong><span data-i18n="why.lede_b">{why.lede_b}</span></p>
+    </div>
+  </section>
+
+  {why.blocks.map((block, bi) => (
+    <section class="section--tight" style="padding-top:0">
+      <div class="container">
+        <div class="section-head section-head--left">
+          <p class="eyebrow" data-i18n={`why.blocks.${bi}.eyebrow`}>{block.eyebrow}</p>
+          <h2 data-i18n={`why.blocks.${bi}.title`}>{block.title}</h2>
+          <p class="lede section-head__body" data-i18n={`why.blocks.${bi}.intro`}>{block.intro}</p>
+        </div>
+        <div class="stack" style="margin-top:1.4rem">
+          {block.rows.map((row, ri) => (
+            <article class="card">
+              <div class="split" style="align-items:start">
+                <div>
+                  <span class="chip chip--teal" data-i18n={`why.blocks.${bi}.rows.${ri}.tag`}>{row.tag}</span>
+                  <h3 style="margin-top:0.6rem" data-i18n={`why.blocks.${bi}.rows.${ri}.title`}>{row.title}</h3>
+                  <p class="muted" data-i18n={`why.blocks.${bi}.rows.${ri}.evidence`}>{row.evidence}</p>
+                </div>
+                <p class="boundary" style="margin:0"><strong data-i18n="why.boundary_label">{why.boundary_label}</strong>: <span data-i18n={`why.blocks.${bi}.rows.${ri}.boundary`}>{row.boundary}</span></p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- EU AI Act alignment table (EU-flag palette: navy field + gold stars) -->
+  <section class="section section--ground eu-band">
+    <div class="container">
+      <div class="section-head">
+        <div class="eu-emblem" aria-hidden="true">
+          {euStars.map((tx) => (<span class="eu-emblem__star" style={`transform:${tx}`}>★</span>))}
+          <span class="eu-emblem__core"><Icon name="check" size={22} weight={80} /></span>
+        </div>
+        <p class="eyebrow" data-i18n="why.eu.eyebrow">{why.eu.eyebrow}</p>
+        <h2 data-i18n="why.eu.title">{why.eu.title}</h2>
+        <p class="lede section-head__body" data-i18n="why.eu.sub">{why.eu.sub}</p>
+      </div>
+      <div class="eu-table-wrap">
+        <table class="eu-table">
+          <thead>
+            <tr>
+              <th scope="col" data-i18n="why.eu.col_article">{why.eu.col_article}</th>
+              <th scope="col" data-i18n="why.eu.col_obligation">{why.eu.col_obligation}</th>
+              <th scope="col" data-i18n="why.eu.col_evidence">{why.eu.col_evidence}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {why.eu.items.map((e, i) => (
+              <tr>
+                <td class="eu-art" data-i18n={`why.eu.items.${i}.art`}>{e.art}</td>
+                <td class="eu-ob" data-i18n={`why.eu.items.${i}.p`}>{e.p}</td>
+                <td class="eu-ev" data-i18n={`why.eu.items.${i}.tsp`}>{e.tsp}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Legal-precedent docket -->
+  <section class="section section--tight">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="why.precedents.eyebrow">{why.precedents.eyebrow}</p>
+        <h2 data-i18n="why.precedents.title">{why.precedents.title}</h2>
+        <p class="lede section-head__body" data-i18n="why.precedents.sub">{why.precedents.sub}</p>
+      </div>
+      <div class="precedents">
+        {why.precedents.items.map((c, i) => (
+          <article class="precedent-row">
+            <div class="precedent-row__case">
+              <div class="precedent-row__place" data-i18n={`why.precedents.items.${i}.place`}>{c.place}</div>
+              <div class="precedent-row__meta"><span data-i18n={`why.precedents.items.${i}.case`}>{c.case}</span> · <span data-i18n={`why.precedents.items.${i}.year`}>{c.year}</span></div>
+            </div>
+            <p class="precedent-row__verdict" data-i18n={`why.precedents.items.${i}.verdict`}>{c.verdict}</p>
+            <span class="precedent-row__blocker"><span data-i18n="why.precedents.missing_label">{why.precedents.missing_label}</span>: <span data-i18n={`why.precedents.items.${i}.blocker`}>{c.blocker}</span></span>
+          </article>
+        ))}
+        <div class="precedent-punch"><p data-i18n="why.precedents.punch">{why.precedents.punch}</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Regulatory stress test -->
+  <section class="section section--tight" style="padding-top:0">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="why.stress.eyebrow">{why.stress.eyebrow}</p>
+        <h2 data-i18n="why.stress.title">{why.stress.title}</h2>
+        <p class="lede section-head__body" data-i18n="why.stress.sub">{why.stress.sub}</p>
+      </div>
+      <div class="stress-grid">
+        {why.stress.full.map((s, i) => (
+          <article class="stress-card">
+            <div class="stress-card__cat"><span data-i18n={`why.stress.full.${i}.n`}>{s.n}</span> · <span data-i18n={`why.stress.full.${i}.cat`}>{s.cat}</span></div>
+            <h3 class="stress-card__q" data-i18n={`why.stress.full.${i}.q`}>{s.q}</h3>
+            <div class="stress-card__block stress-card__block--without">
+              <div class="stress-card__label" data-i18n="why.stress.without_label">{why.stress.without_label}</div>
+              <p class="stress-card__text" data-i18n={`why.stress.full.${i}.without`}>{s.without}</p>
+            </div>
+            <div class="stress-card__block stress-card__block--with">
+              <div class="stress-card__label" data-i18n="why.stress.with_label">{why.stress.with_label}</div>
+              <p class="stress-card__text" data-i18n={`why.stress.full.${i}.with`}>{s.with}</p>
+            </div>
+            <div class="stress-card__outcome"><span class="chip chip--ok"><Icon name="check" size={13} weight={100} /><span data-i18n={`why.stress.full.${i}.outcome`}>{s.outcome}</span></span></div>
+          </article>
+        ))}
+      </div>
+      <div class="stress-grid stress-grid--compact">
+        {why.stress.compact.map((s, i) => (
+          <article class="stress-card stress-card--compact">
+            <div class="stress-card__cat"><span data-i18n={`why.stress.compact.${i}.n`}>{s.n}</span> · <span data-i18n={`why.stress.compact.${i}.cat`}>{s.cat}</span></div>
+            <h3 class="stress-card__q" data-i18n={`why.stress.compact.${i}.q`}>{s.q}</h3>
+            <p class="stress-card__line stress-card__line--without"><b data-i18n="why.stress.without_label">{why.stress.without_label}</b> · <span data-i18n={`why.stress.compact.${i}.without`}>{s.without}</span></p>
+            <p class="stress-card__line stress-card__line--with"><b data-i18n="why.stress.with_label">{why.stress.with_label}</b> · <span data-i18n={`why.stress.compact.${i}.with`}>{s.with}</span></p>
+            <div class="stress-card__outcome"><span class="chip chip--ok"><Icon name="check" size={13} weight={100} /><span data-i18n={`why.stress.compact.${i}.outcome`}>{s.outcome}</span></span></div>
+          </article>
+        ))}
+      </div>
+      <div class="stress-nuance">
+        <span class="stress-nuance__tag" data-i18n="why.stress.positioning_label">{why.stress.positioning_label}</span>
+        <p data-i18n="why.stress.nuance">{why.stress.nuance}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section--tight" style="padding-top:0">
+    <div class="container stack">
+      <Boundary />
+      <p class="muted" style="font-size:var(--fs-small)" data-i18n="why.footnote">{why.footnote}</p>
+      <p style="margin-top:0.4rem"><a class="btn btn-ghost" href="/playground/" data-i18n="why.footnote_cta">{why.footnote_cta}</a></p>
+    </div>
+  </section>
+</BaseLayout>

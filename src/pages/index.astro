@@ -1,189 +1,404 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Boundary from "../components/Boundary.astro";
 import { site } from "../data/site";
+import en from "../i18n/en.json";
+import Icon from "../components/Icon.astro";
+
+// EN is server-rendered; every localized node carries data-i18n="<key>" so the
+// i18n island can swap to NO (launch draft). Canonical copy lives in the i18n
+// dictionaries only. The homepage follows the open-design redesign narrative.
+// Section icon choices (line-art, themed via currentColor). Kept here (not in the
+// i18n dict) so the language toggle never overwrites the inline SVG.
+const stepIcons = ["lock", "registry", "check"];      // sealed · published · verified
+const propIcons = ["shield-lock", "eye", "search"];   // tamper-evident · private · checkable
+// Why-TSP pillars: navy = structure/verify, amber = human-oversight.
+const whyIcons = ["receipt", "badge-check", "eye", "medal"];
+const whyTones = ["", "", "why-card__icon--human", ""];
+// Three-futures tones + line-art marks (presentation only — never translated).
+// bad → danger, mid → amber, good → verified-green; all AA on surface.
+const futureTones = ["bad", "mid", "good"];
+const futureMarks = ["x", "dash", "check"];
+// Audience segments (navy band, steel-blue icons).
+const whoIcons = ["code", "clipboard-check", "auditor", "handshake"];
 ---
 <BaseLayout title={site.name} description={site.description}>
   <!-- Hero -->
-  <section class="hero">
+  <section class="section home-hero" id="overview">
     <div class="container">
-      <p class="eyebrow">Trust Standard Protocol</p>
-      <h1>Prove what your AI decided — and let anyone check that nothing changed.</h1>
-      <p class="lede">
-        Every AI-mediated decision gets a sealed, signed receipt. Anyone can verify it offline — without
-        trusting you, your vendor, or each other. Change a single byte and verification fails.
-      </p>
-      <div class="btn-row" style="margin-top:1.6rem">
-        <a class="btn btn-primary" href="/playground/">See a receipt break live →</a>
-        <a class="btn btn-ghost" href="/verify/">Verify a receipt</a>
-      </div>
-      <pre style="margin-top:1.6rem; max-width:620px"><code>$ npx @trust-standard-protocol/cli verify receipt.json --offline
-&#10003; schema   &#10003; content hash   &#10003; ledger hash   &#10003; ed25519 signature
-&rarr; VERIFIED &middot; evidence integrity only — not a legal verdict</code></pre>
-      <div style="margin-top:1.6rem; max-width:62ch"><Boundary /></div>
-    </div>
-  </section>
-
-  <!-- Three steps -->
-  <section class="section section--paper-deep">
-    <div class="container">
-      <p class="eyebrow">The whole idea</p>
-      <h2>Three steps. Nothing you can't inspect.</h2>
-      <div class="grid grid-3" style="margin-top:2rem">
-        <article class="card card--accent">
-          <p class="mono muted" style="font-size:var(--fs-micro)">01</p>
-          <h3>It gets sealed</h3>
-          <p class="muted">The moment the AI decides, the event is captured and hashed into a signed,
-            tamper-evident receipt. Change one detail later and the seal breaks.</p>
-        </article>
-        <article class="card card--accent">
-          <p class="mono muted" style="font-size:var(--fs-micro)">02</p>
-          <h3>It gets published</h3>
-          <p class="muted">The receipt joins a public, append-only chain — each one links to the hash of
-            the one before it. Everyone sees it exists; no private data is exposed.</p>
-        </article>
-        <article class="card card--teal">
-          <p class="mono muted" style="font-size:var(--fs-micro)">03</p>
-          <h3>Anyone verifies</h3>
-          <p class="muted">Re-run the cryptography yourself against the issuer's public key. Pass or fail,
-            you get the same answer as everyone else — forever, with no login and no permission.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Live tamper band -->
-  <section class="section">
-    <div class="container">
-      <p class="eyebrow">Live · runs in your browser</p>
-      <h2>Change one byte and watch the cryptography reject it.</h2>
-      <p class="lede">This is the real verifier — the same Ed25519 + JCS + TrustEnvelope v3 code that ships in
-        the SDK — running against a real receipt right here. Nothing is uploaded.</p>
-
-      <div id="tamper-band" class="panel" style="margin-top:1.5rem">
-        <div class="panel__head">
-          <span>receipt.json · live verify</span>
-          <span class="chip chip--teal">offline · real Ed25519</span>
+      <div class="home-hero__grid">
+        <div>
+          <p class="eyebrow" data-i18n="hero.kicker">{en.hero.kicker}</p>
+          <h1 data-i18n="hero.h1">{en.hero.h1}</h1>
+          <p class="home-hero__sub" data-i18n="hero.sub">{en.hero.sub}</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#how" data-i18n="hero.cta_primary">{en.hero.cta_primary} ↓</a>
+            <a class="btn btn-ghost" href="/protocol/" data-i18n="hero.cta_secondary">{en.hero.cta_secondary}</a>
+          </div>
         </div>
-        <div class="panel__body">
-          <div class="split">
-            <pre id="tb-json" style="margin:0; max-height:320px"></pre>
-            <div class="stack">
-              <div id="tb-verdict" class="verdict" data-state="idle">Verifying…</div>
+
+        <!-- Live verify card — runs the real Ed25519 verify in-browser. Server-
+             renders in the valid state (progressive enhancement); the island
+             flips data-state from the actual cryptographic verdict. -->
+        <div class="receipt-wrap">
+          <figure class="receipt receipt--live" id="hero-verify" data-state="valid">
+            <figcaption class="visually-hidden" data-i18n="hero.rcpt_aria">{en.hero.rcpt_aria}</figcaption>
+            <div class="receipt__head">
+              <span class="receipt__dot" aria-hidden="true"></span>
+              <span class="receipt__label" data-i18n="hero.rcpt_label">{en.hero.rcpt_label}</span>
+            </div>
+            <div class="receipt__rows">
+              <div class="receipt__row"><span data-i18n="hero.rcpt_k_type">{en.hero.rcpt_k_type}</span><span>credit.application</span></div>
+              <div class="receipt__row"><span data-i18n="hero.rcpt_k_issued">{en.hero.rcpt_k_issued}</span><span>2026-03-11</span></div>
+              <div class="receipt__row"><span data-i18n="hero.rcpt_k_issuer">{en.hero.rcpt_k_issuer}</span><span>northbank#k2</span></div>
+              <div class="receipt__row">
+                <span data-i18n="hero.rcpt_k_digest">{en.hero.rcpt_k_digest}</span>
+                <span class="receipt__digest">
+                  <span class="hv-ok">sha256:9c1d…</span>
+                  <span class="hv-bad" data-i18n="hero.digest_broken">{en.hero.digest_broken}</span>
+                </span>
+              </div>
+            </div>
+            <div class="receipt__sig"><span>sig · ed25519: 3kQ2x…a7f0</span></div>
+            <div class="receipt__seal" aria-hidden="true">
+              <b class="hv-ok"><Icon name="check" size={24} weight={72} /></b>
+              <b class="hv-bad"><Icon name="x" size={24} weight={84} /></b>
+              <small class="hv-ok" data-i18n="hero.sealed">{en.hero.sealed}</small>
+              <small class="hv-bad" data-i18n="hero.broken">{en.hero.broken}</small>
+            </div>
+            <p class="verdict receipt__verdict" id="hv-verdict" data-state="valid" role="status" aria-live="polite" aria-atomic="true">
+              <span class="hv-ok"><Icon name="check" size={15} weight={90} /><span data-i18n="hero.verdict_valid">{en.hero.verdict_valid}</span></span>
+              <span class="hv-bad"><Icon name="x" size={15} weight={90} /><span data-i18n="hero.verdict_invalid">{en.hero.verdict_invalid}</span></span>
+            </p>
+            <div class="receipt__actions">
+              <button class="btn btn-ghost btn--sm" id="hv-tamper" type="button"><Icon name="bolt" size={14} weight={85} /><span data-i18n="hero.break">{en.hero.break}</span></button>
+              <button class="btn btn-quiet btn--sm" id="hv-reset" type="button" data-i18n="hero.reset">{en.hero.reset}</button>
+            </div>
+            <p class="receipt__caption" data-i18n="hero.rcpt_live">{en.hero.rcpt_live}</p>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Regulatory framing band — opens the regulatory arc; the deep-dive lives on /why -->
+  <section class="section section--ruled-top" id="regulatory">
+    <div class="container">
+      <div class="section-head">
+        <span class="reg-pill">
+          <span class="reg-pill__dot" aria-hidden="true"></span>
+          <span data-i18n="reg.kicker1">{en.reg.kicker1}</span>
+          <span class="reg-pill__sep" aria-hidden="true"></span>
+          <span class="reg-pill__accent" data-i18n="reg.kicker2">{en.reg.kicker2}</span>
+        </span>
+        <h2 data-i18n="reg.title">{en.reg.title}</h2>
+        <p class="lede section-head__body" data-i18n="reg.sub">{en.reg.sub}</p>
+        <ul class="reg-frameworks" aria-label="Frameworks">
+          {en.reg.frameworks.map((fw, i) => (
+            <li data-i18n={`reg.frameworks.${i}`}>{fw}</li>
+          ))}
+        </ul>
+      </div>
+      <div class="reg-split">
+        <p class="reg-framing" data-i18n="reg.framing">{en.reg.framing}</p>
+        <blockquote class="reg-future">
+          <p data-i18n="reg.future">{en.reg.future}</p>
+        </blockquote>
+      </div>
+      <p class="reg-cta"><a class="textlink textlink--accent" href="/why/" data-i18n="reg.cta">{en.reg.cta}</a></p>
+    </div>
+  </section>
+
+  <!-- Problem → Solution -->
+  <section class="section section--paper-deep" id="why">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="problem.eyebrow">{en.problem.eyebrow}</p>
+        <h2 data-i18n="problem.title">{en.problem.title}</h2>
+      </div>
+      <div class="ps-grid">
+        <article class="ps-card ps-card--problem">
+          <div class="ps-head">
+            <span class="ps-icon" aria-hidden="true"><Icon name="warning" size={22} weight={64} /></span>
+            <span class="ps-label" data-i18n="problem.prob_label">{en.problem.prob_label}</span>
+          </div>
+          <h3 data-i18n="problem.prob_title">{en.problem.prob_title}</h3>
+          <p data-i18n="problem.prob_body">{en.problem.prob_body}</p>
+          <ul class="ps-points">
+            {en.problem.prob_points.map((pt, i) => (
+              <li class="ps-point">
+                <span class="ps-point__mark" aria-hidden="true"><Icon name="x" size={12} weight={110} /></span>
+                <span data-i18n={`problem.prob_points.${i}`}>{pt}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+
+        <div class="ps-arrow" aria-hidden="true"><span>→</span></div>
+
+        <article class="ps-card ps-card--solution">
+          <div class="ps-head">
+            <span class="ps-icon" aria-hidden="true"><Icon name="lock" size={22} weight={64} /></span>
+            <span class="ps-label" data-i18n="problem.sol_label">{en.problem.sol_label}</span>
+          </div>
+          <h3 data-i18n="problem.sol_title">{en.problem.sol_title}</h3>
+          <p data-i18n="problem.sol_body">{en.problem.sol_body}</p>
+          <ul class="ps-points">
+            {en.problem.sol_points.map((pt, i) => (
+              <li class="ps-point">
+                <span class="ps-point__mark" aria-hidden="true"><Icon name="check" size={12} weight={110} /></span>
+                <span data-i18n={`problem.sol_points.${i}`}>{pt}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Promise band -->
+  <section class="section section--tight">
+    <div class="container">
+      <div class="promise">
+        <span class="promise__quote" aria-hidden="true">“</span>
+        <p data-i18n="promise">{en.promise}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works — three steps -->
+  <section class="section section--paper-deep" id="how">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="how.eyebrow">{en.how.eyebrow}</p>
+        <h2 data-i18n="how.title">{en.how.title}</h2>
+      </div>
+      <div class="step3-grid">
+        {en.how.steps.map((step, i) => (
+          <article class="step3">
+            <div class="step3__head">
+              <span class="step3__num" aria-hidden="true">{i + 1}</span>
+              <span class="step3__icon" aria-hidden="true"><Icon name={stepIcons[i]} size={28} weight={58} /></span>
+            </div>
+            <h3 data-i18n={`how.steps.${i}.title`}>{step.title}</h3>
+            <p data-i18n={`how.steps.${i}.body`}>{step.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Three properties -->
+  <section class="section section--tight" id="properties">
+    <div class="container">
+      <div class="section-head section-head--left">
+        <p class="eyebrow" data-i18n="props.eyebrow">{en.props.eyebrow}</p>
+      </div>
+      <div class="props-grid">
+        {en.props.items.map((item, i) => (
+          <article class="prop-card">
+            <div class="prop-card__icon" aria-hidden="true"><Icon name={propIcons[i]} size={24} weight={62} /></div>
+            <h4 data-i18n={`props.items.${i}.title`}>{item.title}</h4>
+            <p data-i18n={`props.items.${i}.body`}>{item.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why TSP — four pillars -->
+  <section class="section section--paper-deep" id="why-tsp">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="whytsp.eyebrow">{en.whytsp.eyebrow}</p>
+        <h2 data-i18n="whytsp.title">{en.whytsp.title}</h2>
+      </div>
+      <div class="why-grid">
+        {en.whytsp.items.map((item, i) => (
+          <article class="why-card">
+            <span class={`why-card__icon${whyTones[i] ? ` ${whyTones[i]}` : ""}`} aria-hidden="true"><Icon name={whyIcons[i]} size={26} weight={56} /></span>
+            <h3 data-i18n={`whytsp.items.${i}.title`}>{item.title}</h3>
+            <p data-i18n={`whytsp.items.${i}.body`}>{item.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Three futures for AI evidence — only one interoperates -->
+  <section class="section section--paper-deep section--ruled-top" id="futures">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="futures.eyebrow">{en.futures.eyebrow}</p>
+        <h2 data-i18n="futures.title">{en.futures.title}</h2>
+        <p class="lede section-head__body" data-i18n="futures.sub">{en.futures.sub}</p>
+      </div>
+      <div class="futures-grid">
+        {en.futures.items.map((f, i) => (
+          <article class={`future-card future-card--${futureTones[i]}`}>
+            <div class="future-card__head">
+              <span class="future-card__label" data-i18n={`futures.items.${i}.label`}>{f.label}</span>
+              <span class="future-card__mark" aria-hidden="true"><Icon name={futureMarks[i]} size={14} weight={100} /></span>
+            </div>
+            <h3 data-i18n={`futures.items.${i}.title`}>{f.title}</h3>
+            <p data-i18n={`futures.items.${i}.body`}>{f.body}</p>
+            <ul class="future-card__pts">
+              {f.pts.map((pt, j) => (
+                <li>
+                  <span class="future-card__pt-mark" aria-hidden="true"><Icon name={futureMarks[i]} size={11} weight={120} /></span>
+                  <span data-i18n={`futures.items.${i}.pts.${j}`}>{pt}</span>
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- The honest boundary -->
+  <section class="section section--tight" id="boundary">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="boundary.eyebrow">{en.boundary.eyebrow}</p>
+        <h2 data-i18n="boundary.title">{en.boundary.title}</h2>
+      </div>
+      <aside class="boundary" role="note" style="margin-top:1.4rem; max-width:760px; margin-inline:auto;">
+        <p>
+          <span data-i18n="boundary.before">{en.boundary.before}</span><strong data-i18n="boundary.strong">{en.boundary.strong}</strong><span data-i18n="boundary.after">{en.boundary.after}</span>
+        </p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Live verify proof — real Ed25519 (kept as-is; do not replace) -->
+  <section class="section section--paper-deep" id="proof">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="proof.eyebrow">{en.proof.eyebrow}</p>
+        <h2 data-i18n="proof.title">{en.proof.title}</h2>
+        <p class="lede section-head__body" data-i18n="proof.body">{en.proof.body}</p>
+      </div>
+      <div style="max-width:760px; margin:1.8rem auto 0;">
+        <div class="proof">
+          <div class="proof__bar">
+            <span class="proof__dots" aria-hidden="true"><span></span><span></span><span></span></span>
+            <span class="proof__title">receipt.json — verify</span>
+            <span class="chip chip--teal" style="margin-left:auto">offline · real Ed25519</span>
+          </div>
+          <div class="proof__body" id="tamper-band">
+            <pre id="tb-json" tabindex="0" role="group" aria-label="Receipt envelope JSON — read-only, scrollable"></pre>
+            <div class="stack" style="margin-top:0.9rem">
+              <div id="tb-verdict" class="verdict" data-state="idle" role="status" aria-live="polite" aria-atomic="true">Verifying…</div>
               <div id="tb-checks" class="checks"></div>
               <div class="btn-row">
                 <button id="tb-verify" class="btn btn-quiet" type="button">Re-verify</button>
-                <button id="tb-tamper" class="btn btn-ghost" type="button">⚡ Break one byte</button>
+                <button id="tb-tamper" class="btn btn-ghost" type="button"><Icon name="bolt" size={15} weight={85} />Break one byte</button>
                 <button id="tb-reset" class="btn btn-quiet" type="button">Reset</button>
-                <a class="btn btn-primary" href="/playground/">Build a full chain →</a>
               </div>
             </div>
+          </div>
+        </div>
+        <p class="proof__caption" data-i18n="proof.caption">{en.proof.caption}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Provability — manifesto band (navy) -->
+  <section class="section section--ground" id="provability">
+    <div class="container">
+      <div class="prov-grid">
+        <div class="prov-lead">
+          <p class="eyebrow" data-i18n="prov.eyebrow">{en.prov.eyebrow}</p>
+          <h2 class="prov-h2"><span data-i18n="prov.lead">{en.prov.lead}</span> <span class="prov-emph" data-i18n="prov.emph">{en.prov.emph}</span></h2>
+          <p class="prov-honest" data-i18n="prov.honest">{en.prov.honest}</p>
+          <p class="prov-axiom" data-i18n="prov.axiom">{en.prov.axiom}</p>
+        </div>
+        <div class="prov-card">
+          {en.prov.not_proof.map((n, i) => (
+            <div class="prov-card__row">
+              <span class="prov-card__x" aria-hidden="true"><Icon name="x" size={13} weight={110} /></span>
+              <span data-i18n={`prov.not_proof.${i}`}>{n}</span>
+            </div>
+          ))}
+          <div class="prov-card__row prov-card__row--proof">
+            <span class="prov-card__check" aria-hidden="true"><Icon name="check" size={14} weight={90} /></span>
+            <span data-i18n="prov.proof_line">{en.prov.proof_line}</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- EU AI Act strip -->
-  <section class="section section--ground">
+  <!-- What TSP covers — and what it doesn't -->
+  <section class="section" id="scope">
     <div class="container">
-      <p class="eyebrow">EU AI Act · evidence, not a verdict</p>
-      <h2>Signed receipts map to the obligations teams must record.</h2>
-      <div class="grid grid-3" style="margin-top:2rem">
-        <div class="card" style="background:transparent; border-color:rgba(244,239,226,.22)">
-          <h3 style="color:var(--ink-inverse)">Art 12 — Record-keeping</h3>
-          <p style="color:var(--ink-inverse-muted)">Chained, hashed, timestamped event receipts across the
-            workflow. Evidence of what happened — not a compliance verdict.</p>
-        </div>
-        <div class="card" style="background:transparent; border-color:rgba(244,239,226,.22)">
-          <h3 style="color:var(--ink-inverse)">Art 14 — Human oversight</h3>
-          <p style="color:var(--ink-inverse-muted)">A signed human-review field, sealed inside the digest.
-            Shows oversight occurred — not that it was sufficient.</p>
-        </div>
-        <div class="card" style="background:transparent; border-color:rgba(244,239,226,.22)">
-          <h3 style="color:var(--ink-inverse)">Art 50 — Transparency</h3>
-          <p style="color:var(--ink-inverse-muted)">A TrustBadge links an AI output to its provenance receipt
-            for disclosure. Supports disclosure — not a labelling decision.</p>
-        </div>
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="scope.eyebrow">{en.scope.eyebrow}</p>
+        <h2 data-i18n="scope.title">{en.scope.title}</h2>
+        <p class="lede section-head__body" data-i18n="scope.sub">{en.scope.sub}</p>
       </div>
-      <p style="margin-top:1.5rem"><a href="/eu-ai-act/">See the full Art 12 / 14 / 15 / 19 / 50 mapping →</a></p>
-    </div>
-  </section>
-
-  <!-- Open vs seal -->
-  <section class="section">
-    <div class="container">
-      <p class="eyebrow">Open layer vs. the seal</p>
-      <h2>Free to verify · licensed to issue · controlled to be official.</h2>
-      <div class="grid grid-3" style="margin-top:2rem">
-        <article class="card">
-          <span class="chip chip--ok">Free, forever</span>
-          <h3 style="margin-top:0.6rem">Verify &amp; inspect</h3>
-          <p class="muted">The verifier cores, the MCP server/proxy, the TrustBadge component and the spec are
-            open (Apache-2.0). Offline verification always works — no phone-home, no kill switch.</p>
-        </article>
-        <article class="card card--accent">
-          <span class="chip chip--copper">Licensed</span>
-          <h3 style="margin-top:0.6rem">Issue &amp; operate</h3>
-          <p class="muted">Issuer tooling, runtime, gateway and the commercial modules (pilot / staging) sit
-            behind a commercial TSP license. One signer; the open verifiers do the rest.</p>
-        </article>
-        <article class="card card--teal">
-          <span class="chip chip--teal">Governed</span>
-          <h3 style="margin-top:0.6rem">Official status</h3>
-          <p class="muted">Issuer authorization, registry listing and official mark usage are governed grants —
-            never unlocked by payment. Payment never grants official status.</p>
-        </article>
-      </div>
-      <p style="margin-top:1.5rem"><a href="/pricing/">See pricing &amp; tiers →</a> &nbsp;·&nbsp; <a href="/tools/">Browse the tools →</a></p>
-    </div>
-  </section>
-
-  <!-- Standing challenge -->
-  <section class="section section--paper-deep">
-    <div class="container split">
-      <div>
-        <p class="eyebrow">The standing challenge</p>
-        <h2>We bet the product on the math.</h2>
-        <p class="muted">Forge a receipt that passes independent verification — alter the data and still come up
-          VERIFIED — and you keep every priced module, free for life, plus a place in the registry's hall of
-          integrity. Break the math, not the building (key theft and server breaches are out of scope).</p>
-      </div>
-      <div class="card" style="align-self:center">
-        <p class="mono muted" style="font-size:var(--fs-micro)">breaks to date</p>
-        <p style="font-size:3rem; font-weight:600; line-height:1; color:var(--teal)">0</p>
-        <p class="muted" style="font-size:var(--fs-small)">It's a marketing bet, not a claim — the protocol is
-          a pilot, and the cryptography is the part we're sure of.</p>
-        <p style="margin-top:0.8rem"><a href="/hard-questions/">Read the hard questions →</a></p>
+      <div class="scope-grid">
+        <div class="scope-col scope-col--covers">
+          <p class="scope-col__label" data-i18n="scope.covers_label">{en.scope.covers_label}</p>
+          <ul class="scope-list">
+            {en.scope.covers.map((c, i) => (
+              <li>
+                <span class="scope-list__mark scope-list__mark--yes" aria-hidden="true"><Icon name="check" size={13} weight={100} /></span>
+                <span data-i18n={`scope.covers.${i}`}>{c}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="scope-col scope-col--doesnt">
+          <p class="scope-col__label" data-i18n="scope.doesnt_label">{en.scope.doesnt_label}</p>
+          <ul class="scope-list">
+            {en.scope.doesnt.map((d, i) => (
+              <li>
+                <span class="scope-list__mark scope-list__mark--no" aria-hidden="true"><Icon name="dash" size={13} weight={100} /></span>
+                <span data-i18n={`scope.doesnt.${i}`}>{d}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Leaderboard teaser -->
-  <section class="section">
+  <!-- Who uses it — audience segments (navy tonal anchor) -->
+  <section class="section section--ground" id="who-uses">
     <div class="container">
-      <p class="eyebrow">Adoption leaderboard</p>
-      <h2>Ranked by evidence — not size, not spend.</h2>
-      <p class="lede">Every score is recomputed from an organization's own published receipts:
-        Verifiability (0.40), Coverage (0.35), Human oversight (0.25). You can't buy a place, only evidence one.</p>
-      <p style="margin-top:1rem"><a class="btn btn-ghost" href="/leaderboard/">See how scoring works &amp; get listed →</a></p>
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="whouses.eyebrow">{en.whouses.eyebrow}</p>
+        <h2 data-i18n="whouses.title">{en.whouses.title}</h2>
+      </div>
+      <div class="audience-grid">
+        {en.whouses.items.map((item, i) => (
+          <article class="audience-card">
+            <span class="audience-card__icon" aria-hidden="true"><Icon name={whoIcons[i]} size={24} weight={60} /></span>
+            <h3 data-i18n={`whouses.items.${i}.role`}>{item.role}</h3>
+            <p data-i18n={`whouses.items.${i}.body`}>{item.body}</p>
+          </article>
+        ))}
+      </div>
     </div>
   </section>
 
   <!-- Final CTA -->
-  <section class="section section--ground">
+  <section class="section section--tight" id="start">
     <div class="container">
-      <h2>Make your AI decisions checkable.</h2>
-      <p class="lede">Start with one decision flow. We scope a single workflow with you and wire it into one
-        evidence chain anyone can verify — in weeks, not quarters.</p>
-      <div class="btn-row" style="margin-top:1.4rem">
-        <a class="btn btn-primary" href="/pricing/">Scope a pilot</a>
-        <a class="btn btn-ghost" href="/playground/">Open the working demo</a>
+      <div class="final-cta">
+        <h2 data-i18n="final.title">{en.final.title}</h2>
+        <p data-i18n="final.sub">{en.final.sub}</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/playground/" data-i18n="final.cta_primary">{en.final.cta_primary}</a>
+          <a class="btn btn-ghost" href="/protocol/" data-i18n="final.cta_secondary">{en.final.cta_secondary}</a>
+        </div>
       </div>
     </div>
   </section>
 
   <script>
+    import "../islands/hero-verify.ts";
     import "../islands/tamper-band.ts";
   </script>
 </BaseLayout>

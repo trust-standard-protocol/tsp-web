@@ -1,0 +1,119 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Boundary from "../components/Boundary.astro";
+import Icon from "../components/Icon.astro";
+import en from "../i18n/en.json";
+
+// /seal — the PAID independent notary (core monetization). The flag-boundary:
+// free/local = self-attested (worthless to an auditor alone) → paid =
+// independently attested. "You cannot notarize your own document." Honest: makes
+// evidence audit-credible; does NOT make you compliant. i18n EN (server) → NO (island).
+const seal = en.seal;
+const addIcons = ["registry", "lock", "badge-check"]; // anchoring · qualified time · register
+---
+<BaseLayout
+  title="Seal"
+  description="The independent layer that makes AI evidence audit-credible: anchoring, qualified eIDAS time, and the register. You cannot notarize your own document — and it does not make you compliant."
+>
+  <section class="section section--tight">
+    <div class="container">
+      <p class="eyebrow" data-i18n="seal.kicker">{seal.kicker}</p>
+      <h1 data-i18n="seal.h1">{seal.h1}</h1>
+      <p class="lede"><span data-i18n="seal.lede_a">{seal.lede_a}</span><strong data-i18n="seal.lede_strong">{seal.lede_strong}</strong><span data-i18n="seal.lede_b">{seal.lede_b}</span></p>
+    </div>
+  </section>
+
+  <!-- The flag boundary: self-attested → independently attested -->
+  <section class="section section--paper-deep" id="flag">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="seal.flag_eyebrow">{seal.flag_eyebrow}</p>
+        <h2 data-i18n="seal.flag_title">{seal.flag_title}</h2>
+      </div>
+      <div class="ps-grid">
+        <article class="ps-card ps-card--free">
+          <div class="ps-head">
+            <span class="ps-icon" aria-hidden="true"><Icon name="lock" size={22} weight={64} /></span>
+            <span class="ps-label" data-i18n="seal.free_label">{seal.free_label}</span>
+          </div>
+          <h3 data-i18n="seal.free_title">{seal.free_title}</h3>
+          <p data-i18n="seal.free_body">{seal.free_body}</p>
+          <ul class="ps-points">
+            {seal.free_points.map((pt, i) => (
+              <li class="ps-point">
+                <span class="ps-point__mark" aria-hidden="true"><Icon name="dash" size={12} weight={110} /></span>
+                <span data-i18n={`seal.free_points.${i}`}>{pt}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+
+        <div class="ps-arrow" aria-hidden="true"><span>→</span></div>
+
+        <article class="ps-card ps-card--solution">
+          <div class="ps-head">
+            <span class="ps-icon" aria-hidden="true"><Icon name="badge-check" size={22} weight={64} /></span>
+            <span class="ps-label" data-i18n="seal.paid_label">{seal.paid_label}</span>
+          </div>
+          <h3 data-i18n="seal.paid_title">{seal.paid_title}</h3>
+          <p data-i18n="seal.paid_body">{seal.paid_body}</p>
+          <ul class="ps-points">
+            {seal.paid_points.map((pt, i) => (
+              <li class="ps-point">
+                <span class="ps-point__mark" aria-hidden="true"><Icon name="check" size={12} weight={110} /></span>
+                <span data-i18n={`seal.paid_points.${i}`}>{pt}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- What the Seal adds -->
+  <section class="section section--tight">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="seal.adds_eyebrow">{seal.adds_eyebrow}</p>
+        <h2 data-i18n="seal.adds_title">{seal.adds_title}</h2>
+      </div>
+      <div class="grid grid-3" style="margin-top:clamp(28px,4vw,36px)">
+        {seal.adds.map((item, i) => (
+          <article class="why-card">
+            <span class="why-card__icon" aria-hidden="true"><Icon name={addIcons[i]} size={26} weight={56} /></span>
+            <h3 data-i18n={`seal.adds.${i}.title`}>{item.title}</h3>
+            <p data-i18n={`seal.adds.${i}.body`}>{item.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- How the boundary stays honest -->
+  <section class="section section--paper-deep">
+    <div class="container">
+      <div class="section-head section-head--left">
+        <p class="eyebrow" data-i18n="seal.how_eyebrow">{seal.how_eyebrow}</p>
+        <h2 data-i18n="seal.how_title">{seal.how_title}</h2>
+      </div>
+      <ul class="stack not-list" style="list-style:none; margin-top:1.2rem; max-width:760px;">
+        {seal.how_points.map((pt, i) => (
+          <li><Icon name="check" size={16} weight={90} /><span data-i18n={`seal.how_points.${i}`}>{pt}</span></li>
+        ))}
+      </ul>
+      <p class="lede" style="margin-top:1.4rem; max-width:760px;" data-i18n="seal.line">{seal.line}</p>
+    </div>
+  </section>
+
+  <!-- Honest boundary + CTA -->
+  <section class="section section--tight">
+    <div class="container container-narrow stack">
+      <Boundary />
+      <p class="muted" style="font-size:var(--fs-small)" data-i18n="seal.note">{seal.note}</p>
+      <div class="btn-row" style="margin-top:0.4rem">
+        <a class="btn btn-primary" href="/pricing/" data-i18n="seal.cta_a">{seal.cta_a}</a>
+        <a class="btn btn-ghost" href="/verify/" data-i18n="seal.cta_b">{seal.cta_b}</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

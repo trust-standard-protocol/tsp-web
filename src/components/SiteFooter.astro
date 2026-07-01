@@ -1,35 +1,31 @@
 ---
 import { footerGroups, site } from "../data/site";
-const year = new Date().getFullYear();
+import { t } from "../i18n";
 ---
-<footer class="site-footer">
+<footer class="site-footer" id="docs">
   <div class="container">
     <div class="footer-grid">
-      <div>
-        <h2>{site.short}</h2>
-        <p style="max-width: 38ch; color: var(--ink-inverse-muted);">
-          Makes your AI evidence durable, tamper-evident, and verifiable offline.
-          It does <strong style="color: var(--amber);">not</strong> make you compliant.
-        </p>
-        <p class="mono" style="font-size: var(--fs-micro); margin-top: 1rem; color: var(--ink-inverse-muted);">
-          {site.license}
-        </p>
+      <div class="footer-brand">
+        <a class="wordmark" href="/" aria-label={`${site.name} — home`}>
+          <img src="/tsp-logo-light.png" alt="" class="footer-logo" width="200" height="147" />
+        </a>
+        <p data-i18n="footer.blurb">{t("en", "footer.blurb")}</p>
+        <p class="lang-draft-note" lang="no">Norsk er et lanseringsutkast — venter på korrekturlesing av en innfødt taler (Bokmål).</p>
       </div>
       {footerGroups.map((group) => (
-        <nav aria-label={group.title}>
-          <h2>{group.title}</h2>
+        <nav class="footer-col" aria-label={group.title}>
+          <h2 data-i18n={group.i18n}>{group.title}</h2>
           <ul>
-            {group.links.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+            {group.links.map((link) => (
+              <li><a href={link.href} data-i18n={link.i18n}>{link.label}</a></li>
+            ))}
           </ul>
         </nav>
       ))}
     </div>
-    <div class="footer-bottom">
-      <span>© {year} {site.name}</span>
-      <a href="/.well-known/security.txt">security.txt</a>
-      <a href="/llms.txt">llms.txt</a>
-      <a href="/.well-known/tsp.json">.well-known/tsp.json</a>
-      <span style="margin-left: auto;">Evidence integrity — not truth, not a legal verdict.</span>
+    <div class="legal-bar">
+      <p data-i18n="footer.legal">{t("en", "footer.legal")}</p>
+      <p class="legal-bar__disclaimer" data-i18n="footer.disclaimer">{t("en", "footer.disclaimer")}</p>
     </div>
   </div>
 </footer>

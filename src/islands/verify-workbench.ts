@@ -3,7 +3,7 @@
 // publicKey} bundle exported from the playground). Nothing is uploaded anywhere.
 import { verifyTrustEnvelopeV3 } from "../lib/tsp";
 import type { JwkEd25519Public, TrustEnvelopeV3 } from "../lib/tsp";
-import { applyVerdict, renderChecks, tamperOneByte } from "./ui";
+import { applyVerdict, renderChecks, setInvalidVerdict, tamperOneByte } from "./ui";
 import sampleEnvelope from "../lib/tsp/fixtures/v3/valid-envelope.json";
 import sampleKey from "../lib/tsp/fixtures/v3/valid-public-key.jwk.json";
 
@@ -44,8 +44,7 @@ if (
   };
 
   const invalid = (text: string) => {
-    elVerdict.dataset.state = "invalid";
-    elVerdict.textContent = `\u2717 ${text}`;
+    setInvalidVerdict(elVerdict, text);
     elChecks.replaceChildren();
     elWarn.textContent = "";
   };

@@ -9,11 +9,21 @@
 
 ## Reference
 - [Tools](https://truststandardprotocol.com/tools/): Verifier cores (one signer, N verifiers), open MCP server/proxy, TrustBadge, operator modules.
-- [EU AI Act](https://truststandardprotocol.com/eu-ai-act/): How receipts support Art 12 / 14 / 15 / 19 / 50 — as evidence, not a verdict.
+- [Why](https://truststandardprotocol.com/why/): The live-now pressure to keep AI evidence — EU AI Act (Art 12 / 14 / 19 / 50), DORA, US state laws, insurance — as evidence, not a verdict.
 - [Leaderboard](https://truststandardprotocol.com/leaderboard/): Public trust ranking recomputed from an org's own receipts.
 - [Hard questions](https://truststandardprotocol.com/hard-questions/): Privacy, forgery, governance — answered with the threat model in the open.
 - [Pricing](https://truststandardprotocol.com/pricing/): Free to verify, priced to operate. Official status is a governed grant, never a tier.
-- [Docs](https://truststandardprotocol.com/docs/): Quickstart (full reference site in Fase A.2).
+- [Docs](https://truststandardprotocol.com/docs/): Quickstart (full reference site in Phase A.2).
+
+## Seal (paid layer)
+- [Seal](https://truststandardprotocol.com/seal/): The independent notary — anchoring (Merkle root to the Evidence-ledger), qualified eIDAS / RFC 3161 time, and the register. You cannot notarize your own document; the free local layer is self-attested, the paid Seal is independently attested. Does not make you compliant.
+- [Conformance](https://truststandardprotocol.com/conformance/): The TSP-Certified mark — open standard, governed mark. Conformance is verified against the register, never self-declared; payment never grants official status.
+
+## Company & governance
+- [Trust](https://truststandardprotocol.com/trust/): Who stands behind it, neutrality by determinism, credible-commitment bands, and the eIDAS / QTSP status (we are not yet a QTSP).
+- [Register](https://truststandardprotocol.com/register/): The public transparency-log backstop — don't trust us, verify us. Canonical-primary plus a public backstop so evidence survives us.
+- [Status](https://truststandardprotocol.com/status/): Operational continuity (static placeholder; no live infrastructure yet).
+- [Security](https://truststandardprotocol.com/security/): Coordinated disclosure and security posture.
 
 ## Machine-readable
 - [/.well-known/tsp.json](https://truststandardprotocol.com/.well-known/tsp.json): Protocol surface descriptor.

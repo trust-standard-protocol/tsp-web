@@ -1,0 +1,41 @@
+---
+// Inline line-art icon. Reads a normalized SVG from src/icons/ (themeable via
+// `currentColor`, no baked size/stroke-width) and injects render size, stroke
+// weight, colour, and accessibility onto the root <svg>.
+//
+//   <Icon name="check" />                       decorative (aria-hidden)
+//   <Icon name="check" label="Verified" />      meaningful (role=img + label)
+//
+// `weight` is the stroke-width in the icon's 1127-unit viewBox; small icons want
+// a heavier weight so the 1px-ish stroke still reads.
+const icons = import.meta.glob("../icons/*.svg", {
+  query: "?raw",
+  import: "default",
+  eager: true
+}) as Record<string, string>;
+
+interface Props {
+  name: string;
+  size?: number;
+  weight?: number;
+  label?: string;
+  class?: string;
+}
+
+const { name, size = 24, weight = 60, label, class: className } = Astro.props;
+const raw = icons[`../icons/${name}.svg`];
+if (!raw) {
+  throw new Error(`<Icon>: unknown icon "${name}" (src/icons/${name}.svg not found)`);
+}
+
+const a11y = label
+  ? `role="img" aria-label="${label}"`
+  : `aria-hidden="true" focusable="false"`;
+const cls = `tsp-icon${className ? ` ${className}` : ""}`;
+
+const svg = raw.replace(
+  "<svg",
+  `<svg class="${cls}" width="${size}" height="${size}" fill="none" stroke="currentColor" stroke-width="${weight}" ${a11y}`
+);
+---
+<Fragment set:html={svg} />

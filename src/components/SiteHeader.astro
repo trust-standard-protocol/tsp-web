@@ -1,47 +1,86 @@
 ---
 import SealMark from "./SealMark.astro";
 import { primaryNav, site } from "../data/site";
+import { t } from "../i18n";
 
+// Two-tier certificate masthead (redesign variant 2b): a thin navy utility strip
+// (protocol meta · EN/NO toggle · GitHub) above the main row (logo + wordmark +
+// tagline + primary nav + Verify/Playground CTA). Token-driven; one responsive
+// header on every page. Functional bits preserved: real nav from data/site.ts,
+// working lang toggle, mobile nav-toggle, aria-current, GitHub link.
 const path = Astro.url.pathname;
 const isCurrent = (href: string) => path === href || (href !== "/" && path.startsWith(href));
+const verifyCta = { href: "/verify/", i18n: "chrome.nav.verify" };
+const primaryCta = { href: "/playground/", i18n: "chrome.nav.playground" };
 ---
 <header class="site-header">
-  <div class="container site-header__bar">
-    <a class="brand" href="/" aria-label={`${site.name} — home`}>
-      <SealMark size={30} />
-      <span class="brand__name">
-        {site.short}
-        <small>Trust Standard Protocol</small>
-      </span>
-    </a>
+  <!-- Utility strip -->
+  <div class="site-header__utility">
+    <div class="container site-header__utility-bar">
+      <span class="util-meta" data-i18n="chrome.utility">{t("en", "chrome.utility")}</span>
+      <div class="util-right">
+        <div class="lang-toggle lang-toggle--util" role="group" aria-label={t("en", "chrome.lang_label")}>
+          <button type="button" data-lang-set="en" aria-pressed="true">EN</button>
+          <button type="button" data-lang-set="no" aria-pressed="false">NO</button>
+        </div>
+        <a class="util-gh" href={site.repo} rel="noopener">{t("en", "nav.github")}</a>
+      </div>
+    </div>
+  </div>
 
-    <button
-      class="nav-toggle"
-      type="button"
-      aria-expanded="false"
-      aria-controls="site-nav"
-      data-nav-toggle
-    >
-      <span aria-hidden="true">≡</span> Menu
-    </button>
+  <!-- Main row -->
+  <div class="site-header__main">
+    <div class="container site-header__bar">
+      <a class="wordmark" href="/" aria-label={`${site.name} — home`}>
+        <SealMark size={36} />
+        <span class="wordmark__text">
+          <span class="wordmark__name">{site.name}</span>
+          <span class="wordmark__tag" data-i18n="chrome.tagline">{t("en", "chrome.tagline")}</span>
+        </span>
+      </a>
 
-    <nav class="site-nav" id="site-nav" aria-label="Primary">
-      {primaryNav.map((link) => (
-        <a href={link.href} aria-current={isCurrent(link.href) ? "page" : undefined}>{link.label}</a>
-      ))}
-      <a class="btn btn-quiet" href="/verify/" aria-current={isCurrent("/verify/") ? "page" : undefined}>Verify</a>
-      <a class="btn btn-primary" href="/playground/" aria-current={isCurrent("/playground/") ? "page" : undefined}>Playground</a>
-    </nav>
+      <nav class="site-nav" aria-label="Primary">
+        <div class="nav-links" id="site-nav-links" data-open="false">
+          {primaryNav.map((link) => (
+            <a
+              href={link.href}
+              data-i18n={link.i18n}
+              aria-current={isCurrent(link.href) ? "page" : undefined}
+            >{link.label}</a>
+          ))}
+          <a
+            href={verifyCta.href}
+            data-i18n={verifyCta.i18n}
+            aria-current={isCurrent(verifyCta.href) ? "page" : undefined}
+          >{t("en", verifyCta.i18n)}</a>
+          <a
+            class="nav-cta"
+            href={primaryCta.href}
+            aria-current={isCurrent(primaryCta.href) ? "page" : undefined}
+          ><span data-i18n={primaryCta.i18n}>{t("en", primaryCta.i18n)}</span> <span aria-hidden="true">→</span></a>
+        </div>
+
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-nav-links"
+          data-nav-toggle
+        >
+          <span aria-hidden="true">≡</span> <span data-i18n="chrome.menu">{t("en", "chrome.menu")}</span>
+        </button>
+      </nav>
+    </div>
   </div>
 </header>
 
 <script>
   const toggle = document.querySelector<HTMLButtonElement>("[data-nav-toggle]");
-  const nav = document.getElementById("site-nav");
-  if (toggle && nav) {
+  const links = document.getElementById("site-nav-links");
+  if (toggle && links) {
     toggle.addEventListener("click", () => {
-      const open = nav.getAttribute("data-open") === "true";
-      nav.setAttribute("data-open", String(!open));
+      const open = links.getAttribute("data-open") === "true";
+      links.setAttribute("data-open", String(!open));
       toggle.setAttribute("aria-expanded", String(!open));
     });
   }

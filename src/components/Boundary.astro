@@ -1,23 +1,23 @@
 ---
 // The honest boundary line, reusable across pages. The doctrine, stated as a
 // negation — the opposite of an overclaim. Carved out of the claim scan by design.
+// Bilingual: each text run is its own [data-i18n] leaf so the i18n island can
+// swap EN→NO without destroying the <strong> emphasis (the island sets textContent).
+import { t } from "../i18n";
 interface Props {
   compact?: boolean;
 }
 const { compact = false } = Astro.props;
+const p = compact ? "boundary_box.compact" : "boundary_box.full";
 ---
 <aside class="boundary" role="note" aria-label="What TSP does and does not mean">
   {compact ? (
     <p>
-      TSP makes your AI evidence <strong>durable, tamper-evident, and verifiable offline</strong>.
-      It does <strong>not</strong> make you compliant, prove your model is correct, or confer official status.
+      <span data-i18n={`${p}_a`}>{t("en", `${p}_a`)}</span><strong data-i18n={`${p}_s1`}>{t("en", `${p}_s1`)}</strong><span data-i18n={`${p}_b`}>{t("en", `${p}_b`)}</span><strong data-i18n={`${p}_not`}>{t("en", `${p}_not`)}</strong><span data-i18n={`${p}_c`}>{t("en", `${p}_c`)}</span>
     </p>
   ) : (
     <p>
-      TSP makes your AI evidence <strong>durable, tamper-evident, and verifiable offline</strong> — by anyone,
-      without trusting the vendor. It does <strong>not</strong> make you compliant, prove your model is right or
-      safe, or confer official status. Verification reports the <strong>integrity</strong> of the evidence, never a
-      legal verdict. That call stays with your DPA and counsel.
+      <span data-i18n={`${p}_a`}>{t("en", `${p}_a`)}</span><strong data-i18n={`${p}_s1`}>{t("en", `${p}_s1`)}</strong><span data-i18n={`${p}_b`}>{t("en", `${p}_b`)}</span><strong data-i18n={`${p}_not`}>{t("en", `${p}_not`)}</strong><span data-i18n={`${p}_c`}>{t("en", `${p}_c`)}</span><strong data-i18n={`${p}_s2`}>{t("en", `${p}_s2`)}</strong><span data-i18n={`${p}_d`}>{t("en", `${p}_d`)}</span>
     </p>
   )}
 </aside>

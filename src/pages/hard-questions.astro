@@ -1,20 +1,10 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import en from "../i18n/en.json";
 
-const attacks = [
-  { attack: "Forge a receipt from nothing", stop: "The signature must resolve to a registered Ed25519 key in the registry. No key, no provenance.", residual: "Residual: a stolen key — out of scope here, handled by rotation + revocation." },
-  { attack: "Backdate a decision", stop: "Append-only log + chain position. A receipt can't be quietly inserted into the past.", residual: "Residual: timestamp accuracy depends on the TSA you bind." },
-  { attack: "Only publish flattering decisions", stop: "The Coverage metric divides verifying receipts by declared scope volume — the denominator is public and spot-checked.", residual: "Residual: a wildly under-declared scope is itself a visible signal." },
-  { attack: "Collude with the scorer", stop: "Scoring is reproducible from public artifacts — anyone can recompute it. No trust in the scorer required.", residual: "Residual: none cryptographic; the artifacts are the audit." },
-  { attack: "Alter the payload after sealing", stop: "The content hash commitment self-invalidates. One changed byte fails verification.", residual: "Residual: none — this is the core property." },
-  { attack: "Replay an old receipt", stop: "Unique ID + chain position make a replayed receipt detectable as out of place.", residual: "Residual: depends on consumers checking chain position." }
-];
-
-const harder = [
-  { q: "Who decides what's 'official'?", a: "A governed registry and authorization process — never payment. We say so in plain text: payment never grants official status, and the registry is a pilot." },
-  { q: "Isn't this just a fancy log?", a: "A log you control proves nothing to a second party. The difference is independent verification: anyone re-runs the math against a published key and gets the same answer." },
-  { q: "What if the spec is wrong?", a: "The spec, fixtures and verifier cores are open. Independent verifier agreement across runtimes is the trust anchor — and the standing challenge pays you to break it." }
-];
+// Hard questions — i18n EN (server) → NO (island). Q1 heading reworded (polish
+// #10) and the public hash-store renamed from "manifest" to "register" (fix #2).
+const hq = en.hardq;
 ---
 <BaseLayout
   title="Hard Questions"
@@ -22,63 +12,54 @@ const harder = [
 >
   <section class="section section--tight">
     <div class="container">
-      <p class="eyebrow">Hard questions</p>
-      <h1>The objections we don't dodge.</h1>
-      <p class="lede">Five questions a serious reviewer asks in the first meeting. Two could kill the idea if we
-        got them wrong — so we answer those in full, then the three that are harder than they look.</p>
+      <p class="eyebrow" data-i18n="hardq.kicker">{hq.kicker}</p>
+      <h1 data-i18n="hardq.h1">{hq.h1}</h1>
+      <p class="lede" data-i18n="hardq.lede">{hq.lede}</p>
     </div>
   </section>
 
   <section class="section--tight" style="padding-top:0">
     <div class="container stack-lg">
       <article>
-        <p class="eyebrow">Q1 · the one that kills the project if we get it wrong</p>
-        <h2>"If every decision is public, you've just leaked everyone's private data."</h2>
-        <p>The manifest never contains the decision. What's public is a <strong>commitment</strong> —
-          cryptographic proof that a specific, unaltered decision was sealed at a specific time by a registered
-          key. The decision itself is revealed only to a party with legal standing to see it, who then checks
-          it against that commitment.</p>
+        <p class="eyebrow" data-i18n="hardq.q1_eyebrow">{hq.q1_eyebrow}</p>
+        <h2 data-i18n="hardq.q1_title">{hq.q1_title}</h2>
+        <p data-i18n="hardq.q1_body">{hq.q1_body}</p>
         <div class="grid grid-3" style="margin-top:1.5rem">
-          <div class="card"><h3>Commit, don't expose</h3><p class="muted">The manifest stores a salted hash of the payload — enough to prove integrity, useless for reconstructing the data.</p></div>
-          <div class="card"><h3>Reveal on legal basis</h3><p class="muted">A subject, regulator or court receives cleartext and verifies it hashes to the commitment.</p></div>
-          <div class="card"><h3>Aggregate, not individual</h3><p class="muted">Outcome rates are published as windowed statistics. The public sees patterns; never a person.</p></div>
+          {hq.q1_cards.map((c, i) => (
+            <div class="card"><h3 data-i18n={`hardq.q1_cards.${i}.title`}>{c.title}</h3><p class="muted" data-i18n={`hardq.q1_cards.${i}.body`}>{c.body}</p></div>
+          ))}
         </div>
       </article>
 
       <article>
-        <p class="eyebrow">Q2 · we publish the attack surface and pay you to break it</p>
-        <h2>"What stops someone from faking the whole thing?"</h2>
-        <p>A trust system that can't say how it fails isn't trustworthy. Here's the attack surface, and what
-          stops each one.</p>
+        <p class="eyebrow" data-i18n="hardq.q2_eyebrow">{hq.q2_eyebrow}</p>
+        <h2 data-i18n="hardq.q2_title">{hq.q2_title}</h2>
+        <p data-i18n="hardq.q2_body">{hq.q2_body}</p>
         <div class="grid grid-2" style="margin-top:1.5rem">
-          {attacks.map((a) => (
+          {hq.attacks.map((a, i) => (
             <article class="card card--accent">
-              <h3 style="font-size:1.05rem">{a.attack}</h3>
-              <p class="muted">{a.stop}</p>
-              <p class="mono muted" style="font-size:var(--fs-micro)">{a.residual}</p>
+              <h3 style="font-size:1.05rem" data-i18n={`hardq.attacks.${i}.attack`}>{a.attack}</h3>
+              <p class="muted" data-i18n={`hardq.attacks.${i}.stop`}>{a.stop}</p>
+              <p class="mono muted" style="font-size:var(--fs-micro)" data-i18n={`hardq.attacks.${i}.residual`}>{a.residual}</p>
             </article>
           ))}
         </div>
-        <p class="muted" style="margin-top:1rem; font-size:var(--fs-small)">Disclosure loop: report → triage →
-          fix → disclose → credit. Good-faith research is never met with legal threats.</p>
+        <p class="muted" style="margin-top:1rem; font-size:var(--fs-small)" data-i18n="hardq.disclosure">{hq.disclosure}</p>
       </article>
 
       <article>
-        <p class="eyebrow">Q3–5 · the harder ones</p>
-        <h2>Three that are harder than they look.</h2>
+        <p class="eyebrow" data-i18n="hardq.q3_eyebrow">{hq.q3_eyebrow}</p>
+        <h2 data-i18n="hardq.q3_title">{hq.q3_title}</h2>
         <div class="grid grid-3" style="margin-top:1.5rem">
-          {harder.map((h) => (
-            <article class="card"><h3 style="font-size:1.05rem">{h.q}</h3><p class="muted">{h.a}</p></article>
+          {hq.harder.map((h, i) => (
+            <article class="card"><h3 style="font-size:1.05rem" data-i18n={`hardq.harder.${i}.q`}>{h.q}</h3><p class="muted" data-i18n={`hardq.harder.${i}.a`}>{h.a}</p></article>
           ))}
         </div>
       </article>
 
       <article class="section--ground" style="border-radius:var(--radius-lg); padding:clamp(24px,4vw,40px)">
-        <h2>Where a claim isn't proven yet, we say so.</h2>
-        <p style="color:var(--ink-inverse-muted); max-width:64ch">This is a pilot. None of the above is settled
-          law or a ratified standard — it's the protocol's current, testable position. Where a claim isn't yet
-          proven, we've said so in plain text rather than rounded it up. If your hardest question isn't here,
-          send it — the gaps are the roadmap.</p>
+        <h2 data-i18n="hardq.pilot_title">{hq.pilot_title}</h2>
+        <p style="color:var(--ink-inverse-muted); max-width:64ch" data-i18n="hardq.pilot_body">{hq.pilot_body}</p>
       </article>
     </div>
   </section>

@@ -1,6 +1,5 @@
 <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Trust Standard Protocol">
-  <rect x="2" y="2" width="60" height="60" rx="13" fill="#15403d" />
-  <rect x="10.5" y="10.5" width="43" height="43" rx="8.5" fill="none" stroke="#d99a5e" stroke-width="1.4" opacity="0.55" />
-  <path d="M19 33.5 L28.5 43 L46 22.5" fill="none" stroke="#9c5a2e" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
-  <circle cx="46" cy="22.5" r="2.6" fill="#e0a45e" />
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="#faf8f1" stroke="#1d3a5f" stroke-width="4" />
+  <text x="32" y="34" text-anchor="middle" dominant-baseline="central" font-family="'IBM Plex Sans', system-ui, sans-serif" font-size="22" font-weight="700" fill="#1a1815">TSP</text>
+  <circle cx="55" cy="11" r="6" fill="#9c5a2e" />
 </svg>

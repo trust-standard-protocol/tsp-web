@@ -1,0 +1,11 @@
+# Trust Standard Protocol — truststandardprotocol.com
+# Open by design: crawl the site and the machine/agent surface freely.
+User-agent: *
+Allow: /
+
+# Agent + machine-readable surfaces (also linked from llms.txt)
+Allow: /llms.txt
+Allow: /agent/
+Allow: /.well-known/
+
+Sitemap: https://truststandardprotocol.com/sitemap-index.xml

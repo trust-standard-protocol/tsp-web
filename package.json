@@ -8,20 +8,27 @@
   "scripts": {
     "dev": "astro dev --host 127.0.0.1",
     "build": "astro build",
+    "icons": "node scripts/build-icons.mjs",
+    "logo": "node scripts/build-brand.mjs",
     "preview": "astro preview --host 127.0.0.1",
-    "check": "astro check",
+    "check": "astro check && npm run test:a11y",
     "claim-scan": "node scripts/claim-scan.mjs",
     "verify-selftest": "bun scripts/verify-selftest.mjs",
-    "preflight": "bun scripts/verify-selftest.mjs && node scripts/claim-scan.mjs && astro build"
+    "test:a11y": "astro build && playwright test",
+    "preflight": "bun scripts/verify-selftest.mjs && node scripts/claim-scan.mjs && astro build && playwright test"
   },
   "dependencies": {
+    "@fontsource/ibm-plex-mono": "^5.1.1",
+    "@fontsource/ibm-plex-sans": "^5.1.1",
     "@noble/ed25519": "^2.1.0",
     "astro": "^5.7.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
-    "@fontsource/ibm-plex-mono": "^5.1.1",
-    "@fontsource/ibm-plex-sans": "^5.1.1",
+    "@astrojs/sitemap": "^3.7.3",
+    "@axe-core/playwright": "^4.12.1",
+    "@playwright/test": "^1.61.1",
+    "sharp": "^0.34.5",
     "typescript": "^5.9.3"
   }
 }

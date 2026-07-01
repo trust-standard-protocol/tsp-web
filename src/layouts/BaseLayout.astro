@@ -1,5 +1,6 @@
 ---
-// Self-hosted IBM Plex (no Google Fonts — perf, privacy, EU optics).
+// Self-hosted IBM Plex Sans + IBM Plex Mono (the brand pack typefaces; no Google
+// Fonts — perf, privacy, EU optics). Sans 400/500/600/700, Mono 400/500/600.
 import "@fontsource/ibm-plex-sans/400.css";
 import "@fontsource/ibm-plex-sans/500.css";
 import "@fontsource/ibm-plex-sans/600.css";
@@ -30,14 +31,15 @@ const canonical = new URL(Astro.url.pathname, site.url).href;
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <meta name="theme-color" content="#15403d" />
+    <meta name="theme-color" content="#1d3a5f" />
     <meta property="og:type" content={ogType} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content={site.name} />
-    <meta property="og:image" content={new URL("/og.svg", site.url).href} />
+    <meta property="og:image" content={new URL("/og.png", site.url).href} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={new URL("/og.png", site.url).href} />
     <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
   </head>
   <body>
@@ -47,5 +49,8 @@ const canonical = new URL(Astro.url.pathname, site.url).href;
       <slot />
     </main>
     <SiteFooter />
+    <script>
+      import "../islands/i18n.ts";
+    </script>
   </body>
 </html>
