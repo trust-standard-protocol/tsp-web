@@ -1,6 +1,9 @@
 # build output
 dist/
 .astro/
+test-results/
+playwright-report/
+.playwright/
 
 # deps
 node_modules/
@@ -15,3 +18,8 @@ node_modules/
 Thumbs.db
 *.log
 npm-debug.log*
+
+# internal design scaffolding — not for the public site
+.od-skills/
+hero-preview.*
+*AdobeColor*.jpeg
