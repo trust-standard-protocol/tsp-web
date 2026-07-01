@@ -30,10 +30,18 @@ const IGNORE_DIRS = new Set(["node_modules", "dist", ".astro", ".git"]);
 // and necessarily name the forbidden terms to describe the four content fixes,
 // so they are intentionally out of scope. scripts/ (incl. this scanner's own
 // token list) is likewise not part of the public surface.
+// The operator-disclosure form "LexiCo AS" is permitted only in these files
+// (the /trust page and the bilingual trust.lede_b copy it renders). Bare
+// "LexiCo" is banned everywhere; "LexiCo AS" anywhere else is still a finding.
+const LEXICO_AS_ALLOW = new Set([
+  "src/i18n/en.json",
+  "src/i18n/no.json",
+  "src/pages/trust.astro"
+]);
 // Hard-banned tokens — must not appear anywhere on the public surface.
 const HARD_BANS = [
   { id: "tamper-proof", re: /tamper[\s-]?proof/gi, hint: "use tamper-evident" },
-  { id: "LexiCo", re: /\bLexiCo\b/gi, hint: "internal holding brand — keep off the marketing site" },
+  { id: "LexiCo", re: /\bLexiCo\b(?:\s+AS\b)?/gi, hint: "internal holding brand — bare \"LexiCo\" is banned everywhere; the operator disclosure \"LexiCo AS\" is allowed only in the operator-disclosure files (/trust page + i18n trust.lede_b)", allow: (rel, match) => /\bLexiCo\s+AS\b/i.test(match) && LEXICO_AS_ALLOW.has(rel) },
   { id: "ECDSA", re: /\bECDSA\b/gi, hint: "TSP signs with Ed25519" },
   { id: "P-256", re: /\bP-?256\b/gi, hint: "TSP signs with Ed25519, not P-256" },
   { id: "ES256", re: /\bES256\b/gi, hint: "TSP signs with Ed25519 (EdDSA), not ES256" },
@@ -98,6 +106,7 @@ for (const file of files) {
     ban.re.lastIndex = 0;
     let m;
     while ((m = ban.re.exec(text)) !== null) {
+      if (ban.allow && ban.allow(rel, m[0])) continue;
       findings.push({ rel, line: lineOf(text, m.index), id: ban.id, match: m[0], hint: ban.hint });
     }
   }
