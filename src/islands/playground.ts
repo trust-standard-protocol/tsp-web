@@ -12,6 +12,7 @@
 // state then propagates downstream, which is the honest behaviour.
 import { generateDemoSigner, ledgerHash, sealEnvelope, verifyTrustEnvelopeV3 } from "../lib/tsp";
 import type { DemoSigner, JwkEd25519Public, TrustEnvelopeV3, VerificationResult } from "../lib/tsp";
+import { clientLang, t } from "../i18n";
 import { icon, renderChecks, tamperOneByte } from "./ui";
 
 const GENESIS = "0".repeat(64);
@@ -263,7 +264,7 @@ if (root) {
     if (!signer || chain.length === 0) return;
     const dossier = {
       kind: "tsp-demo-dossier",
-      note: "Each receipt verifies in /verify with this publicKey. Demo issuance — not governed official status.",
+      note: t(clientLang(), "islands.playground.dossier_note"),
       publicKey: signer.publicKey,
       chain
     };

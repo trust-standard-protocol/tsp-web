@@ -5,7 +5,7 @@
       "protocol": "Protokoll",
       "why": "Hvorfor",
       "tools": "Verktøy",
-      "seal": "Seal",
+      "seal": "Segl",
       "conformance": "Samsvar",
       "leaderboard": "Ledertavle",
       "pricing": "Priser",
@@ -19,7 +19,7 @@
     "footer": {
       "g_protocol": "Protokoll",
       "g_open": "Åpent lag",
-      "g_seal": "Seal",
+      "g_seal": "Segl",
       "g_company": "Selskap og agenter",
       "f_protocol": "Protokollspesifikasjon",
       "f_why": "Hvorfor",
@@ -28,7 +28,7 @@
       "f_playground": "Playground",
       "f_tools": "Verktøy og verifikatorkjerner",
       "f_docs": "Dokumentasjon",
-      "f_seal": "Seal",
+      "f_seal": "Segl",
       "f_conformance": "Samsvar",
       "f_register": "Register",
       "f_leaderboard": "Ledertavle",
@@ -52,7 +52,11 @@
     "sub": "AI-regulering flytter markedet fra erklæringer til bevis. TSP gir AI-systemer en standard måte å bevise hvor et utdata kom fra, hvordan det ble produsert, og om det kan stoles på — i ettertid, av hvem som helst.",
     "framing": "Regulering spør ikke bare om AI-en din er god. Den spør om AI-en din kan forklares, spores, utfordres, revideres og stoles på — i ettertid.",
     "future": "Fremtiden er ikke «AI vil bli regulert.» Den er «AI-systemer vil trenge bevis.»",
-    "frameworks": ["EU AI Act", "ISO/IEC 42001", "NIST AI RMF"],
+    "frameworks": [
+      "EU AI Act",
+      "ISO/IEC 42001",
+      "NIST AI RMF"
+    ],
     "cta": "Se hele den regulatoriske stresstesten →"
   },
   "hero": {
@@ -99,29 +103,59 @@
   "promise": "Hvis en datamaskin tok en beslutning om deg, bør du kunne sjekke den. Nå kan du det — hvis du har kvitteringen.",
   "how": {
     "eyebrow": "Slik fungerer det",
-    "title": "Tre steg. Det er hele idéen.",
+    "title": "Tre steg. Det er hele ideen.",
     "steps": [
-      { "title": "Den forsegles", "body": "I det øyeblikket AI-en beslutter, lages en kvittering som ikke kan endres i det skjulte. Endrer du noe etterpå, brytes forseglingen." },
-      { "title": "Den kan forankres", "body": "Forankre kvitteringen til TSPs offentlige register så hvem som helst kan bekrefte at den finnes — det uavhengige segl-laget. Lokal forsegling virker uten det." },
-      { "title": "Hvem som helst verifiserer", "body": "Kjør sjekken selv, offline. Regnestykket gir samme verdikt til alle, hver gang." }
+      {
+        "title": "Den forsegles",
+        "body": "I det øyeblikket AI-en beslutter, lages en kvittering som ikke kan endres i det skjulte. Endrer du noe etterpå, brytes forseglingen."
+      },
+      {
+        "title": "Den kan forankres",
+        "body": "Forankre kvitteringen til TSPs offentlige register så hvem som helst kan bekrefte at den finnes — det uavhengige segl-laget. Lokal forsegling virker uten det."
+      },
+      {
+        "title": "Hvem som helst verifiserer",
+        "body": "Kjør sjekken selv, offline. Regnestykket gir samme resultat til alle, hver gang."
+      }
     ]
   },
   "props": {
     "eyebrow": "Hva du får",
     "items": [
-      { "title": "Manipulering vises", "body": "Ett endret tegn bryter forseglingen. Ingen steder å skjule en stille endring." },
-      { "title": "Privat", "body": "Kun et kryptografisk fingeravtrykk forlater systemet ditt — aldri kundenes faktiske data." },
-      { "title": "Alle kan sjekke", "body": "Ingen innlogging, ingen tillatelse, ingen tillit til oss. Regnestykket er likt for alle." }
+      {
+        "title": "Manipulering vises",
+        "body": "Ett endret tegn bryter forseglingen. Ingen steder å skjule en stille endring."
+      },
+      {
+        "title": "Privat",
+        "body": "Kun et kryptografisk fingeravtrykk forlater systemet ditt — aldri kundenes faktiske data."
+      },
+      {
+        "title": "Alle kan sjekke",
+        "body": "Ingen innlogging, ingen tillatelse, ingen tillit til oss. Regnestykket er likt for alle."
+      }
     ]
   },
   "whytsp": {
     "eyebrow": "Hvorfor TSP",
     "title": "Fire ting hver kvittering bærer med seg.",
     "items": [
-      { "title": "Signerte kvitteringer", "body": "Hver beslutning forsegles som en TrustEnvelope — kanonisk JSON, hashet med SHA-256, signert i det øyeblikket den skjer." },
-      { "title": "Portabel verifisering", "body": "Hvem som helst kan sjekke Ed25519-signaturen offline. Ingen leverandørpålogging, ingen API — regnestykket følger kvitteringen." },
-      { "title": "Menneskelig innsyn", "body": "Beslutningen og sporet av menneskelig tilsyn forblir lesbart — opptegnelsen en kontrollør etter artikkel 14 faktisk trenger å lese." },
-      { "title": "Styrt status", "body": "Et offisielt merke kan ikke forfalskes eller bare kjøpes. Status styres av registeret, ikke kommersielt — betaling gir det aldri." }
+      {
+        "title": "Signerte kvitteringer",
+        "body": "Hver beslutning forsegles som en TrustEnvelope — kanonisk JSON, hashet med SHA-256, signert i det øyeblikket den skjer."
+      },
+      {
+        "title": "Portabel verifisering",
+        "body": "Hvem som helst kan sjekke Ed25519-signaturen offline. Ingen leverandørpålogging, ingen API — regnestykket følger kvitteringen."
+      },
+      {
+        "title": "Menneskelig innsyn",
+        "body": "Beslutningen og sporet av menneskelig tilsyn forblir lesbart — opptegnelsen en kontrollør etter artikkel 14 faktisk trenger å lese."
+      },
+      {
+        "title": "Styrt status",
+        "body": "Et offisielt merke kan ikke forfalskes eller bare kjøpes. Status styres av registeret, ikke kommersielt — betaling gir det aldri."
+      }
     ]
   },
   "futures": {
@@ -129,9 +163,42 @@
     "title": "Tre fremtider for AI-bevis.",
     "sub": "Hver AI-utrulling er på vei mot én av disse. Bare én av dem er interoperabel.",
     "items": [
-      { "label": "Fremtid 01", "title": "Ingen bevis", "body": "Utdata er verdifulle, men løsrevet fra ethvert verifiserbart bevis.", "pts": ["Trege revisjoner", "Svak kjøpertillit", "Dyre samsvarsgjennomganger", "Skjør hendelseshåndtering", "Regulatorisk eksponering"] },
-      { "label": "Fremtid 02", "title": "Privat bevis", "body": "Hvert selskap bygger sin egen logging, sine dashbord og sine bevisarbeidsflyter.", "pts": ["Bedre enn ingenting", "Fragmentert, ikke portabelt", "Kjøpere kan ikke enkelt verifisere", "Regulatorer får skreddersydde pakker", "Leverandører dupliserer arbeidet"] },
-      { "label": "Fremtid 03 · Med TSP", "title": "Standardisert bevis", "body": "Utdata bærer portabelt, kryptografisk verifiserbart bevis.", "pts": ["Kjøpere kan verifisere", "Revisorer kan inspisere", "Leverandører kan bevise", "Økosystemer er interoperable", "Ett spor, hver revisjon"] }
+      {
+        "label": "Fremtid 01",
+        "title": "Ingen bevis",
+        "body": "Utdata er verdifulle, men løsrevet fra ethvert verifiserbart bevis.",
+        "pts": [
+          "Trege revisjoner",
+          "Svak kjøpertillit",
+          "Dyre samsvarsgjennomganger",
+          "Skjør hendelseshåndtering",
+          "Regulatorisk eksponering"
+        ]
+      },
+      {
+        "label": "Fremtid 02",
+        "title": "Privat bevis",
+        "body": "Hvert selskap bygger sin egen logging, sine dashbord og sine bevisarbeidsflyter.",
+        "pts": [
+          "Bedre enn ingenting",
+          "Fragmentert, ikke portabelt",
+          "Kjøpere kan ikke enkelt verifisere",
+          "Regulatorer får skreddersydde pakker",
+          "Leverandører dupliserer arbeidet"
+        ]
+      },
+      {
+        "label": "Fremtid 03 · Med TSP",
+        "title": "Standardisert bevis",
+        "body": "Utdata bærer portabelt, kryptografisk verifiserbart bevis.",
+        "pts": [
+          "Kjøpere kan verifisere",
+          "Revisorer kan inspisere",
+          "Leverandører kan bevise",
+          "Økosystemer er interoperable",
+          "Ett spor, hver revisjon"
+        ]
+      }
     ]
   },
   "boundary": {
@@ -147,7 +214,11 @@
     "emph": "De vil konkurrere på beviselighet.",
     "honest": "TSP erstatter ikke dine juridiske, styrings- eller etterlevelsesprogrammer. Det gir dem det de i dag mangler — verifiserbart bevis på utdata-laget.",
     "axiom": "Og ett aksiom holder det forsvarlig: verifisering er ikke sannhet. En konvolutt beviser at et bestemt system produserte et bestemt utdata fra bestemte erklærte inndata — ikke at utdataet var riktig. Det registrerer virkeligheten; det dømmer den ikke.",
-    "not_proof": ["Logger er ikke bevis.", "Dashbord er ikke bevis.", "Leverandørpåstander er ikke bevis."],
+    "not_proof": [
+      "Logger er ikke bevis.",
+      "Dashbord er ikke bevis.",
+      "Leverandørpåstander er ikke bevis."
+    ],
     "proof_line": "TSP gjør AI-utdata om til bevis."
   },
   "scope": {
@@ -179,10 +250,22 @@
     "eyebrow": "Hvem bruker det",
     "title": "Fra ingeniøren som utsteder til revisoren som inspiserer.",
     "items": [
-      { "role": "Utviklere", "body": "Legg til signerte kvitteringer i en arbeidsflyt uten å låse deg til en leverandør." },
-      { "role": "Etterlevelse", "body": "Sett sammen avgrensede gjennomgangspakker fra bevis som holder mål." },
-      { "role": "Revisorer", "body": "Inspiser et beslutningsspor uten leverandørpålogging eller spesiell tilgang." },
-      { "role": "Partnere", "body": "Bygg verifiserbare bevisflyter inn i produktene dere allerede leverer." }
+      {
+        "role": "Utviklere",
+        "body": "Legg til signerte kvitteringer i en arbeidsflyt uten å låse deg til en leverandør."
+      },
+      {
+        "role": "Etterlevelse",
+        "body": "Sett sammen avgrensede gjennomgangspakker fra bevis som holder mål."
+      },
+      {
+        "role": "Revisorer",
+        "body": "Inspiser et beslutningsspor uten leverandørpålogging eller spesiell tilgang."
+      },
+      {
+        "role": "Partnere",
+        "body": "Bygg verifiserbare bevisflyter inn i produktene dere allerede leverer."
+      }
     ]
   },
   "final": {
@@ -209,12 +292,42 @@
         "title": "Der signerte kvitteringer støtter forpliktelsene",
         "intro": "Loven ber team registrere kjøretidsatferd. Kvitteringer er inspiserbart bevis for den opptegnelsen — aldri selve samsvarsvurderingen.",
         "rows": [
-          { "tag": "Art. 12 · logging", "title": "Journalføring", "evidence": "Signerte hendelseskvitteringer — svar, handling, avvisning, gjennomgang, overstyring — kjedet, hashet og tidsstemplet gjennom arbeidsflyten.", "boundary": "Bevis på hva som skjedde; ikke en samsvarsdom." },
-          { "tag": "Art. 14", "title": "Menneskelig tilsyn", "evidence": "Signerte gjennomgangs- og overstyringskvitteringer registrerer hvem som vurderte, hva de bestemte og når — forseglet i digesten.", "boundary": "Viser at tilsyn skjedde; ikke at det var tilstrekkelig." },
-          { "tag": "Art. 15", "title": "Nøyaktighetsopptegnelser", "evidence": "Deklarert modell, verktøy, dataomfang og policy-tilstand fanget i manipuleringssynlige kvitteringer.", "boundary": "Bevis på deklarert tilstand; ikke modellkvalitet." },
-          { "tag": "Art. 19", "title": "Loggoppbevaring", "evidence": "En kun-tillegg, uavhengig kontrollerbar strøm av kvitteringer en operatør kan oppbevare og gjenskape på forespørsel.", "boundary": "Varig, reproduserbart bevis; oppbevaringstid er operatørens policy-valg." },
-          { "tag": "Art. 50", "title": "Åpenhet", "evidence": "Et TrustBadge og en bevisvisning knytter en AI-utgang til provenanskvitteringen for opplysning — en aktiv forpliktelse fra august 2026.", "boundary": "Støtter opplysning; ikke en merkebeslutning." },
-          { "tag": "Vedlegg III · Art. 6", "title": "Høyrisiko-støtte", "evidence": "Bærbare kvitteringer for beslutningsstøtte-arbeidsflyter (f.eks. kredittverdighet) en vurderer kan inspisere.", "boundary": "Innspill til klassifisering; ikke klassifiseringssvaret." }
+          {
+            "tag": "Art. 12 · logging",
+            "title": "Journalføring",
+            "evidence": "Signerte hendelseskvitteringer — svar, handling, avvisning, gjennomgang, overstyring — kjedet, hashet og tidsstemplet gjennom arbeidsflyten.",
+            "boundary": "Bevis på hva som skjedde; ikke en samsvarsdom."
+          },
+          {
+            "tag": "Art. 14",
+            "title": "Menneskelig tilsyn",
+            "evidence": "Signerte gjennomgangs- og overstyringskvitteringer registrerer hvem som vurderte, hva de bestemte og når — forseglet i digesten.",
+            "boundary": "Viser at tilsyn skjedde; ikke at det var tilstrekkelig."
+          },
+          {
+            "tag": "Art. 15",
+            "title": "Nøyaktighetsopptegnelser",
+            "evidence": "Deklarert modell, verktøy, dataomfang og policy-tilstand fanget i manipuleringssynlige kvitteringer.",
+            "boundary": "Bevis på deklarert tilstand; ikke modellkvalitet."
+          },
+          {
+            "tag": "Art. 19",
+            "title": "Loggoppbevaring",
+            "evidence": "En kun-tillegg, uavhengig kontrollerbar strøm av kvitteringer en operatør kan oppbevare og gjenskape på forespørsel.",
+            "boundary": "Varig, reproduserbart bevis; oppbevaringstid er operatørens policy-valg."
+          },
+          {
+            "tag": "Art. 50",
+            "title": "Åpenhet",
+            "evidence": "Et TrustBadge og en bevisvisning knytter en AI-utgang til provenanskvitteringen for opplysning — en aktiv forpliktelse fra august 2026.",
+            "boundary": "Støtter opplysning; ikke en merkebeslutning."
+          },
+          {
+            "tag": "Vedlegg III · Art. 6",
+            "title": "Høyrisiko-støtte",
+            "evidence": "Bærbare kvitteringer for beslutningsstøtte-arbeidsflyter (f.eks. kredittverdighet) en vurderer kan inspisere.",
+            "boundary": "Innspill til klassifisering; ikke klassifiseringssvaret."
+          }
         ]
       },
       {
@@ -222,8 +335,18 @@
         "title": "Operasjonell motstandsdyktighet i finanssektoren",
         "intro": "DORA pålegger allerede finansforetak å dokumentere IKT-drift og hendelser. Der et AI-system inngår i den kjeden, trenger beslutningene det samme manipuleringssynlige sporet.",
         "rows": [
-          { "tag": "IKT-opptegnelser", "title": "Driftsbevis", "evidence": "Signerte, kjedede kvitteringer av automatiserte IKT-beslutninger og kontrollene rundt dem — reproduserbare lenge etter hendelsen.", "boundary": "Bevis på hva som ble logget; ikke en motstandsdyktighets-attest." },
-          { "tag": "Hendelsesspor", "title": "Hendelsesrekonstruksjon", "evidence": "En kun-tillegg-opptegnelse en institusjon og dens tilsyn kan spille av for å rekonstruere hva et system gjorde under en hendelse.", "boundary": "Støtter hendelsesmappen; ikke en hendelseskonklusjon." }
+          {
+            "tag": "IKT-opptegnelser",
+            "title": "Driftsbevis",
+            "evidence": "Signerte, kjedede kvitteringer av automatiserte IKT-beslutninger og kontrollene rundt dem — reproduserbare lenge etter hendelsen.",
+            "boundary": "Bevis på hva som ble logget; ikke en motstandsdyktighets-attest."
+          },
+          {
+            "tag": "Hendelsesspor",
+            "title": "Hendelsesrekonstruksjon",
+            "evidence": "En kun-tillegg-opptegnelse en institusjon og dens tilsyn kan spille av for å rekonstruere hva et system gjorde under en hendelse.",
+            "boundary": "Støtter hendelsesmappen; ikke en hendelseskonklusjon."
+          }
         ]
       },
       {
@@ -231,9 +354,24 @@
         "title": "Bias-revisjoner og AI-beslutningslover som allerede gjelder",
         "intro": "Amerikanske forpliktelser venter ikke på Europa. NYC Local Law 144 håndheves; Colorados AI Act og flere delstatslover lander gjennom 2026. Hver enkelt avhenger av opptegnelser av hva et automatisert system faktisk gjorde.",
         "rows": [
-          { "tag": "NYC LL144", "title": "Automatiserte ansettelsesbeslutninger", "evidence": "Bærbare kvitteringer av ansettelses- og forfremmelsesbeslutningene en årlig bias-revisjon undersøker.", "boundary": "Bevis for revisjonen; ikke bias-revisjonens resultat." },
-          { "tag": "Colorado AI Act", "title": "AI-beslutninger mot forbrukere", "evidence": "Opptegnelser av forbrukerrettede automatiserte beslutninger og den menneskelige gjennomgangen rundt dem.", "boundary": "Bevisgrunnlag; ikke en juridisk avgjørelse." },
-          { "tag": "IL · TX m.fl.", "title": "Sektorvis varsling og opptegnelser", "evidence": "Manipuleringssynlig bevis på at en opplyst automatisert prosess kjørte som beskrevet, for jurisdiksjoner som legger til varslings- og opptegnelsesplikter.", "boundary": "Bevis på opptegnelsen; ikke en konklusjon under én enkelt lov." }
+          {
+            "tag": "NYC LL144",
+            "title": "Automatiserte ansettelsesbeslutninger",
+            "evidence": "Bærbare kvitteringer av ansettelses- og forfremmelsesbeslutningene en årlig bias-revisjon undersøker.",
+            "boundary": "Bevis for revisjonen; ikke bias-revisjonens resultat."
+          },
+          {
+            "tag": "Colorado AI Act",
+            "title": "AI-beslutninger mot forbrukere",
+            "evidence": "Opptegnelser av forbrukerrettede automatiserte beslutninger og den menneskelige gjennomgangen rundt dem.",
+            "boundary": "Bevisgrunnlag; ikke en juridisk avgjørelse."
+          },
+          {
+            "tag": "IL · TX m.fl.",
+            "title": "Sektorvis varsling og opptegnelser",
+            "evidence": "Manipuleringssynlig bevis på at en opplyst automatisert prosess kjørte som beskrevet, for jurisdiksjoner som legger til varslings- og opptegnelsesplikter.",
+            "boundary": "Bevis på opptegnelsen; ikke en konklusjon under én enkelt lov."
+          }
         ]
       },
       {
@@ -241,8 +379,18 @@
         "title": "Når noe går galt, er beviset det som står igjen",
         "intro": "Forsikringsgivere, skadeprosesser og domstoler vil i økende grad se hva et AI-system gjorde. Manipuleringssynlige kvitteringer er det forensiske sporet — nyttig den dagen en tvist starter, ikke i 2027.",
         "rows": [
-          { "tag": "Forsikringstegning", "title": "AI-risikobevis", "evidence": "Et reproduserbart beslutningsspor en forsikringsgiver eller AI-assuransevurderer (mot rammeverk som AIUC-1) kan inspisere.", "boundary": "Styrker mappen; ikke en dekningsbeslutning." },
-          { "tag": "Tvist · forensisk", "title": "Hva som skjedde, beviselig", "evidence": "Signerte, tidsbundne opptegnelser som overlever hendelsen — åstedsfotografiet, ikke dommen.", "boundary": "Bevis på opptegnelsen; ikke bevis på skyld eller ansvar." }
+          {
+            "tag": "Forsikringstegning",
+            "title": "AI-risikobevis",
+            "evidence": "Et reproduserbart beslutningsspor en forsikringsgiver eller AI-assuransevurderer (mot rammeverk som AIUC-1) kan inspisere.",
+            "boundary": "Styrker mappen; ikke en dekningsbeslutning."
+          },
+          {
+            "tag": "Tvist · forensisk",
+            "title": "Hva som skjedde, beviselig",
+            "evidence": "Signerte, tidsbundne opptegnelser som overlever hendelsen — åstedsfotografiet, ikke dommen.",
+            "boundary": "Bevis på opptegnelsen; ikke bevis på skyld eller ansvar."
+          }
         ]
       }
     ],
@@ -256,14 +404,46 @@
       "col_obligation": "Forpliktelse",
       "col_evidence": "Hvordan TSP gir bevis",
       "items": [
-        { "art": "Art. 5", "p": "Lovlig og etisk", "tsp": "Kvitteringer beviser at den erklærte policy-tilstanden og vernet mot forbudt bruk var i kraft i beslutningsøyeblikket." },
-        { "art": "Art. 11", "p": "Dokumentasjon", "tsp": "Hver beslutnings tekniske kontekst fanges i en manipuleringssynlig konvolutt du kan ta vare på og gjenskape på forespørsel." },
-        { "art": "Art. 12", "p": "Loggføring", "tsp": "Signerte, lenkede hendelseskvitteringer — svar, handling, avslag, gjennomgang — hashet og tidsstemplet gjennom arbeidsflyten." },
-        { "art": "Art. 13", "p": "Åpenhet", "tsp": "En kvittering knytter et AI-utdata til sitt opphav, slik at opplysningen vist til en berørt person er underbygd av bevis." },
-        { "art": "Art. 14", "p": "Menneskelig tilsyn", "tsp": "Signerte kvitteringer for menneskelig gjennomgang og overstyring registrerer hvem som vurderte, hva de besluttet og når — forseglet i digesten." },
-        { "art": "Art. 15", "p": "Robusthet og sikkerhet", "tsp": "Erklært modell-, verktøy- og dataomfangstilstand forsegles i digesten som bevis på konfigurasjonen som faktisk kjørte." },
-        { "art": "Art. 16", "p": "Nøyaktighet og kvalitet", "tsp": "Manipuleringssynlige opptegnelser av erklærte inndata og utdata en vurderer kan kontrollere uavhengig, byte for byte." },
-        { "art": "Art. 17", "p": "Ansvarlighet", "tsp": "Et kun-tillegg, uavhengig verifiserbart spor som fester hver beslutning til en registrert utstedernøkkel." }
+        {
+          "art": "Art. 5",
+          "p": "Lovlig og etisk",
+          "tsp": "Kvitteringer beviser at den erklærte policy-tilstanden og vernet mot forbudt bruk var i kraft i beslutningsøyeblikket."
+        },
+        {
+          "art": "Art. 11",
+          "p": "Dokumentasjon",
+          "tsp": "Hver beslutnings tekniske kontekst fanges i en manipuleringssynlig konvolutt du kan ta vare på og gjenskape på forespørsel."
+        },
+        {
+          "art": "Art. 12",
+          "p": "Loggføring",
+          "tsp": "Signerte, lenkede hendelseskvitteringer — svar, handling, avslag, gjennomgang — hashet og tidsstemplet gjennom arbeidsflyten."
+        },
+        {
+          "art": "Art. 13",
+          "p": "Åpenhet",
+          "tsp": "En kvittering knytter et AI-utdata til sitt opphav, slik at opplysningen vist til en berørt person er underbygd av bevis."
+        },
+        {
+          "art": "Art. 14",
+          "p": "Menneskelig tilsyn",
+          "tsp": "Signerte kvitteringer for menneskelig gjennomgang og overstyring registrerer hvem som vurderte, hva de besluttet og når — forseglet i digesten."
+        },
+        {
+          "art": "Art. 15",
+          "p": "Robusthet og sikkerhet",
+          "tsp": "Erklært modell-, verktøy- og dataomfangstilstand forsegles i digesten som bevis på konfigurasjonen som faktisk kjørte."
+        },
+        {
+          "art": "Art. 16",
+          "p": "Nøyaktighet og kvalitet",
+          "tsp": "Manipuleringssynlige opptegnelser av erklærte inndata og utdata en vurderer kan kontrollere uavhengig, byte for byte."
+        },
+        {
+          "art": "Art. 17",
+          "p": "Ansvarlighet",
+          "tsp": "Et kun-tillegg, uavhengig verifiserbart spor som fester hver beslutning til en registrert utstedernøkkel."
+        }
       ]
     },
     "precedents": {
@@ -272,10 +452,34 @@
       "sub": "På tvers av sakene som trakk opp grensene for retten om automatiserte beslutninger, var den avgjørende svikten ikke bare dårlig AI. Det var fraværet av en verifiserbar opptegnelse.",
       "missing_label": "Mangler",
       "items": [
-        { "place": "EU AI Act", "case": "Høyrisikosystemer", "year": "I kraft", "verdict": "Sporbarhet blir markedsadgang.", "blocker": "Bevisinfrastruktur" },
-        { "place": "EU-domstolen", "case": "SCHUFA-scoring", "year": "2023", "verdict": "Kredittscoring krysset grensen for automatiserte beslutninger.", "blocker": "Forklarbart beslutningsbevis" },
-        { "place": "Nederland", "case": "SyRI-dommen", "year": "2020", "verdict": "Ugjennomsiktig risikoscoring i offentlig sektor falt i retten.", "blocker": "Ugjennomsiktighet i risikoprofilering" },
-        { "place": "Italia", "case": "Garante mot ChatGPT", "year": "2023", "verdict": "AI-tjenester kan stanses på datalaget.", "blocker": "Ansvarlighet og brukerrettigheter" }
+        {
+          "place": "EU AI Act",
+          "case": "Høyrisikosystemer",
+          "year": "I kraft",
+          "verdict": "Sporbarhet blir markedsadgang.",
+          "blocker": "Bevisinfrastruktur"
+        },
+        {
+          "place": "EU-domstolen",
+          "case": "SCHUFA-scoring",
+          "year": "2023",
+          "verdict": "Kredittscoring krysset grensen for automatiserte beslutninger.",
+          "blocker": "Forklarbart beslutningsbevis"
+        },
+        {
+          "place": "Nederland",
+          "case": "SyRI-dommen",
+          "year": "2020",
+          "verdict": "Ugjennomsiktig risikoscoring i offentlig sektor falt i retten.",
+          "blocker": "Ugjennomsiktighet i risikoprofilering"
+        },
+        {
+          "place": "Italia",
+          "case": "Garante mot ChatGPT",
+          "year": "2023",
+          "verdict": "AI-tjenester kan stanses på datalaget.",
+          "blocker": "Ansvarlighet og brukerrettigheter"
+        }
       ],
       "punch": "Den felles svikten er ikke bare dårlig AI. Det er manglende bevis."
     },
@@ -287,13 +491,48 @@
       "with_label": "Med TSP",
       "positioning_label": "Posisjonering",
       "full": [
-        { "n": "Scenario 01", "cat": "Revisjon", "q": "En regulator spør hvordan en AI-beslutning ble tatt.", "without": "Teamet rekonstruerer hendelsen fra applogger, private dashbord og menneskelig hukommelse — vagt, og avhengig av intern tillit.", "with": "Utdataet bærer verifiserbart opphav: nøyaktig systemkontekst, prompt-hash og modell-/leverandørmetadata.", "outcome": "Løfter erstattet med kryptografisk verifiserbart bevis." },
-        { "n": "Scenario 02", "cat": "Autentisitet", "q": "En kunde spør om AI-innhold er autentisk.", "without": "De ser innholdet, men kan ikke verifisere opphav, versjon eller om det ble endret underveis.", "with": "Innholdet bærer en portabel verifiseringskvittering som beviser genereringskontekst og dataintegritet.", "outcome": "Tillit blir portabel — den følger innholdet." }
+        {
+          "n": "Scenario 01",
+          "cat": "Revisjon",
+          "q": "En regulator spør hvordan en AI-beslutning ble tatt.",
+          "without": "Teamet rekonstruerer hendelsen fra applogger, private dashbord og menneskelig hukommelse — vagt, og avhengig av intern tillit.",
+          "with": "Utdataet bærer verifiserbart opphav: nøyaktig systemkontekst, prompt-hash og modell-/leverandørmetadata.",
+          "outcome": "Løfter erstattet med kryptografisk verifiserbart bevis."
+        },
+        {
+          "n": "Scenario 02",
+          "cat": "Autentisitet",
+          "q": "En kunde spør om AI-innhold er autentisk.",
+          "without": "De ser innholdet, men kan ikke verifisere opphav, versjon eller om det ble endret underveis.",
+          "with": "Innholdet bærer en portabel verifiseringskvittering som beviser genereringskontekst og dataintegritet.",
+          "outcome": "Tillit blir portabel — den følger innholdet."
+        }
       ],
       "compact": [
-        { "n": "Scenario 03", "cat": "Drift", "q": "Stille modellendringer.", "without": "Atferd endres i produksjon, uten noen grunnlinjeopptegnelse av versjoner, prompter eller leverandørtilstand.", "with": "Utdata binder modelldetaljer, så endring blir observerbar.", "outcome": "Endringssporing blir observerbar." },
-        { "n": "Scenario 04", "cat": "Inndemming", "q": "En hendelse med systemskade.", "without": "Responsen starter i forvirring om hvilken modell som kjørte, under hvilke kontroller.", "with": "En verifiserbar kjede isolerer prompt, modell og livssyklus umiddelbart.", "outcome": "Hendelser isoleres umiddelbart." },
-        { "n": "Scenario 05", "cat": "Innkjøp", "q": "Innkjøp blokkerer avtalen.", "without": "Sikkerhetsregneark, skreddersydde revisjonssløyfer, kunde-for-kunde-gjennomganger.", "with": "Maskinverifiserbare tillitsdossierer forenkler og fremskynder gjennomganger.", "outcome": "Salgssløyfer akselererer." }
+        {
+          "n": "Scenario 03",
+          "cat": "Modelldrift",
+          "q": "Stille modellendringer.",
+          "without": "Atferd endres i produksjon, uten noen grunnlinjeopptegnelse av versjoner, prompter eller leverandørtilstand.",
+          "with": "Utdata binder modelldetaljer, så endring blir observerbar.",
+          "outcome": "Endringssporing blir observerbar."
+        },
+        {
+          "n": "Scenario 04",
+          "cat": "Inndemming",
+          "q": "En hendelse med systemskade.",
+          "without": "Responsen starter i forvirring om hvilken modell som kjørte, under hvilke kontroller.",
+          "with": "En verifiserbar kjede isolerer prompt, modell og livssyklus umiddelbart.",
+          "outcome": "Hendelser isoleres umiddelbart."
+        },
+        {
+          "n": "Scenario 05",
+          "cat": "Innkjøp",
+          "q": "Innkjøp blokkerer avtalen.",
+          "without": "Sikkerhetsregneark, skreddersydde revisjonssløyfer, kunde-for-kunde-gjennomganger.",
+          "with": "Maskinverifiserbare tillitsdossierer forenkler og fremskynder gjennomganger.",
+          "outcome": "Salgssløyfer akselererer."
+        }
       ],
       "nuance": "Et ulikt spørsmål hver gang — det samme svaret. I hvert tilfelle lukkes gapet i det øyeblikket handlingen bærer sitt eget verifiserbare bevis."
     }
@@ -313,7 +552,7 @@
     "compact_c": " etterlevende, beviser ikke at modellen din er korrekt, og gir ingen offisiell status."
   },
   "seal": {
-    "kicker": "Seal · det betalte uavhengige laget",
+    "kicker": "Segl · det betalte uavhengige laget",
     "h1": "Du kan ikke notarisere ditt eget dokument.",
     "lede_a": "Å verifisere en kvittering er gratis og virker offline for alltid — hvem som helst kan kjøre regnestykket. Men en kvittering du har forseglet helt selv er ",
     "lede_strong": "selvattestert",
@@ -328,7 +567,7 @@
       "Offline, ingen konto, ingen avhengighet av oss.",
       "En revisor har fortsatt bare ditt ord på at du ikke forseglet på nytt."
     ],
-    "paid_label": "Seal · uavhengig",
+    "paid_label": "Forseglet · uavhengig",
     "paid_title": "Uavhengig attestert",
     "paid_body": "En uavhengig part forankrer, tidsstempler og lister beviset ditt — slik at en tredjepart kan stole på det uten å stole på deg eller oss.",
     "paid_points": [
@@ -336,12 +575,21 @@
       "Tid bundet av en uavhengig autoritet, ikke din klokke.",
       "Oppført i et register en tredjepart kan slå opp i."
     ],
-    "adds_eyebrow": "Hva Seal legger til",
+    "adds_eyebrow": "Hva Seglet legger til",
     "adds_title": "Tre ting du ikke troverdig kan gjøre med dine egne opptegnelser.",
     "adds": [
-      { "title": "Forankring", "body": "Merkle-roten til kvitteringene dine committes til TSPs uavhengige Evidence-ledger på fast kadens — som plasserer historien din utenfor din egen rekkevidde. Dette er den tilbakevendende kjernen i Seglet." },
-      { "title": "Kvalifisert tid", "body": "Bevis bindes til en uavhengig, eIDAS-kvalifisert tidsstempel-autoritet over RFC 3161 — aldri vår egen klokke. Et kvalifisert tidsstempel bærer en juridisk presumsjon om dataenes integritet og tiden det angir. Vi binder til en akkreditert autoritet; vi er ikke en selv ennå." },
-      { "title": "Registeret", "body": "Attestert bevis oppføres i et offentlig register en tredjepart kan slå opp — som flytter statusen fra selvdeklarert til uavhengig registrert." }
+      {
+        "title": "Forankring",
+        "body": "Merkle-roten til kvitteringene dine føres til TSPs uavhengige Evidence-ledger på fast kadens — som plasserer historien din utenfor din egen rekkevidde. Dette er den tilbakevendende kjernen i Seglet."
+      },
+      {
+        "title": "Kvalifisert tid",
+        "body": "Bevis bindes til en uavhengig, eIDAS-kvalifisert tidsstempel-autoritet over RFC 3161 — aldri vår egen klokke. Et kvalifisert tidsstempel bærer en juridisk presumsjon om dataenes integritet og tiden det angir. Vi binder til en akkreditert autoritet; vi er ikke en selv ennå."
+      },
+      {
+        "title": "Registeret",
+        "body": "Attestert bevis oppføres i et offentlig register en tredjepart kan slå opp — som flytter statusen fra selvdeklarert til uavhengig registrert."
+      }
     ],
     "how_eyebrow": "Hvordan grensen håndheves",
     "how_title": "Ærlig av konstruksjon.",
@@ -364,14 +612,22 @@
     "model_eyebrow": "Modellen · et samsvarstestsett (TCK)",
     "model_title": "Åpen standard, styrt merke — den velprøvde delingen.",
     "tracks": [
-      { "label": "Åpent · alle", "title": "Implementer fritt", "body": "Spesifikasjonen, de uforanderlige samsvarsfixturene og verifikatorkjernene er åpne (Apache-2.0). Bygg en verifikator i et hvilket som helst språk; enighet på tvers av uavhengige implementasjoner er tillitsankeret." },
-      { "label": "Styrt · fortjent", "title": "Bær merket", "body": "TSP-Certified-merket er et distinkt, registrerbart sertifiseringsmerke — gis kun til implementasjoner som består samsvarstesting og har en lisens. Merket, ikke protokollen, er den kontrollerte ressursen." }
+      {
+        "label": "Åpent · alle",
+        "title": "Implementer fritt",
+        "body": "Spesifikasjonen, de uforanderlige samsvarsfixturene og verifikatorkjernene er åpne (Apache-2.0). Bygg en verifikator i et hvilket som helst språk; enighet på tvers av uavhengige implementasjoner er tillitsankeret."
+      },
+      {
+        "label": "Styrt · fortjent",
+        "title": "Bær merket",
+        "body": "TSP-Certified-merket er et distinkt, registrerbart sertifiseringsmerke — gis kun til implementasjoner som består samsvarstesting og har en lisens. Merket, ikke protokollen, er den kontrollerte ressursen."
+      }
     ],
     "precedent": "Den samme formen enhver varig standard bruker: spesifikasjonen er generisk, merket er distinktivt — IEEE 802.11 → Wi-Fi, OpenJDK → Java, Kubernetes → Certified Kubernetes.",
     "verify_eyebrow": "Hvordan samsvar verifiseres",
     "verify_title": "Sjekket mot registeret — aldri selverklært.",
     "verify_points": [
-      "Implementasjonen din recomputer de offentlige fixturene og må stemme på tvers av de påkrevde sjekkene — samme regnestykke alle andre kjører.",
+      "Implementasjonen din beregner de offentlige fixturene på nytt og må stemme på tvers av de påkrevde sjekkene — samme regnestykke alle andre kjører.",
       "Samsvarsstatus slås opp mot det offentlige registeret, slik at en tredjepart kan bekrefte det uavhengig — ikke ta ditt ord for det.",
       "Betaling gir aldri offisiell status: en lisens lar et samsvarende bygg bære merket; den kan ikke kjøpe samsvar."
     ],
@@ -382,24 +638,48 @@
     "cta_b": "Les protokollspesifikasjonen"
   },
   "trust": {
-    "kicker": "Tillit · hvem som står bak Seal",
+    "kicker": "Tillit · hvem som står bak Seglet",
     "h1": "Ikke stol på oss. Hold oss til noe du kan peke på.",
     "lede_a": "En notar er kun troverdig hvis det å svikte er dyrt for den. Derfor er forpliktelsene våre bevisst eksplisitte, eksterne og verifiserbare — av det slaget en ",
     "lede_strong": "CISO, revisor eller DPO kan peke på",
     "lede_b": ". TSP drives i dag av LexiCo AS (Norge, EU/EØS) som operatør og lisenstaker — ikke som eier av standarden og ikke som sertifiseringsmyndighet. Uavhengig styring av registeret og merket er planlagt, og flagget under som ennå ikke på plass.",
     "neutral_eyebrow": "Nøytralitet ved determinisme",
     "neutral_title": "Vi tar ingen skjønn — så det finnes ingenting å være partisk om.",
-    "neutral_body": "TSP attesterer kryptografisk integritet: recompute hashen, verifiser signaturen, sjekk kjeden, bekreft tiden. Det er fakta og fysikk, ikke skjønn. Beviset på nøytralitet er reproduserbarhet — hvem som helst recomputer verdikten og får samme svar, uten å måtte stole på oss eller en modell. AI er aldri i autoritetskjernen; den kan kun være subjektet vi logger.",
+    "neutral_body": "TSP attesterer kryptografisk integritet: beregn hashen på nytt, verifiser signaturen, sjekk kjeden, bekreft tiden. Det er fakta og fysikk, ikke skjønn. Beviset på nøytralitet er reproduserbarhet — hvem som helst beregner resultatet på nytt og får samme svar, uten å måtte stole på oss eller en modell. AI er aldri i autoritetskjernen; den kan kun være subjektet vi logger.",
     "bands_eyebrow": "Troverdig forpliktelse",
     "bands_title": "Hva vi har satt på spill — billigst til dyrest.",
     "bands_intro": "«Hele selskapet står på spill» beroliger ingen spesifikk. Disse gjør tapet eksplisitt, eksternt og kontrollerbart.",
     "bands": [
-      { "status": "Under design", "title": "Et offentlig, verifiserbart register", "body": "Kun-tillegg og uavhengig etterprøvbart av design — ikke stol på oss, verifiser oss. Den offentlige loggen settes opp slik at vår egen oppførsel er like inspiserbar som doktrinen vi ber deg om." },
-      { "status": "Aktiv", "title": "Betaling gir aldri offisiell status", "body": "Et offentlig løfte. Hvis vi stemplet for penger ville merket vært verdiløst — så insentivet vårt er strukturelt låst til rigor." },
-      { "status": "Aktiv", "title": "doesNotMean-grensen", "body": "Vi attesterer bevisets integritet — aldri sannhet, lovlighet eller samsvar. Det er både en ærlighetsbinding og vårt ansvarsskjold." },
-      { "status": "Planlagt", "title": "Nøytralt governance-charter", "body": "Nøytralitet kan ikke forbli én person. En governance-overgang — uavhengig tilsyn med registeret og merket — er planen, åpent flagget som ennå ikke på plass." },
-      { "status": "Planlagt", "title": "Ansvarsvilkår + forsikring", "body": "Kontraktuelle grenser og ansvarsforsikring — bokstavelig penger å tape — dimensjonert etter ansvaret og lagt til etter hvert som inntekt og kjøpere krever det." },
-      { "status": "På veien", "title": "eIDAS kvalifisert status", "body": "En lisens staten kan trekke er det sterkeste eksterne båndet. Vi er på veien mot kvalifiserte tidsstempler og segl (under), under tilsyn av Nkom." }
+      {
+        "status": "Under design",
+        "title": "Et offentlig, verifiserbart register",
+        "body": "Kun-tillegg og uavhengig etterprøvbart av design — ikke stol på oss, verifiser oss. Den offentlige loggen settes opp slik at vår egen oppførsel er like inspiserbar som doktrinen vi ber deg om."
+      },
+      {
+        "status": "Aktiv",
+        "title": "Betaling gir aldri offisiell status",
+        "body": "Et offentlig løfte. Hvis vi stemplet for penger ville merket vært verdiløst — så insentivet vårt er strukturelt låst til rigor."
+      },
+      {
+        "status": "Aktiv",
+        "title": "doesNotMean-grensen",
+        "body": "Vi attesterer bevisets integritet — aldri sannhet, lovlighet eller samsvar. Det er både en ærlighetsbinding og vårt ansvarsskjold."
+      },
+      {
+        "status": "Planlagt",
+        "title": "Nøytralt governance-charter",
+        "body": "Nøytralitet kan ikke forbli én person. En governance-overgang — uavhengig tilsyn med registeret og merket — er planen, åpent flagget som ennå ikke på plass."
+      },
+      {
+        "status": "Planlagt",
+        "title": "Ansvarsvilkår + forsikring",
+        "body": "Kontraktuelle grenser og ansvarsforsikring — bokstavelig penger å tape — dimensjonert etter ansvaret og lagt til etter hvert som inntekt og kjøpere krever det."
+      },
+      {
+        "status": "På veien",
+        "title": "eIDAS kvalifisert status",
+        "body": "En lisens staten kan trekke er det sterkeste eksterne båndet. Vi er på veien mot kvalifiserte tidsstempler og segl (under), under tilsyn av Nkom."
+      }
     ],
     "eidas_eyebrow": "eIDAS / QTSP-status — sagt rett ut",
     "eidas_title": "Loven trekker den samme linjen som oss.",
@@ -411,7 +691,7 @@
     ],
     "survive_eyebrow": "Beviset overlever oss",
     "survive_title": "Utformet så beviset ditt overlever selskapet.",
-    "survive_body": "En én-persons bus-faktor er en risiko for deg, ikke bare for oss. Derfor støttes det kanoniske registeret av en offentlig transparency-logg en kunde kan etterprøve uavhengig — og en kontinuitetspostyr så beviset, og etterprøvbarheten, overlever oss.",
+    "survive_body": "En én-persons bus-faktor er en risiko for deg, ikke bare for oss. Derfor støttes det kanoniske registeret av en offentlig transparency-logg en kunde kan etterprøve uavhengig — og en kontinuitetsberedskap så beviset, og etterprøvbarheten, overlever oss.",
     "cta_a": "Se registeret",
     "cta_b": "Driftsstatus"
   },
@@ -424,14 +704,22 @@
     "layers_eyebrow": "To lag, én opptegnelse",
     "layers_title": "Kanonisk-primær, med en offentlig backstop.",
     "layers": [
-      { "label": "Kanonisk · primær", "title": "Registeret vi driver", "body": "Den autoritative opptegnelsen med lav friksjon der attestering bor — produktet. Raskt og praktisk, og stedet det tilbakevendende Seglet registreres." },
-      { "label": "Offentlig · backstop", "title": "Et uavhengig substrat", "body": "Forankringer committes etter design også til en offentlig transparency-logg — modellen bak Certificate Transparency — bundet av uavhengig kvalifisert tid, så opptegnelsen aldri trenger å avhenge av oss alene." }
+      {
+        "label": "Kanonisk · primær",
+        "title": "Registeret vi driver",
+        "body": "Den autoritative opptegnelsen med lav friksjon der attestering bor — produktet. Raskt og praktisk, og stedet det tilbakevendende Seglet registreres."
+      },
+      {
+        "label": "Offentlig · backstop",
+        "title": "Et uavhengig substrat",
+        "body": "Forankringer føres etter design også til en offentlig transparency-logg — modellen bak Certificate Transparency — bundet av uavhengig kvalifisert tid, så opptegnelsen aldri trenger å avhenge av oss alene."
+      }
     ],
     "how_eyebrow": "Hvordan det publiseres og etterprøves — etter design",
     "how_title": "Etterprøvbart offline, av hvem som helst, mot publiserte røtter.",
     "how_points": [
-      "En Merkle-rot av forankret bevis committes på fast kadens — et enkelt O(1)-hode som ethvert hull eller omstokking ville brutt.",
-      "Publiserte røtter kan hentes og recomputes offline av hvem som helst — samme regnestykke, ingen konto, ingen tillit til utstederen eller oss.",
+      "En Merkle-rot av forankret bevis føres på fast kadens — et enkelt O(1)-hode som ethvert hull eller omstokking ville brutt.",
+      "Publiserte røtter kan hentes og beregnes på nytt offline av hvem som helst — samme regnestykke, ingen konto, ingen tillit til utstederen eller oss.",
       "Inklusjon er beviselig i O(log n); hodet er O(1). Artefaktene er revisjonen — etterprøving trenger ingenting fra oss."
     ],
     "survive_eyebrow": "Beviset overlever oss",
@@ -450,10 +738,26 @@
     "components_eyebrow": "Hva denne siden vil spore",
     "components_title": "Flatene en tredjepart er avhengig av.",
     "components": [
-      { "name": "Verifisering (åpent lag)", "state": "Alltid offline", "body": "Å kjøre TSP-verifisering trenger ingen tjeneste fra oss — det virker i nettleseren din og kjøretiden din uansett vår oppetid." },
-      { "name": "Forankringstjeneste", "state": "Pilot / staging", "body": "Seglets forankrings-endepunkt. Tilgjengelighet rapporteres her når den kjører forbi pilot." },
-      { "name": "Register og offentlig backstop", "state": "Under design", "body": "Publisering av forankringer og den offentlige transparency-loggen. Etterprøving av tidligere forankringer forblir mulig offline." },
-      { "name": "Kvalifisert tidsstempel-autoritet", "state": "Via akkreditert QTSP", "body": "Bundet til en ekstern eIDAS-kvalifisert autoritet; dens status publiseres av den autoriteten og dens tilsyn." }
+      {
+        "name": "Verifisering (åpent lag)",
+        "state": "Alltid offline",
+        "body": "Å kjøre TSP-verifisering trenger ingen tjeneste fra oss — det virker i nettleseren din og kjøretiden din uansett vår oppetid."
+      },
+      {
+        "name": "Forankringstjeneste",
+        "state": "Pilot / staging",
+        "body": "Seglets forankrings-endepunkt. Tilgjengelighet rapporteres her når den kjører forbi pilot."
+      },
+      {
+        "name": "Register og offentlig backstop",
+        "state": "Under design",
+        "body": "Publisering av forankringer og den offentlige transparency-loggen. Etterprøving av tidligere forankringer forblir mulig offline."
+      },
+      {
+        "name": "Kvalifisert tidsstempel-autoritet",
+        "state": "Via akkreditert QTSP",
+        "body": "Bundet til en ekstern eIDAS-kvalifisert autoritet; dens status publiseres av den autoriteten og dens tilsyn."
+      }
     ],
     "continuity_eyebrow": "Kontinuitet, ikke bare oppetid",
     "continuity_title": "Bygd så beviset overlever ethvert avbrudd — eller oss.",
@@ -468,7 +772,7 @@
     "lede_a": "Et tillitssystem som ikke tåler en sårbarhetsrapport er ikke troverdig. Rapporter sikkerhetsproblemer til ",
     "lede_strong": "security@truststandardprotocol.com",
     "lede_b": " — forskning i god tro møtes med koordinert håndtering, ikke juridiske trusler.",
-    "posture_eyebrow": "Sikkerhetspostyr",
+    "posture_eyebrow": "Sikkerhetstilnærming",
     "posture_title": "Hvordan vi håndterer nøkler, avsløring og verifiseringen din.",
     "posture_points": [
       "Koordinert avsløring: rapporter → triage → fiks → avslør → krediter. Ingen juridisk trussel for forskning i god tro.",
@@ -487,9 +791,24 @@
     "h1": "Gratis å verifisere, priset for å drifte.",
     "lede": "Verifisering er gratis i enhver kjøretid. Du betaler for å utstede og drifte i skala — ikke for å verifisere. Tallene under er bevisst utelatt mens vi validerer betalingsvilje; vi gir tilbud mot ditt omfang.",
     "tiers": [
-      { "name": "Verify", "price": "Gratis, for alltid", "body": "Nettleser-verifikatoren, verifikatorkjerne-pakkene, TrustBadge-komponenten og eksempelkvitteringer. Offline verifisering virker alltid.", "cta": "Åpne verifikatoren" },
-      { "name": "Pilot", "price": "Fast omfang · ta kontakt", "body": "Én arbeidsflyt koblet inn i en signert beviskjede, på uker. Utstederverktøy på en pilot-/staging-nøkkel. Omfang og pris avtalt på forhånd.", "cta": "Avgrens en pilot" },
-      { "name": "Evidence Pack", "price": "På tilbud", "body": "Operatørmoduler (Explorer, Dossier, Oversight, Control Plane, Gateway) og løpende utstedelse for arbeidsflyter med høyere volum, etter hvert som du beveger deg forbi pilot.", "cta": "Be om tilbud" }
+      {
+        "name": "Verify",
+        "price": "Gratis, for alltid",
+        "body": "Nettleser-verifikatoren, verifikatorkjerne-pakkene, TrustBadge-komponenten og eksempelkvitteringer. Offline verifisering virker alltid.",
+        "cta": "Åpne verifikatoren"
+      },
+      {
+        "name": "Pilot",
+        "price": "Fast omfang · ta kontakt",
+        "body": "Én arbeidsflyt koblet inn i en signert beviskjede, på uker. Utstederverktøy på en pilot-/staging-nøkkel. Omfang og pris avtalt på forhånd.",
+        "cta": "Avgrens en pilot"
+      },
+      {
+        "name": "Evidence Pack",
+        "price": "På tilbud",
+        "body": "Operatørmoduler (Explorer, Dossier, Oversight, Control Plane, Gateway) og løpende utstedelse for arbeidsflyter med høyere volum, etter hvert som du beveger deg forbi pilot.",
+        "cta": "Be om tilbud"
+      }
     ],
     "official_strong": "Offisiell status er ikke et prisnivå.",
     "official_body": " Utsteder-autorisasjon, registeroppføring og bruk av det offisielle merket er styrte tildelinger — aldri låst opp av betaling. Betaling gir aldri offisiell status."
@@ -500,14 +819,24 @@
     "lede": "Fem steg; hvert ett utsteder en kvittering, så ved slutten beviser sporet seg selv — ingen tillit til oss kreves. Den fulle referansen (Starlight) kommer i Phase A.2; hurtigstarten og protokollomvisningen er her nå.",
     "chip": "Referanse-dokumentasjonssted — kommer i Phase A.2",
     "steps": [
-      { "title": "Registrer utstederen din" },
-      { "title": "Instrumenter beslutningen" },
-      { "title": "Forsegl og kjed kvitteringen" },
-      { "title": "Publiser kvitteringsstrømmen din" },
-      { "title": "Verifiser — hvem som helst kan" }
+      {
+        "title": "Registrer utstederen din"
+      },
+      {
+        "title": "Instrumenter beslutningen"
+      },
+      {
+        "title": "Forsegl og kjed kvitteringen"
+      },
+      {
+        "title": "Publiser kvitteringsstrømmen din"
+      },
+      {
+        "title": "Verifiser — hvem som helst kan"
+      }
     ],
     "closing_a": "Du har nå et kun-tillegg-spor som hvem du enn deler det med kan etterprøve fra din egen publiserte strøm — ingen tillit til oss kreves. Offentlig, uavhengig forankring er det betalte ",
-    "closing_seal": "Seal",
+    "closing_seal": "Segl",
     "closing_b": "-laget; det lokale sporet over står på egne ben. Les hvordan det er definert i ",
     "closing_spec": "protokollspesifikasjonen",
     "closing_c": ", bla i ",
@@ -557,36 +886,75 @@
   "leaderboard": {
     "kicker": "Adopsjons-ledertavle",
     "h1": "Bli oppført — og bevis at du fortjente det.",
-    "lede": "Hver score recomputes fra dine egne kvitteringer. Du kan ikke kjøpe en plass, blåse opp et tall eller selvrapportere deg oppover — du kan bare bevise det.",
-    "metrics_title": "Fire tall. Alle recomputerbare fra kvitteringer.",
+    "lede": "Hver score beregnes på nytt fra dine egne kvitteringer. Du kan ikke kjøpe en plass, blåse opp et tall eller selvrapportere deg oppover — du kan bare bevise det.",
+    "metrics_title": "Fire tall. Alle kan beregnes på nytt fra kvitteringer.",
     "metrics": [
-      { "name": "Verifiserbarhet", "formula": "kvitteringer som består alle sjekker ÷ kvitteringer stikkprøvet × 100", "note": "Hver sjekk — digest recomputes, Ed25519-signatur gyldig, kjede intakt, utstedernøkkel slår opp i registeret — recomputes av scoreren, så den kan ikke selvrapporteres." },
-      { "name": "Dekning", "formula": "kvitteringer som verifiserer ÷ beslutninger i deklarert omfang × 100", "note": "Nevneren er ditt deklarerte omfang — offentlig og stikkprøvet." },
-      { "name": "Menneskelig tilsyn", "formula": "kvitteringer med gyldig human_review ÷ høyrisiko-kvitteringer × 100", "note": "Knyttes til EU AI Act art. 14 — forseglet i digesten, så det kan ikke legges til i ettertid." }
+      {
+        "name": "Verifiserbarhet",
+        "formula": "kvitteringer som består alle sjekker ÷ kvitteringer stikkprøvet × 100",
+        "note": "Hver sjekk — digest beregnes på nytt, Ed25519-signatur gyldig, kjede intakt, utstedernøkkel slår opp i registeret — beregnes på nytt av scoreren, så den kan ikke selvrapporteres."
+      },
+      {
+        "name": "Dekning",
+        "formula": "kvitteringer som verifiserer ÷ beslutninger i deklarert omfang × 100",
+        "note": "Nevneren er ditt deklarerte omfang — offentlig og stikkprøvet."
+      },
+      {
+        "name": "Menneskelig tilsyn",
+        "formula": "kvitteringer med gyldig human_review ÷ høyrisiko-kvitteringer × 100",
+        "note": "Knyttes til EU AI Act art. 14 — forseglet i digesten, så det kan ikke legges til i ettertid."
+      }
     ],
     "overall": "Totalt = 0,40 × Verifiserbarhet + 0,35 × Dekning + 0,25 × Menneskelig tilsyn.",
     "tiers": [
-      { "name": "Charter", "rule": "≥ 95 og fullt på (dekning ≥ 99, tilsyn ≥ 100)" },
-      { "name": "Verified", "rule": "≥ 85" },
-      { "name": "Piloting", "rule": "≥ 65" },
-      { "name": "Ikke oppført ennå", "rule": "< 65" }
+      {
+        "name": "Charter",
+        "rule": "≥ 95 og fullt på (dekning ≥ 99, tilsyn ≥ 100)"
+      },
+      {
+        "name": "Verified",
+        "rule": "≥ 85"
+      },
+      {
+        "name": "Piloting",
+        "rule": "≥ 65"
+      },
+      {
+        "name": "Ikke oppført ennå",
+        "rule": "< 65"
+      }
     ],
     "enroll_title": "Meld deg på i fem steg — og modeller scoren din nå.",
     "enroll_note_a": "Registeroppføring er en styrt tildeling — for tiden en pilot — ikke et automatisk resultat av å forsegle kvitteringer. Å forsegle lokalt er gratis og trenger ingenting av dette; publisering og forankring til registeret er det uavhengige ",
     "enroll_note_link": "Segl",
     "enroll_note_b": "-laget.",
     "steps": [
-      { "title": "Registrer utstedernøkkelen din", "body": "Publiser organisasjonen og den offentlige nøkkelen din til registeret så kvitteringer kan tilskrives." },
-      { "title": "Deklarer omfanget ditt", "body": "Navngi beslutningstype, jurisdiksjon og forventet volum. Dette setter Dekning-nevneren — offentlig og stikkprøvet." },
-      { "title": "Publiser en kvitteringsstrøm", "body": "Eksponer en offentlig strøm av kvitteringene dine så hvem som helst — inkludert scoreren — kan hente og recompute dem." },
-      { "title": "Kjør samsvarssjekken", "body": "Den offentlige scoreren stikkprøver kvitteringene dine, recomputer digester, slår opp nøkler og scorer alle fire målene." },
-      { "title": "Bli oppført", "body": "En score og et nivå tildeles, et merke utstedes, og du dukker opp på ledertavlen — kontinuerlig re-scoret." }
+      {
+        "title": "Registrer utstedernøkkelen din",
+        "body": "Publiser organisasjonen og den offentlige nøkkelen din til registeret så kvitteringer kan tilskrives."
+      },
+      {
+        "title": "Deklarer omfanget ditt",
+        "body": "Navngi beslutningstype, jurisdiksjon og forventet volum. Dette setter Dekning-nevneren — offentlig og stikkprøvet."
+      },
+      {
+        "title": "Publiser en kvitteringsstrøm",
+        "body": "Eksponer en offentlig strøm av kvitteringene dine så hvem som helst — inkludert scoreren — kan hente og beregne dem på nytt."
+      },
+      {
+        "title": "Kjør samsvarssjekken",
+        "body": "Den offentlige scoreren stikkprøver kvitteringene dine, beregner digester på nytt, slår opp nøkler og scorer alle fire målene."
+      },
+      {
+        "title": "Bli oppført",
+        "body": "En score og et nivå tildeles, et merke utstedes, og du dukker opp på ledertavlen — kontinuerlig re-scoret."
+      }
     ],
     "score_label": "Din live score",
     "verif_label": "Verifiserbarhet",
     "cover_label": "Dekning",
     "oversight_label": "Menneskelig tilsyn",
-    "score_note": "Modellert klient-side fra de publiserte vektene. Den ekte scoren recomputes av scoreren fra kvitteringene dine — recompute, ikke selvrapport.",
+    "score_note": "Modellert klient-side fra de publiserte vektene. Den ekte scoren beregnes på nytt av scoreren fra kvitteringene dine — beregn på nytt, ikke selvrapporter.",
     "final_title": "Klar til å bli målt på hva du kan bevise?",
     "final_lede": "Charter-piloter melder seg på først. Du kan ikke kjøpe en plass, bare bevise en.",
     "final_cta_a": "Avgrens en pilot",
@@ -610,7 +978,7 @@
     "envelope_mono": "content.hash = SHA-256 over kanonisk JSON (JCS, RFC 8785) av content-verdien.",
     "manifest_body": "En TrustManifest er nøkkelkatalogen: den sier hvilke nøkler en utsteder signerer med og hvor de finnes. En verifikator bruker den til å slå opp nøkkelen en kvittering refererer til — uten den kan du sjekke integritet, men ikke provenans.",
     "manifest_mono": "Ed25519 (EdDSA) offentlige nøkler · publisert eller kunde-avgrenset.",
-    "verification_body": "Verifisering recomputer hashen, sjekker Ed25519-signaturen mot manifest-nøkkelen, og bekrefter at hver kvittering lenker til den forrige. Den rapporterer en bevistilstand — aldri en dom om sannhet eller lovlighet.",
+    "verification_body": "Verifisering beregner hashen på nytt, sjekker Ed25519-signaturen mot manifest-nøkkelen, og bekrefter at hver kvittering lenker til den forrige. Den rapporterer en bevistilstand — aldri en dom om sannhet eller lovlighet.",
     "check_integrity": "Integritet — kanonisk hash stemmer",
     "check_signature": "Signatur — signert av manifest-nøkkelen",
     "check_chain": "Kjede — lenker til forrige kvittering",
@@ -635,17 +1003,35 @@
     "modules_title": "Operatørmoduler",
     "modules_lede": "Moduler leveres inaktive; et offline lisens-token aktiverer dem. Gratis verifisering virker alltid.",
     "modules": [
-      { "name": "Evidence Explorer", "body": "Søk og filtrer kvitteringer på tvers av en arbeidsflyt." },
-      { "name": "Audit Dossier", "body": "Pakk kvitteringer, gjennomganger og manifester i ett eksporterbart bunt." },
-      { "name": "Risk Monitor", "body": "Flagg manglende bevis og foreldede nøkler — varsler, ikke en sikkerhetsdom." },
-      { "name": "Oversight Workflow", "body": "Gjennomgå, eskaler og overstyr — hvert steg signert." },
-      { "name": "Control Plane", "body": "Tenanter, lisenser, utstedere og revisjonsspor — ingen offisiell status ved betaling." },
-      { "name": "Agent Gateway", "body": "Verktøykall-kvitteringer og policy-tilstand — fanger, hevder aldri korrekthet." }
+      {
+        "name": "Evidence Explorer",
+        "body": "Søk og filtrer kvitteringer på tvers av en arbeidsflyt."
+      },
+      {
+        "name": "Audit Dossier",
+        "body": "Pakk kvitteringer, gjennomganger og manifester i ett eksporterbart bunt."
+      },
+      {
+        "name": "Risk Monitor",
+        "body": "Flagg manglende bevis og foreldede nøkler — varsler, ikke en sikkerhetsdom."
+      },
+      {
+        "name": "Oversight Workflow",
+        "body": "Gjennomgå, eskaler og overstyr — hvert steg signert."
+      },
+      {
+        "name": "Control Plane",
+        "body": "Tenanter, lisenser, utstedere og revisjonsspor — ingen offisiell status ved betaling."
+      },
+      {
+        "name": "Agent Gateway",
+        "body": "Verktøykall-kvitteringer og policy-tilstand — fanger, hevder aldri korrekthet."
+      }
     ],
     "badge_title": "TrustBadge — bevisets inngangspunkt",
     "badge_lede": "En drop-in-komponent som knytter en AI-utgang til provenanskvitteringen. Resolveren avgjør om offisiell ordlyd er tillatt; merket selv gjenspeiler alltid bare verifikasjonstilstand.",
     "badge_cta": "Se et TrustBadge reagere på live verifisering →",
-    "sec_title": "Sikkerhetspostyr",
+    "sec_title": "Sikkerhetstilnærming",
     "sec_points": [
       "Rapporter til security@truststandardprotocol.com — koordinert håndtering, ingen juridisk trussel for forskning i god tro.",
       "Atskilte dev-/staging-/produksjonsnøkler. Rotasjon og tilbakekalling testet før lansering. Ingen produksjonsnøkler i offentlige repoer.",
@@ -661,30 +1047,80 @@
     "q1_title": "«Lekker det ikke alles private data å publisere kvitteringer?»",
     "q1_body": "Det som er offentlig er aldri beslutningen — det er en forpliktelse: kryptografisk bevis på at en spesifikk, uendret beslutning ble forseglet på et spesifikt tidspunkt av en registrert nøkkel. Selve beslutningen avsløres kun til en part med rettslig grunnlag til å se den, som så sjekker den mot den forpliktelsen.",
     "q1_cards": [
-      { "title": "Forplikt, ikke eksponer", "body": "Registeret lagrer en saltet hash av nyttelasten — nok til å bevise integritet, ubrukelig til å rekonstruere dataene." },
-      { "title": "Avslør på rettslig grunnlag", "body": "Et subjekt, en regulator eller en domstol mottar klartekst og verifiserer at den hasher til forpliktelsen." },
-      { "title": "Aggregat, ikke individ", "body": "Utfallsrater publiseres som vindusvis statistikk. Offentligheten ser mønstre; aldri en person." }
+      {
+        "title": "Forplikt, ikke eksponer",
+        "body": "Registeret lagrer en saltet hash av nyttelasten — nok til å bevise integritet, ubrukelig til å rekonstruere dataene."
+      },
+      {
+        "title": "Avslør på rettslig grunnlag",
+        "body": "Et subjekt, en regulator eller en domstol mottar klartekst og verifiserer at den hasher til forpliktelsen."
+      },
+      {
+        "title": "Aggregat, ikke individ",
+        "body": "Utfallsrater publiseres som vindusvis statistikk. Offentligheten ser mønstre; aldri en person."
+      }
     ],
     "q2_eyebrow": "Sp2 · vi publiserer angrepsflaten og betaler deg for å bryte den",
     "q2_title": "«Hva hindrer noen i å forfalske det hele?»",
     "q2_body": "Et tillitssystem som ikke kan si hvordan det feiler er ikke troverdig. Her er angrepsflaten, og hva som stopper hver enkelt.",
     "attacks": [
-      { "attack": "Forfalske en kvittering fra ingenting", "stop": "Signaturen må slå opp til en registrert Ed25519-nøkkel i registeret. Ingen nøkkel, ingen provenans.", "residual": "Restrisiko: en stjålet nøkkel — utenfor omfang her, håndtert av rotasjon + tilbakekalling." },
-      { "attack": "Tilbakedatere en beslutning", "stop": "Kun-tillegg-logg + kjedeposisjon. En kvittering kan ikke stille settes inn i fortiden.", "residual": "Restrisiko: tidsstempel-nøyaktighet avhenger av TSA-en du binder." },
-      { "attack": "Bare publisere smigrende beslutninger", "stop": "Dekning-målet deler verifiserende kvitteringer på deklarert omfangsvolum — nevneren er offentlig og stikkprøvet.", "residual": "Restrisiko: et vilt underdeklarert omfang er i seg selv et synlig signal." },
-      { "attack": "Samarbeide med scoreren", "stop": "Scoring er reproduserbar fra offentlige artefakter — hvem som helst kan recompute det. Ingen tillit til scoreren kreves.", "residual": "Restrisiko: ingen kryptografisk; artefaktene er revisjonen." },
-      { "attack": "Endre nyttelasten etter forsegling", "stop": "Innholdshash-forpliktelsen selv-ugyldiggjør. Én endret byte feiler verifisering.", "residual": "Restrisiko: ingen — dette er kjerneegenskapen." },
-      { "attack": "Spille av en gammel kvittering", "stop": "Unik ID + kjedeposisjon gjør en avspilt kvittering synlig som malplassert.", "residual": "Restrisiko: avhenger av at konsumenter sjekker kjedeposisjon." }
+      {
+        "attack": "Forfalske en kvittering fra ingenting",
+        "stop": "Signaturen må slå opp til en registrert Ed25519-nøkkel i registeret. Ingen nøkkel, ingen provenans.",
+        "residual": "Restrisiko: en stjålet nøkkel — utenfor omfang her, håndtert av rotasjon + tilbakekalling."
+      },
+      {
+        "attack": "Tilbakedatere en beslutning",
+        "stop": "Kun-tillegg-logg + kjedeposisjon. En kvittering kan ikke stille settes inn i fortiden.",
+        "residual": "Restrisiko: tidsstempel-nøyaktighet avhenger av TSA-en du binder."
+      },
+      {
+        "attack": "Bare publisere smigrende beslutninger",
+        "stop": "Dekning-målet deler verifiserende kvitteringer på deklarert omfangsvolum — nevneren er offentlig og stikkprøvet.",
+        "residual": "Restrisiko: et vilt underdeklarert omfang er i seg selv et synlig signal."
+      },
+      {
+        "attack": "Samarbeide med scoreren",
+        "stop": "Scoring er reproduserbar fra offentlige artefakter — hvem som helst kan beregne det på nytt. Ingen tillit til scoreren kreves.",
+        "residual": "Restrisiko: ingen kryptografisk; artefaktene er revisjonen."
+      },
+      {
+        "attack": "Endre nyttelasten etter forsegling",
+        "stop": "Innholdshash-forpliktelsen selv-ugyldiggjør. Én endret byte feiler verifisering.",
+        "residual": "Restrisiko: ingen — dette er kjerneegenskapen."
+      },
+      {
+        "attack": "Spille av en gammel kvittering",
+        "stop": "Unik ID + kjedeposisjon gjør en avspilt kvittering synlig som malplassert.",
+        "residual": "Restrisiko: avhenger av at konsumenter sjekker kjedeposisjon."
+      }
     ],
     "disclosure": "Avsløringssløyfe: rapporter → triage → fiks → avslør → krediter. Forskning i god tro møtes aldri med juridiske trusler.",
     "q3_eyebrow": "Sp3–5 · de vanskeligere",
     "q3_title": "Tre som er vanskeligere enn de ser ut.",
     "harder": [
-      { "q": "Hvem bestemmer hva som er «offisielt»?", "a": "Et styrt register og en autorisasjonsprosess — aldri betaling. Vi sier det i klartekst: betaling gir aldri offisiell status, og registeret er en pilot." },
-      { "q": "Er ikke dette bare en fancy logg?", "a": "En logg du kontrollerer beviser ingenting for en annenpart. Forskjellen er uavhengig verifisering: hvem som helst kjører regnestykket på nytt mot en publisert nøkkel og får samme svar." },
-      { "q": "Hva om spesifikasjonen er feil?", "a": "Spesifikasjonen, fixturene og verifikatorkjernene er åpne. Uavhengig verifikator-enighet på tvers av kjøretider er tillitsankeret — og den stående utfordringen betaler deg for å bryte det." }
+      {
+        "q": "Hvem bestemmer hva som er «offisielt»?",
+        "a": "Et styrt register og en autorisasjonsprosess — aldri betaling. Vi sier det i klartekst: betaling gir aldri offisiell status, og registeret er en pilot."
+      },
+      {
+        "q": "Er ikke dette bare en fancy logg?",
+        "a": "En logg du kontrollerer beviser ingenting for en annenpart. Forskjellen er uavhengig verifisering: hvem som helst kjører regnestykket på nytt mot en publisert nøkkel og får samme svar."
+      },
+      {
+        "q": "Hva om spesifikasjonen er feil?",
+        "a": "Spesifikasjonen, fixturene og verifikatorkjernene er åpne. Uavhengig verifikator-enighet på tvers av kjøretider er tillitsankeret — og den stående utfordringen betaler deg for å bryte det."
+      }
     ],
     "pilot_title": "Der en påstand ennå ikke er bevist, sier vi det.",
     "pilot_body": "Dette er en pilot. Ingenting av det over er avgjort lov eller en ratifisert standard — det er protokollens nåværende, testbare posisjon. Der en påstand ennå ikke er bevist, har vi sagt det i klartekst heller enn å runde det opp. Hvis ditt vanskeligste spørsmål ikke er her, send det — hullene er veikartet."
+  },
+  "islands": {
+    "playground": {
+      "dossier_note": "Hver kvittering verifiseres i /verify med denne publicKey. Demo-utstedelse — gir ikke offisiell status."
+    },
+    "verify": {
+      "need_key": "Lim inn utstederens offentlige nøkkel (JWK), eller en { envelope, publicKey }-pakke i kvitteringsfeltet."
+    }
   }
 }

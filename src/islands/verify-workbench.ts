@@ -3,6 +3,7 @@
 // publicKey} bundle exported from the playground). Nothing is uploaded anywhere.
 import { verifyTrustEnvelopeV3 } from "../lib/tsp";
 import type { JwkEd25519Public, TrustEnvelopeV3 } from "../lib/tsp";
+import { clientLang, t } from "../i18n";
 import { applyVerdict, renderChecks, setInvalidVerdict, tamperOneByte } from "./ui";
 import sampleEnvelope from "../lib/tsp/fixtures/v3/valid-envelope.json";
 import sampleKey from "../lib/tsp/fixtures/v3/valid-public-key.jwk.json";
@@ -67,7 +68,7 @@ if (
       return { envelope: parsedEnvelope.envelope, publicKey: parsedEnvelope.publicKey };
     }
     if (elKey.value.trim() === "") {
-      return { error: "Paste the issuer public key (JWK), or a { envelope, publicKey } bundle in the receipt box." };
+      return { error: t(clientLang(), "islands.verify.need_key") };
     }
     try {
       return { envelope: parsedEnvelope, publicKey: JSON.parse(elKey.value) };

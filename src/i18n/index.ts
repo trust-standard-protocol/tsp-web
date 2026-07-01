@@ -22,6 +22,18 @@ export function resolve(dict: unknown, path: string): unknown {
   return node;
 }
 
+/** Active language on the client: persisted choice, then <html lang>, then EN.
+ * Client-only — call it at event time so language toggles apply immediately. */
+export function clientLang(): Lang {
+  try {
+    const stored = localStorage.getItem("tsp-lang");
+    if (stored === "en" || stored === "no") return stored;
+  } catch {
+    /* storage unavailable */
+  }
+  return document.documentElement.lang === "no" ? "no" : "en";
+}
+
 /** Localized string for a key; falls back to EN, then "". */
 export function t(lang: Lang, path: string): string {
   const v = resolve(dicts[lang], path);
