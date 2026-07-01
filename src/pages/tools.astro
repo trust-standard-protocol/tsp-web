@@ -39,7 +39,7 @@ tsp-mcp --proxy   # captures tool-call evidence; re-runs verification`;
       <div class="grid grid-3" style="margin-top:1.5rem">
         {cores.map((core) => (
           <article class="card">
-            <p class="mono" style="font-size:var(--fs-mono); word-break:break-all">{core.pkg}</p>
+            <p class="mono" style="font-size:var(--fs-mono); word-break:normal; overflow-wrap:anywhere">{core.pkg}</p>
             <span class={core.signer ? "chip chip--copper" : "chip chip--teal"} data-i18n={core.signer ? "tools.core_signer" : "tools.core_verifier"}>{core.signer ? tl.core_signer : tl.core_verifier}</span>
             {core.noteKey && <p class="muted" style="font-size:var(--fs-small); margin-top:0.5rem" data-i18n={core.noteKey}>{core.note}</p>}
           </article>

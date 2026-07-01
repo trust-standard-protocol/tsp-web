@@ -1120,7 +1120,30 @@
       "dossier_note": "Hver kvittering verifiseres i /verify med denne publicKey. Demo-utstedelse — gir ikke offisiell status."
     },
     "verify": {
-      "need_key": "Lim inn utstederens offentlige nøkkel (JWK), eller en { envelope, publicKey }-pakke i kvitteringsfeltet."
+      "need_key": "Lim inn utstederens offentlige nøkkel (JWK), eller en { envelope, publicKey }-pakke i kvitteringsfeltet.",
+      "paste_placeholder": "Lim inn en TSP-kvittering (JSON) her…"
+    },
+    "checks": {
+      "schema": "Skjema og struktur",
+      "content_hash": "Innholdsintegritet (SHA-256)",
+      "ledger_hash": "Hovedbok-/kjedehash (SHA-256)",
+      "signature": "Utsteders signatur (Ed25519)",
+      "passed": "Bestått",
+      "failed": "Feilet",
+      "skipped": "Hoppet over"
+    },
+    "verdict": {
+      "valid": "VERIFISERT — bevisintegriteten er intakt",
+      "unsupported": "IKKE STØTTET — ikke en TSP v3-kvittering",
+      "invalid": "FEILET — kvitteringen er endret eller ugyldig"
+    },
+    "badge": {
+      "unverified": "Ikke verifisert ennå",
+      "unverified_sub": "forseglet lokalt — kjør verifiseringen for å oppdatere merket",
+      "valid": "Bevis verifisert",
+      "valid_sub": "TrustEnvelope v3 · Ed25519 · kun integritet",
+      "invalid": "Bevis brutt",
+      "invalid_sub": "verifisering feilet — ikke stol på denne kvitteringen"
     }
   }
 }

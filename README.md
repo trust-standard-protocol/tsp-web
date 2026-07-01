@@ -15,9 +15,10 @@ trusting the vendor. It does **not** make you compliant, prove a model is correc
 - **Hero demo** (`/playground`): build a real chain of signed receipts, verify it, break one byte,
   watch verification fail. Export a dossier that round-trips into `/verify`.
 - **Verify** (`/verify`): paste/upload a receipt + public key (or a playground bundle) → real verify.
-- Pages: Landing, Protocol, EU AI Act, Tools, Leaderboard, Hard Questions, Pricing, Docs (Fase A.2 stub).
+- Pages: Landing, Protocol, Why, Seal, Conformance, Register, Trust, Security, Status, Tools,
+  Leaderboard, Hard Questions, Pricing, Verify, Playground, Docs.
 - Agent surface: `/llms.txt`, `/.well-known/tsp.json`, `/.well-known/security.txt`, `/agent/*`.
-- Deploy scaffolding (built, NOT executed): `infra/Caddyfile`, `docker-compose.yml`, `Dockerfile`, `DEPLOY.md`.
+- Bilingual: English (server-rendered) and Norwegian Bokmål (client-side swap via `src/i18n/`).
 
 ## Scripts
 
@@ -37,6 +38,9 @@ Open layer: **Apache-2.0** (see `LICENSE`, `NOTICE`). The closed seal — issuan
 operator modules, and official status — is under a separate **commercial TSP license** and is not in
 this repo. Marks (TSP, Trust Standard Protocol, TrustEnvelope, TrustBadge) are controlled.
 
-## Status
+## Deploying
 
-See `BUILD-STATUS.md`. Nothing here has been deployed, pushed, or published — local build + preview only.
+Pushes to `main` build and claim-scan automatically; deploys to production wait for manual
+approval on the `production` environment. Security reports: see the main repo's
+[SECURITY.md](https://github.com/trust-standard-protocol/tsp/blob/main/SECURITY.md) or
+security@truststandardprotocol.com.

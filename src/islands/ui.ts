@@ -6,12 +6,13 @@
 // (aria-hidden) with the pass/fail/skip state carried as a visually-hidden word
 // so screen-reader users still get the verdict once the glyph is a picture.
 import type { VerificationResult } from "../lib/tsp";
+import { clientLang, t } from "../i18n";
 
-const CHECK_LABELS: Record<keyof VerificationResult["checks"], string> = {
-  schema: "Schema & shape",
-  contentHash: "Content integrity (SHA-256)",
-  ledgerHash: "Ledger / chain hash (SHA-256)",
-  signature: "Issuer signature (Ed25519)"
+const CHECK_LABEL_KEYS: Record<keyof VerificationResult["checks"], string> = {
+  schema: "islands.checks.schema",
+  contentHash: "islands.checks.content_hash",
+  ledgerHash: "islands.checks.ledger_hash",
+  signature: "islands.checks.signature"
 };
 
 const CHECK_ORDER: Array<keyof VerificationResult["checks"]> = ["schema", "contentHash", "ledgerHash", "signature"];
@@ -24,7 +25,11 @@ const ICON_PATHS: Record<"check" | "x" | "dash", string[]> = {
   dash: ["M 300,512 L 724,512"]
 };
 const STATUS_ICON: Record<string, keyof typeof ICON_PATHS> = { passed: "check", failed: "x", skipped: "dash" };
-const STATUS_WORD: Record<string, string> = { passed: "Passed", failed: "Failed", skipped: "Skipped" };
+const STATUS_WORD_KEYS: Record<string, string> = {
+  passed: "islands.checks.passed",
+  failed: "islands.checks.failed",
+  skipped: "islands.checks.skipped"
+};
 
 export function icon(name: keyof typeof ICON_PATHS, size: number, weight: number): SVGSVGElement {
   const svg = document.createElementNS(SVG_NS, "svg");
@@ -48,6 +53,7 @@ export function icon(name: keyof typeof ICON_PATHS, size: number, weight: number
 }
 
 export function renderChecks(container: HTMLElement, result: VerificationResult): void {
+  const lang = clientLang();
   container.replaceChildren();
   for (const key of CHECK_ORDER) {
     const check = result.checks[key];
@@ -60,12 +66,12 @@ export function renderChecks(container: HTMLElement, result: VerificationResult)
     iconWrap.appendChild(icon(STATUS_ICON[check.status] ?? "dash", 13, 110));
     const state = document.createElement("span");
     state.className = "visually-hidden";
-    state.textContent = `${STATUS_WORD[check.status] ?? "Skipped"}: `;
+    state.textContent = `${t(lang, STATUS_WORD_KEYS[check.status] ?? STATUS_WORD_KEYS.skipped)}: `;
     iconWrap.appendChild(state);
 
     const label = document.createElement("span");
     const strong = document.createElement("strong");
-    strong.textContent = CHECK_LABELS[key];
+    strong.textContent = t(lang, CHECK_LABEL_KEYS[key]);
     label.append(strong);
 
     const detail = document.createElement("span");
@@ -85,16 +91,15 @@ export function setInvalidVerdict(el: HTMLElement, text: string): void {
 }
 
 export function applyVerdict(el: HTMLElement, result: VerificationResult): void {
+  const lang = clientLang();
   if (result.status === "valid") {
     el.dataset.state = "valid";
-    el.replaceChildren(icon("check", 16, 90), document.createTextNode("VERIFIED — evidence integrity intact"));
+    el.replaceChildren(icon("check", 16, 90), document.createTextNode(t(lang, "islands.verdict.valid")));
     return;
   }
   setInvalidVerdict(
     el,
-    result.status === "unsupported-version"
-      ? "UNSUPPORTED — not a TSP v3 receipt"
-      : "FAILED — this receipt was altered or is invalid"
+    result.status === "unsupported-version" ? t(lang, "islands.verdict.unsupported") : t(lang, "islands.verdict.invalid")
   );
 }
 

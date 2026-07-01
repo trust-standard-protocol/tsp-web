@@ -33,6 +33,13 @@ function applyLang(lang: Lang): void {
     if (typeof value === "string") el.textContent = value;
   });
 
+  document.querySelectorAll<HTMLElement>("[data-i18n-placeholder]").forEach((el) => {
+    const key = el.dataset.i18nPlaceholder;
+    if (!key) return;
+    const value = resolve(dict, key);
+    if (typeof value === "string") el.setAttribute("placeholder", value);
+  });
+
   document.querySelectorAll<HTMLButtonElement>("[data-lang-set]").forEach((btn) => {
     btn.setAttribute("aria-pressed", String(btn.dataset.langSet === lang));
   });

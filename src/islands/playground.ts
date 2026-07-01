@@ -233,21 +233,29 @@ if (root) {
 
   function renderBadge() {
     if (!badgeEl) return;
-    const allValid = results.length > 0 && broken.every((b) => !b);
-    badgeEl.dataset.state = allValid ? "valid" : "invalid";
+    const lang = clientLang();
+    // Three states: an unverified chain is not "broken" — it just has no
+    // verification result yet. The base .trustbadge style is the neutral look.
+    const unverified = results.length === 0;
+    const allValid = !unverified && broken.every((b) => !b);
+    badgeEl.dataset.state = unverified ? "unverified" : allValid ? "valid" : "invalid";
     badgeEl.replaceChildren();
 
     const mark = document.createElement("span");
     mark.className = "trustbadge__mark";
-    mark.appendChild(icon(allValid ? "check" : "x", 16, 95));
+    mark.appendChild(icon(unverified ? "dash" : allValid ? "check" : "x", 16, 95));
 
     const text = document.createElement("span");
     const label = document.createElement("strong");
-    label.textContent = allValid ? "Evidence verified" : "Evidence broken";
+    label.textContent = t(
+      lang,
+      unverified ? "islands.badge.unverified" : allValid ? "islands.badge.valid" : "islands.badge.invalid"
+    );
     const sub = document.createElement("small");
-    sub.textContent = allValid
-      ? "TrustEnvelope v3 · Ed25519 · integrity only"
-      : "verification failed — do not rely on this receipt";
+    sub.textContent = t(
+      lang,
+      unverified ? "islands.badge.unverified_sub" : allValid ? "islands.badge.valid_sub" : "islands.badge.invalid_sub"
+    );
     text.append(label, document.createElement("br"), sub);
 
     badgeEl.append(mark, text);

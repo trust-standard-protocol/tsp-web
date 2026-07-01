@@ -1119,7 +1119,30 @@
       "dossier_note": "Each receipt verifies in /verify with this publicKey. Demo issuance — not governed official status."
     },
     "verify": {
-      "need_key": "Paste the issuer public key (JWK), or a { envelope, publicKey } bundle in the receipt box."
+      "need_key": "Paste the issuer public key (JWK), or a { envelope, publicKey } bundle in the receipt box.",
+      "paste_placeholder": "Paste a TSP receipt JSON here…"
+    },
+    "checks": {
+      "schema": "Schema & shape",
+      "content_hash": "Content integrity (SHA-256)",
+      "ledger_hash": "Ledger / chain hash (SHA-256)",
+      "signature": "Issuer signature (Ed25519)",
+      "passed": "Passed",
+      "failed": "Failed",
+      "skipped": "Skipped"
+    },
+    "verdict": {
+      "valid": "VERIFIED — evidence integrity intact",
+      "unsupported": "UNSUPPORTED — not a TSP v3 receipt",
+      "invalid": "FAILED — this receipt was altered or is invalid"
+    },
+    "badge": {
+      "unverified": "Not yet verified",
+      "unverified_sub": "sealed locally — run the verify step to populate this badge",
+      "valid": "Evidence verified",
+      "valid_sub": "TrustEnvelope v3 · Ed25519 · integrity only",
+      "invalid": "Evidence broken",
+      "invalid_sub": "verification failed — do not rely on this receipt"
     }
   }
 }
