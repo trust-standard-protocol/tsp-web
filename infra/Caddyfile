@@ -3,10 +3,27 @@
 # BUILT, NOT EXECUTED — see DEPLOY.md. The owner runs the deploy explicitly.
 #
 # DNS: all A records -> the Hetzner host. www -> apex redirect.
-
 {
 	# email for Let's Encrypt — set via env at deploy time, not committed.
 	email {$ACME_EMAIL}
+}
+
+# Security headers applied to every site block. The CSP is deliberately tight:
+# a static site with no external origins. script-src 'self' holds because Astro
+# bundles the island <script>s to external /_astro/*.js (no inline scripts);
+# style-src needs 'unsafe-inline' because pages use inline style="" attributes
+# and Astro inlines small stylesheets (inlineStylesheets:'auto'). frame-ancestors
+# + X-Frame-Options block clickjacking of the live verifier.
+(security_headers) {
+	header {
+		X-Content-Type-Options nosniff
+		Referrer-Policy strict-origin-when-cross-origin
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Frame-Options DENY
+		Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+		# Caddy adds a Server: Caddy header by default; drop it.
+		-Server
+	}
 }
 
 # Apex: the static Astro site.
@@ -15,16 +32,13 @@ truststandardprotocol.com {
 	root * /srv/site
 	file_server
 	try_files {path} {path}/ {path}.html /index.html
-	header {
-		X-Content-Type-Options nosniff
-		Referrer-Policy strict-origin-when-cross-origin
-		Strict-Transport-Security "max-age=31536000; includeSubDomains"
-	}
+	import security_headers
 	# Agent + machine-readable surfaces are plain static files in the build.
 }
 
 # www -> apex
 www.truststandardprotocol.com {
+	import security_headers
 	redir https://truststandardprotocol.com{uri} permanent
 }
 
@@ -34,6 +48,7 @@ verify.truststandardprotocol.com {
 	root * /srv/site
 	file_server
 	try_files {path} {path}/ {path}.html /verify/index.html
+	import security_headers
 }
 
 # Docs subdomain: Starlight build (Fase A.2). Until then, proxy to the main docs page.
@@ -42,11 +57,15 @@ docs.truststandardprotocol.com {
 	root * /srv/docs
 	file_server
 	try_files {path} {path}/ {path}.html /index.html
+	import security_headers
 }
 
 # Agent subdomain: static machine-readable files (llms.txt, openapi.json, manifest, protocol.md).
+# No directory browsing: the machine-readable surfaces are linked explicitly, so an
+# auto-generated index is needless disclosure.
 agent.truststandardprotocol.com {
 	encode zstd gzip
 	root * /srv/site/agent
-	file_server browse
+	file_server
+	import security_headers
 }
