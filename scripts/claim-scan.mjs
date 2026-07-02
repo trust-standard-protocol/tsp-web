@@ -68,7 +68,17 @@ const OVERCLAIMS = [
   { id: "compliance-guaranteed", re: /\bcompliance\s+(?:is\s+)?guaranteed\b/gi },
   { id: "proves-truth", re: /\bproves?\s+(?:truth|it'?s\s+true|the\s+truth)\b/gi },
   { id: "proves-legal", re: /\bproves?\s+(?:legal|legality|it'?s\s+legal|neutral|neutrality)\b/gi },
-  { id: "legally-compliant-positive", re: /(?<!not\s)(?<!never\s)\bmakes?\s+(?:it|you)\s+legally compliant\b/gi }
+  { id: "legally-compliant-positive", re: /(?<!not\s)(?<!never\s)\bmakes?\s+(?:it|you)\s+legally compliant\b/gi },
+  // Qualified-status overclaims. The site's honest forms — "eIDAS-qualified
+  // timestamp authority" (a third party), "we do not yet hold qualified status",
+  // "vi har ikke kvalifisert status" — must stay clean, so these match only the
+  // positive adjacency: eIDAS-compliant/certified, "we hold qualified status",
+  // "qualified/certified by TSP", "we are a QTSP" (EN + NO).
+  { id: "eidas-compliant", re: /\beIDAS[\s-](?:compliant|compliance|certified|approved|sertifisert|godkjent)\b/gi },
+  { id: "holds-qualified-status", re: /\b(?:we|tsp|the seal|lexico)\s+(?:now\s+)?(?:holds?|ha(?:ve|s)|is|are)\s+(?:eIDAS[\s-])?qualified\s+status\b/gi },
+  { id: "holds-qualified-status-no", re: /\b(?:vi|tsp|seglet)\s+(?:har|er)\s+(?:nå\s+)?kvalifisert\s+status\b/gi },
+  { id: "qualified-by-tsp", re: /\b(?:qualified|certified|accredited|kvalifisert|sertifisert|akkreditert)\s+(?:by|av)\s+TSP\b/gi },
+  { id: "we-are-qtsp", re: /\b(?:we|tsp|lexico|vi)\s+(?:is|are|er)\s+(?:an?\s+|en\s+)?(?:accredited\s+|akkreditert\s+)?QTSP\b/gi }
 ];
 
 function collect(target, out) {
