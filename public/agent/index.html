@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agent surface — Trust Standard Protocol</title>
+  <meta name="description" content="Index of the machine-readable /agent/ surface of truststandardprotocol.com.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <style>
+    body { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+           background: #e7e1d2; color: #1d3a5f; max-width: 44rem;
+           margin: 3rem auto; padding: 0 1.25rem; line-height: 1.55; }
+    a { color: #1d3a5f; }
+    h1 { font-size: 1.15rem; }
+    dt { margin-top: 1rem; }
+    dd { margin: 0.15rem 0 0 0; color: #3d6188; }
+    footer { margin-top: 2.5rem; font-size: 0.85rem; color: #3d6188;
+             border-top: 1px solid #1d3a5f33; padding-top: 1rem; }
+  </style>
+</head>
+<body>
+  <h1>Trust Standard Protocol — machine-readable agent surface</h1>
+  <p>A structured copy of this index lives at <a href="/agent/index.json">/agent/index.json</a>.</p>
+  <dl>
+    <dt><a href="/agent/protocol.md">/agent/protocol.md</a></dt>
+    <dd>Protocol summary for agents — TrustEnvelope v3, verification semantics, the claim boundary.</dd>
+    <dt><a href="/agent/tsp-manifest.json">/agent/tsp-manifest.json</a></dt>
+    <dd>Demo/fixture issuer manifest for the public verify demos. Not a production or official-status key.</dd>
+    <dt><a href="/agent/openapi.json">/agent/openapi.json</a></dt>
+    <dd>Placeholder descriptor for a future hosted verify endpoint. Not live; verification is offline and client-side today.</dd>
+    <dt><a href="/llms.txt">/llms.txt</a></dt>
+    <dd>Site summary for language models.</dd>
+    <dt><a href="/.well-known/tsp-manifest.json">/.well-known/tsp-manifest.json</a></dt>
+    <dd>Production issuer manifest (trust anchor) — distinct from the demo manifest above.</dd>
+  </dl>
+  <footer>
+    TSP verifies evidence integrity within an instrumented boundary. It does not determine
+    factual correctness, legality, safety, or compliance.
+    <br><a href="/">truststandardprotocol.com</a> · <a href="https://github.com/trust-standard-protocol/tsp">source</a>
+  </footer>
+</body>
+</html>

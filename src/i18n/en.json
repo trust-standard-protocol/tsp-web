@@ -1148,5 +1148,12 @@
       "invalid": "Evidence broken",
       "invalid_sub": "verification failed — do not rely on this receipt"
     }
+  },
+  "notfound": {
+    "kicker": "404 — not found",
+    "h1": "There is no page at this address.",
+    "lede": "The link may be mistyped, or the page may have moved. Nothing was verified and nothing failed — this address simply does not exist.",
+    "cta_home": "Go to the front page",
+    "cta_verify": "Verify a receipt"
   }
 }

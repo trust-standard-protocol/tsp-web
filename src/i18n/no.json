@@ -1149,5 +1149,12 @@
       "invalid": "Bevis brutt",
       "invalid_sub": "verifisering feilet — ikke stol på denne kvitteringen"
     }
+  },
+  "notfound": {
+    "kicker": "404 — ikke funnet",
+    "h1": "Det finnes ingen side på denne adressen.",
+    "lede": "Lenken kan være feilskrevet, eller siden kan ha flyttet. Ingenting ble verifisert og ingenting feilet — adressen finnes rett og slett ikke.",
+    "cta_home": "Til forsiden",
+    "cta_verify": "Verifiser en kvittering"
   }
 }

@@ -1,0 +1,37 @@
+{
+  "surface": "tsp-agent-index",
+  "description": "Index of the machine-readable /agent/ surface of truststandardprotocol.com. TSP reports evidence integrity — never truth, correctness, legality, safety, or compliance.",
+  "files": [
+    {
+      "path": "/agent/protocol.md",
+      "description": "Protocol summary for agents — TrustEnvelope v3, verification semantics, the claim boundary."
+    },
+    {
+      "path": "/agent/tsp-manifest.json",
+      "description": "Demo/fixture issuer manifest for the public verify demos. Not a production or official-status key."
+    },
+    {
+      "path": "/agent/openapi.json",
+      "description": "Placeholder descriptor for a future hosted verify endpoint. Not a live endpoint; verification is offline and client-side today."
+    }
+  ],
+  "related": [
+    {
+      "path": "/llms.txt",
+      "description": "Site summary for language models."
+    },
+    {
+      "path": "/.well-known/tsp-manifest.json",
+      "description": "Production issuer manifest (trust anchor) — distinct from the demo manifest above."
+    },
+    {
+      "path": "/.well-known/tsp.json",
+      "description": "Protocol surface descriptor."
+    },
+    {
+      "path": "/.well-known/security.txt",
+      "description": "Coordinated disclosure contact."
+    }
+  ],
+  "source": "https://github.com/trust-standard-protocol/tsp"
+}

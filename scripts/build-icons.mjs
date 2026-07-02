@@ -10,7 +10,8 @@
 //      (the colored .red/.copper/.amber variants' intent is applied at use-site
 //      via `currentColor` + CSS color, so only the base glyphs are normalized).
 //
-// Run: node scripts/build-icons.mjs
+// Source 1 is an owner-local folder, not in the repo — point TSP_ICON_SRC_DIR at it.
+// Run: TSP_ICON_SRC_DIR=/path/to/graphics node scripts/build-icons.mjs
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -19,7 +20,11 @@ const here = dirname(fileURLToPath(import.meta.url));
 const OUT_DIR = resolve(here, "../src/icons");
 
 // Source 1: original dark-green set (chosen by shape from the 84 icons).
-const SRC_DIR = "C:/Users/Administrator/Desktop/gamma-media-for-meg/graphics";
+const SRC_DIR = process.env.TSP_ICON_SRC_DIR;
+if (!SRC_DIR) {
+  console.error("build-icons: set TSP_ICON_SRC_DIR to the line-art source folder (owner-local asset, not in the repo). Outputs in src/icons/ are committed, so this script only needs to run when the source set changes.");
+  process.exit(1);
+}
 const MAP = {
   check: "TL7R9bGZ98OxXoF2pYFH",         // checkmark
   lock: "Aug9Lwp4f5Kv9Ac5qak6ud",        // padlock
