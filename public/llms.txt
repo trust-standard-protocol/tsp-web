@@ -33,4 +33,4 @@
 - [/agent/protocol.md](https://truststandardprotocol.com/agent/protocol.md): Protocol summary for agents.
 
 ## Boundary
-TSP verifies evidence state — integrity, provenance, custody, signature, manifest. It does not decide truth, correctness, legality, safety, or compliance. A person still decides whether to trust, escalate, audit, or reject. Packages are published under @trust-standard-protocol/*; the open layer is Apache-2.0, the closed seal under a commercial TSP license.
+TSP verifies evidence state — integrity, provenance, custody, signature, manifest. It does not decide truth, correctness, legality, safety, or compliance. A person still decides whether to trust, escalate, audit, or reject. Packages use the @trust-standard-protocol/* scope but are not yet on npm — build from source at https://github.com/trust-standard-protocol/tsp; the open layer is Apache-2.0, the closed seal under a commercial TSP license.

@@ -9,14 +9,19 @@
 //   cool/green frame + icons -> navy  (#1d3a5f); warm copper chain -> cooled slate
 //   (#3d6188); charcoal "TSP" / neutral -> kept. Alpha (anti-aliasing) is preserved.
 // The master is interim; a fully vectorised SVG logo is the eventual quality step.
-// Run: node scripts/build-brand.mjs
+// The master PNG is an owner-local asset, not in the repo — point TSP_LOGO_MASTER at it.
+// Run: TSP_LOGO_MASTER=/path/to/tsp-logo-primary.png node scripts/build-brand.mjs
 import sharp from "sharp";
 import { writeFileSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const here = dirname(fileURLToPath(import.meta.url));
-const SRC = "C:/Users/Administrator/Desktop/tsp-brand-logo/tsp-logo-primary.png";
+const SRC = process.env.TSP_LOGO_MASTER;
+if (!SRC) {
+  console.error("build-brand: set TSP_LOGO_MASTER to the master logo PNG (owner-local asset, not in the repo). Outputs in public/ are committed, so this script only needs to run when the master changes.");
+  process.exit(1);
+}
 const PUB = resolve(here, "../public");
 const CREAM_BG = "#e7e1d2"; // darkest brand cream (matches site body bg)
 const CREAM_INK = [244, 241, 232];

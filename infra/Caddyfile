@@ -31,8 +31,14 @@ truststandardprotocol.com {
 	encode zstd gzip
 	root * /srv/site
 	file_server
-	try_files {path} {path}/ {path}.html /index.html
+	# No /index.html catch-all: a path that doesn't exist is a real 404, not a
+	# vacuous 200 (vacuous 200s once masked a missing .well-known deploy).
+	try_files {path} {path}/ {path}.html
 	import security_headers
+	handle_errors {
+		rewrite * /404.html
+		file_server
+	}
 	# Agent + machine-readable surfaces are plain static files in the build.
 }
 

@@ -1,0 +1,31 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Icon from "../components/Icon.astro";
+import en from "../i18n/en.json";
+
+// /404 — served for any path that does not exist (Caddy handle_errors →
+// /404.html). Honest and quiet: no catch-all redirect, no vacuous 200 —
+// a missing page reports itself as missing.
+const nf = en.notfound;
+---
+<BaseLayout
+  title="404"
+  description="There is no page at this address."
+>
+  <section class="section section--tight">
+    <div class="container hero-spot">
+      <div>
+        <p class="eyebrow" data-i18n="notfound.kicker">{nf.kicker}</p>
+        <h1 data-i18n="notfound.h1">{nf.h1}</h1>
+        <p class="lede" data-i18n="notfound.lede">{nf.lede}</p>
+        <div class="btn-row" style="margin-top:1.2rem">
+          <a class="btn btn-primary" href="/" data-i18n="notfound.cta_home">{nf.cta_home}</a>
+          <a class="btn btn-ghost" href="/verify/" data-i18n="notfound.cta_verify">{nf.cta_verify}</a>
+        </div>
+      </div>
+      <div class="hero-spot__art" aria-hidden="true">
+        <Icon name="search" size={220} weight={30} />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
