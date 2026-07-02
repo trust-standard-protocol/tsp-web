@@ -353,10 +353,13 @@ code, kbd, pre, samp { font-family: var(--tsp-font-mono); }
 }
 .site-header__bar { display: flex; align-items: center; gap: clamp(14px, 2vw, 28px); padding-block: 12px; flex-wrap: nowrap; }
 
-.wordmark { display: inline-flex; align-items: center; gap: 0.65rem; text-decoration: none; flex: none; }
-.wordmark__text { display: flex; flex-direction: column; line-height: 1.15; }
-.wordmark__name { font: 700 16px/1.15 var(--tsp-font-sans); letter-spacing: -0.01em; color: var(--tsp-ink); }
-.wordmark__tag { font: 500 10px var(--tsp-font-mono); letter-spacing: 0.18em; text-transform: uppercase; color: var(--tsp-faint); }
+/* The wordmark may shrink (min-width: 0 down the chain) so a long tagline
+   ellipsizes instead of pushing the nav toggle past the viewport edge. */
+.wordmark { display: inline-flex; align-items: center; gap: 0.65rem; text-decoration: none; flex: 0 1 auto; min-width: 0; }
+.wordmark__text { display: flex; flex-direction: column; line-height: 1.15; min-width: 0; }
+.wordmark__name { font: 700 16px/1.15 var(--tsp-font-sans); letter-spacing: -0.01em; color: var(--tsp-ink); white-space: nowrap; }
+.wordmark__tag { font: 500 10px var(--tsp-font-mono); letter-spacing: 0.18em; text-transform: uppercase; color: var(--tsp-faint); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+@media (max-width: 480px) { .wordmark__tag { display: none; } }
 
 .site-nav { margin-left: auto; display: flex; align-items: center; gap: clamp(10px, 1.4vw, 18px); flex-wrap: nowrap; min-width: 0; }
 .site-nav a { text-decoration: none; color: var(--tsp-ink-body); font: 600 11.5px var(--tsp-font-mono); letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; transition: color 0.12s ease; }

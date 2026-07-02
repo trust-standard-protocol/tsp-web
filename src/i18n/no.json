@@ -15,7 +15,7 @@
     "lang_label": "Språk",
     "menu": "Meny",
     "utility": "Åpen protokoll · v1.0 offentlig forhåndsvisning · Apache-2.0",
-    "tagline": "Sannheten i opptegnelsen",
+    "tagline": "Verifiserbart bevis for AI-beslutninger",
     "footer": {
       "g_protocol": "Protokoll",
       "g_open": "Åpent lag",
@@ -48,10 +48,10 @@
   "reg": {
     "kicker1": "En regulatorisk stresstest",
     "kicker2": "Erklæringer → bevis",
-    "title": "Hva skjer når «Stol på oss» ikke lenger holder?",
-    "sub": "AI-regulering flytter markedet fra erklæringer til bevis. TSP gir AI-systemer en standard måte å bevise hvor et utdata kom fra, hvordan det ble produsert, og om det kan stoles på — i ettertid, av hvem som helst.",
-    "framing": "Regulering spør ikke bare om AI-en din er god. Den spør om AI-en din kan forklares, spores, utfordres, revideres og stoles på — i ettertid.",
-    "future": "Fremtiden er ikke «AI vil bli regulert.» Den er «AI-systemer vil trenge bevis.»",
+    "title": "Når AI-beslutninger betyr noe, må opptegnelsen stå på egne ben.",
+    "sub": "AI-styring beveger seg fra policyerklæringer til bevis. TSP gir team en standard måte å bevare det som skjedde, binde det kryptografisk og gjøre det uavhengig kontrollerbart i ettertid.",
+    "framing": "For team som arbeider med EU AI Act, DORA, internkontroll, anskaffelsesgjennomganger og hendelseshåndtering er spørsmålet ikke lenger bare om et system presterer. Det er om opptegnelsen kan undersøkes, utfordres, oppbevares og stoles på i ettertid.",
+    "future": "Det varige fortrinnet er ikke bare kapabilitet. Det er beviselighet.",
     "frameworks": [
       "EU AI Act",
       "ISO/IEC 42001",
@@ -61,10 +61,10 @@
   },
   "hero": {
     "kicker": "Verifiserbart AI-bevis",
-    "h1": "Manipuleringssynlig bevis på hva AI-en din besluttet — og at ingen endret det i det stille.",
-    "sub": "Hver automatiske beslutning får en forseglet kvittering — og hvem du enn gir den til kan verifisere den uten å stole på leverandøren.",
+    "h1": "Verifiserbart bevis for AI-beslutninger.",
+    "sub": "Trust Standard Protocol gir AI-systemer en standard måte å produsere manipuleringssynlig, portabelt bevis på det som skjedde — slik at team, revisorer, kunder og regulatorer kan verifisere opptegnelsen uten å stole på leverandøren.",
     "cta_primary": "Se hvordan det fungerer",
-    "cta_secondary": "Les spesifikasjonen",
+    "cta_secondary": "Les protokollen",
     "rcpt_label": "Beslutningskvittering",
     "rcpt_k_type": "type",
     "rcpt_k_issued": "utstedt",
@@ -82,40 +82,40 @@
   },
   "problem": {
     "eyebrow": "Problemet · Løsningen",
-    "title": "Akkurat nå må du bare stole på deres ord.",
+    "title": "AI-beslutninger blir stadig lettere å produsere — og vanskeligere å bevise.",
     "prob_label": "I dag",
-    "prob_title": "En AI bestemte. Du kan ikke bevise hva som faktisk skjedde.",
-    "prob_body": "Et lån avslås, et krav flagges, en søknad scores — og eneste spor er en logg selskapet selv kontrollerer.",
+    "prob_title": "Det meste av beviset blir værende i leverandørkontrollerte systemer.",
+    "prob_body": "Logger, dashbord og interne revisjonsspor kan være nyttige operasjonelt, men de er vanskelige for en utenforstående part å verifisere uavhengig når en tvist, gjennomgang eller et regulatorisk spørsmål oppstår.",
     "prob_points": [
-      "Logger kan endres i ettertid — uten at du merker det.",
-      "«Stol på oss» er det eneste svaret du får.",
-      "Ingen mulighet til å sjekke det selv, noensinne."
+      "Opptegnelser kan endres, filtreres eller rekonstrueres i ettertid.",
+      "Gjennomgang avhenger av intern tilgang, skjermbilder eller leverandørens forklaring.",
+      "Motparter kan ikke enkelt reprodusere det samme integritetsresultatet selv."
     ],
     "sol_label": "Med TSP",
-    "sol_title": "Hver beslutning gir en kvittering ingen kan endre i det stille.",
-    "sol_body": "I det øyeblikket AI-en beslutter, forsegles den. Rør én detalj etterpå, og forseglingen brytes for alle som sjekker.",
+    "sol_title": "Kjøretidshendelser blir signert, portabelt bevis.",
+    "sol_body": "TSP gjør AI-medierte hendelser om til manipuleringssynlige kvitteringer som kan sjekkes uavhengig og offline — et portabelt bevislag for revisjon, tilsyn, undersøkelser og tillit.",
     "sol_points": [
-      "Manipulering vises: ett endret tegn bryter forseglingen.",
-      "Bare et fingeravtrykk trenger noensinne å forlate systemet ditt — aldri de private dataene.",
-      "Hvem som helst kan kjøre sjekken. Ingen innlogging."
+      "Manipulering vises: én endret byte bryter verifiseringsresultatet.",
+      "Portabelt: beviset kan reise ut over systemet som utstedte det.",
+      "Uavhengig kontrollerbart: alle med kvitteringen og nøkkelen kan kjøre regnestykket på nytt."
     ]
   },
-  "promise": "Hvis en datamaskin tok en beslutning om deg, bør du kunne sjekke den. Nå kan du det — hvis du har kvitteringen.",
+  "promise": "Hvis et AI-system tok eller støttet en beslutning, bør opptegnelsen kunne verifiseres uavhengig.",
   "how": {
     "eyebrow": "Slik fungerer det",
-    "title": "Tre steg. Det er hele ideen.",
+    "title": "Tre steg. Tydelig grense. Repeterbar verifisering.",
     "steps": [
       {
-        "title": "Den forsegles",
-        "body": "I det øyeblikket AI-en beslutter, lages en kvittering som ikke kan endres i det skjulte. Endrer du noe etterpå, brytes forseglingen."
+        "title": "Hendelsen forsegles",
+        "body": "En TrustEnvelope registrerer hendelsen i kanonisk form og forsegler den kryptografisk, slik at senere endringer kan oppdages."
       },
       {
-        "title": "Den kan forankres",
-        "body": "Forankre kvitteringen til TSPs offentlige register så hvem som helst kan bekrefte at den finnes — det uavhengige segl-laget. Lokal forsegling virker uten det."
+        "title": "Opptegnelsen kan forankres",
+        "body": "Kvitteringer kan kjedes og, der det trengs, forankres uavhengig for å styrke bevisstillingen ut over en selvattestert lokal opptegnelse."
       },
       {
         "title": "Hvem som helst verifiserer",
-        "body": "Kjør sjekken selv, offline. Regnestykket gir samme resultat til alle, hver gang."
+        "body": "Kryptografien kan kjøres på nytt offline og gir samme integritetsresultat for hver verifikator."
       }
     ]
   },
@@ -124,160 +124,160 @@
     "items": [
       {
         "title": "Manipulering vises",
-        "body": "Ett endret tegn bryter forseglingen. Ingen steder å skjule en stille endring."
+        "body": "Endres den signerte opptegnelsen, feiler verifiseringen. Stille endringer overlever ikke inspeksjon."
       },
       {
-        "title": "Privat",
-        "body": "Kun et kryptografisk fingeravtrykk forlater systemet ditt — aldri kundenes faktiske data."
+        "title": "Portabelt",
+        "body": "Bevis kan flyttes mellom team, kunder, revisorer og regulatorer uten å avhenge av utstederens dashbord."
       },
       {
-        "title": "Alle kan sjekke",
-        "body": "Ingen innlogging, ingen tillatelse, ingen tillit til oss. Regnestykket er likt for alle."
+        "title": "Uavhengig kontrollerbart",
+        "body": "Verifisering krever ingen tillit til oss eller utstederen — bare de publiserte reglene, nøklene og kryptografien."
       }
     ]
   },
   "whytsp": {
     "eyebrow": "Hvorfor TSP",
-    "title": "Fire ting hver kvittering bærer med seg.",
+    "title": "Fire egenskaper som gjør bevis nyttig under gransking.",
     "items": [
       {
         "title": "Signerte kvitteringer",
-        "body": "Hver beslutning forsegles som en TrustEnvelope — kanonisk JSON, hashet med SHA-256, signert i det øyeblikket den skjer."
+        "body": "Hver hendelse forsegles som en TrustEnvelope — kanonisk JSON, hashet med SHA-256, signert ved utstedelse."
       },
       {
         "title": "Portabel verifisering",
-        "body": "Hvem som helst kan sjekke Ed25519-signaturen offline. Ingen leverandørpålogging, ingen API — regnestykket følger kvitteringen."
+        "body": "Hvem som helst kan kjøre Ed25519-verifiseringen på nytt offline. Beviset er ikke innelåst bak et API, en konto eller en leverandørarbeidsflyt."
       },
       {
-        "title": "Menneskelig innsyn",
-        "body": "Beslutningen og sporet av menneskelig tilsyn forblir lesbart — opptegnelsen en kontrollør etter artikkel 14 faktisk trenger å lese."
+        "title": "Lesbare opptegnelser",
+        "body": "Sporet forblir lesbart for dem som må vurdere det — utvikling, etterlevelse, revisjon, anskaffelse og tilsyn."
       },
       {
         "title": "Styrt status",
-        "body": "Et offisielt merke kan ikke forfalskes eller bare kjøpes. Status styres av registeret, ikke kommersielt — betaling gir det aldri."
+        "body": "Offisiell status styres atskilt fra teknisk verifisering. Betaling gir den aldri, og verifisering alene tildeler den ikke."
       }
     ]
   },
   "futures": {
     "eyebrow": "Systemnivå-perspektivet",
     "title": "Tre fremtider for AI-bevis.",
-    "sub": "Hver AI-utrulling er på vei mot én av disse. Bare én av dem er interoperabel.",
+    "sub": "Hver AI-utrulling beveger seg mot én av disse modellene. Bare én produserer portable, uavhengig verifiserbare opptegnelser.",
     "items": [
       {
         "label": "Fremtid 01",
         "title": "Ingen bevis",
-        "body": "Utdata er verdifulle, men løsrevet fra ethvert verifiserbart bevis.",
+        "body": "Utdata betyr noe, men bevissporet er ufullstendig, skjørt eller fraværende.",
         "pts": [
           "Trege revisjoner",
           "Svak kjøpertillit",
-          "Dyre samsvarsgjennomganger",
-          "Skjør hendelseshåndtering",
-          "Regulatorisk eksponering"
+          "Vanskelig hendelsesrekonstruksjon",
+          "Begrenset ekstern etterprøvbarhet",
+          "Høyere regulatorisk eksponering"
         ]
       },
       {
         "label": "Fremtid 02",
         "title": "Privat bevis",
-        "body": "Hvert selskap bygger sin egen logging, sine dashbord og sine bevisarbeidsflyter.",
+        "body": "Hver organisasjon bygger sin egen bevisarbeidsflyt, men verifiseringen forblir lokal og ikke portabel.",
         "pts": [
           "Bedre enn ingenting",
-          "Fragmentert, ikke portabelt",
-          "Kjøpere kan ikke enkelt verifisere",
-          "Regulatorer får skreddersydde pakker",
-          "Leverandører dupliserer arbeidet"
+          "Fragmentert på tvers av leverandører",
+          "Vanskelig for utenforstående å verifisere",
+          "Repetitivt revisjonsarbeid",
+          "Svak interoperabilitet"
         ]
       },
       {
         "label": "Fremtid 03 · Med TSP",
         "title": "Standardisert bevis",
-        "body": "Utdata bærer portabelt, kryptografisk verifiserbart bevis.",
+        "body": "Utdata bærer portabelt, kryptografisk verifiserbart bevis som ulike parter kan inspisere uavhengig.",
         "pts": [
           "Kjøpere kan verifisere",
           "Revisorer kan inspisere",
-          "Leverandører kan bevise",
-          "Økosystemer er interoperable",
-          "Ett spor, hver revisjon"
+          "Team kan bevise hva som skjedde",
+          "Bevis flyttes på tvers av økosystemer",
+          "Én opptegnelse, mange gjennomganger"
         ]
       }
     ]
   },
   "boundary": {
     "eyebrow": "Den ærlige grensen",
-    "title": "Hva en forseglet kvittering betyr — og ikke betyr.",
-    "before": "TSP gjør AI-beviset ditt ",
-    "strong": "varig, manipuleringssynlig og verifiserbart offline",
-    "after": " — av hvem som helst, uten å stole på leverandøren. Det gjør deg ikke etterlevende, beviser ikke at beslutningen var riktig eller trygg, og gir ingen offisiell status. Verifisering rapporterer bevisets integritet, aldri en juridisk dom."
+    "title": "Hva verifisering betyr — og hva det ikke betyr.",
+    "before": "TSP bidrar til å gjøre AI-bevis ",
+    "strong": "varig, manipuleringssynlig og uavhengig verifiserbart",
+    "after": ". Det beviser ikke at et utdata var riktig, lovlig, trygt eller etterlevende. Verifisering rapporterer opptegnelsens integritet — ikke utfallets juridiske betydning."
   },
   "prov": {
     "eyebrow": "Den ærlige linjen",
-    "lead": "Snart vil ikke AI-leverandører bare konkurrere på kapabilitet.",
+    "lead": "Snart vil ikke AI-leverandører konkurrere bare på kapabilitet.",
     "emph": "De vil konkurrere på beviselighet.",
-    "honest": "TSP erstatter ikke dine juridiske, styrings- eller etterlevelsesprogrammer. Det gir dem det de i dag mangler — verifiserbart bevis på utdata-laget.",
-    "axiom": "Og ett aksiom holder det forsvarlig: verifisering er ikke sannhet. En konvolutt beviser at et bestemt system produserte et bestemt utdata fra bestemte erklærte inndata — ikke at utdataet var riktig. Det registrerer virkeligheten; det dømmer den ikke.",
+    "honest": "TSP erstatter ikke juridiske, styrings- eller etterlevelsesprogrammer. Det gir de funksjonene noe de ofte mangler: et portabelt teknisk bevislag der utdata skapes og gjennomgås.",
+    "axiom": "Og én grense holder systemet forsvarlig: verifisering er ikke sannhet. En kvittering kan bevise hva et system registrerte, signerte og erklærte på et gitt tidspunkt — ikke om den underliggende beslutningen var innholdsmessig riktig eller juridisk berettiget.",
     "not_proof": [
       "Logger er ikke bevis.",
       "Dashbord er ikke bevis.",
-      "Leverandørpåstander er ikke bevis."
+      "Leverandørutsagn er ikke bevis."
     ],
-    "proof_line": "TSP gjør AI-utdata om til bevis."
+    "proof_line": "TSP gjør AI-utdata om til verifiserbart bevis."
   },
   "scope": {
     "eyebrow": "Smal ærlighet",
     "title": "Hva TSP dekker — og hva det ikke gjør.",
-    "sub": "Smal ærlighet er en del av modenhet. TSP er det tekniske bevislaget; det utfører ikke de juridiske eller organisatoriske delene, og later ikke som.",
+    "sub": "Nyttige systemer definerer grensen sin presist. TSP dekker det tekniske bevislaget; det hevder ikke å utføre de juridiske, organisatoriske eller dømmende delene rundt.",
     "covers_label": "Dekker — bevislaget",
     "doesnt_label": "Gjør ikke — med vilje",
     "covers": [
-      "Manipuleringssynlige opptegnelser av utdata, erklærte kilder og prosess.",
-      "Ed25519-signaturer som løses mot et publisert manifest — nøkler, gyldighet, tilbakekalling.",
-      "Uavhengig, offline verifisering med publiserte samsvarsvektorer.",
-      "Teknisk støtte for logging og åpenhetsplikter — art. 12, 13, 15 (delvis)."
+      "Manipuleringssynlige opptegnelser av utdata, erklærte kilder og prosesskontekst.",
+      "Ed25519-signaturer som løses mot et publisert manifest — inkludert nøkkeltilstand og verifiseringskontekst.",
+      "Uavhengig, offline verifisering med felles regler og samsvarsvektorer.",
+      "Teknisk støtte for arbeidsflyter innen logging, tilsyn, innsyn, revisjon og oppbevaring."
     ],
     "doesnt": [
-      "Samsvarsvurdering — en juridisk / organisatorisk prosess for deg og tekniske kontrollorganer.",
-      "Datastyring (art. 10) — uttrykkelig utenfor omfang.",
-      "Å avgjøre om et utdata er riktig eller lovlig — verifisering er ikke sannhet.",
-      "Å erstatte DPIA / FRIA / ISO 42001 — TSP utfyller dem."
+      "Gjøre et system juridisk etterlevende i seg selv.",
+      "Avgjøre om et utdata var riktig, rettferdig eller lovlig.",
+      "Erstatte samsvarsvurdering, DPIA, FRIA eller styringsprogrammer.",
+      "Tildele offisiell status gjennom betaling eller egenerklæring."
     ]
   },
   "proof": {
     "eyebrow": "Se det selv",
     "title": "Se en kvittering brytes i sanntid.",
-    "body": "Dette kjører helt i nettleseren mot utstederens Ed25519-nøkkel — ingenting lastes opp. Endre én byte, og verifiseringen feiler.",
-    "caption": "Ekte Ed25519 + SHA-256 · offline · stoler ikke på utstederen"
+    "body": "Denne verifikatoren kjører helt i nettleseren mot utstederens offentlige Ed25519-nøkkel. Ingenting lastes opp. Endre én byte, og verifiseringsresultatet feiler.",
+    "caption": "Ekte Ed25519 + SHA-256 · offline verifisering · ingen skjult tillit til utstederen"
   },
   "whouses": {
     "eyebrow": "Hvem bruker det",
-    "title": "Fra ingeniøren som utsteder til revisoren som inspiserer.",
+    "title": "For utviklere, kontrollører og motparter som trenger at opptegnelsen kan reise.",
     "items": [
       {
         "role": "Utviklere",
-        "body": "Legg til signerte kvitteringer i en arbeidsflyt uten å låse deg til en leverandør."
+        "body": "Legg et verifiserbart bevislag til AI-arbeidsflyter uten at verifiseringen avhenger av din egen plattform."
       },
       {
         "role": "Etterlevelse",
-        "body": "Sett sammen avgrensede gjennomgangspakker fra bevis som holder mål."
+        "body": "Arbeid ut fra bevis som kan oppbevares, gjennomgås og utfordres med en tydelig teknisk grense."
       },
       {
         "role": "Revisorer",
-        "body": "Inspiser et beslutningsspor uten leverandørpålogging eller spesiell tilgang."
+        "body": "Inspiser et beslutningsspor uavhengig, uten å støtte deg på skjermbilder, leverandørpåstander eller intern dashbordtilgang."
       },
       {
         "role": "Partnere",
-        "body": "Bygg verifiserbare bevisflyter inn i produktene dere allerede leverer."
+        "body": "Utveksle AI-opptegnelser på tvers av organisasjonsgrenser med en felles verifiseringsmetode."
       }
     ]
   },
   "final": {
-    "title": "Bygg for revisjonen som ennå ikke har skjedd.",
-    "sub": "Gjør AI-en din beviselig før noen spør. Referanseverifikatoren er åpen og kjører offline — bryt en kvittering selv og se forseglingen feile.",
+    "title": "Bygg for gjennomgangen som kommer etter utrulling.",
+    "sub": "Gjør AI-bevis verifiserbart før en regulator, kunde, revisor eller motpart ber om det. Referanseverifikatoren er åpen og kjører offline.",
     "cta_primary": "Åpne Playground",
     "cta_secondary": "Les spesifikasjonen"
   },
   "footer": {
-    "blurb": "En åpen protokoll for verifiserbart AI-bevis — kun tillegg, selvbevisende, uavhengig kontrollerbar. Sannheten i opptegnelsen, ikke en vurdering av utfallet.",
+    "blurb": "En åpen protokoll for verifiserbart AI-bevis — varig, manipuleringssynlig og uavhengig kontrollerbart. Opptegnelsens integritet, ikke en vurdering av utfallet.",
     "legal": "Åpen protokoll · v1.0 offentlig forhåndsvisning · Apache-2.0",
-    "disclaimer": "TSP verifiserer autentisk bevis innenfor en instrumentert grense. Det vurderer ikke faktisk korrekthet, lovlighet, sikkerhet eller samsvar."
+    "disclaimer": "TSP verifiserer bevisintegritet innenfor en instrumentert grense. Det avgjør ikke faktisk korrekthet, lovlighet, sikkerhet eller samsvar."
   },
   "why": {
     "kicker": "Hvorfor nå · presset er allerede her",
