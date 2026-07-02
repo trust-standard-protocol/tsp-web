@@ -43,6 +43,7 @@ jobs:
           name: site-dist
           path: dist
           retention-days: 7
+          include-hidden-files: true
 
   deploy:
     needs: build
@@ -76,9 +77,11 @@ jobs:
             "ln -sfn /var/www/tsp-site/releases/${{ github.sha }} /var/www/tsp-site/current \
              && cd /var/www/tsp-site/releases && ls -t | tail -n +6 | xargs -r rm -rf"
 
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          sparse-checkout: scripts
+
       - name: Verify live
         run: |
           sleep 3
-          curl -fsS https://truststandardprotocol.com/ | grep -qi "trust standard protocol"
-          curl -fsS https://truststandardprotocol.com/.well-known/tsp.json > /dev/null
-          curl -fsS https://truststandardprotocol.com/robots.txt > /dev/null
+          node scripts/verify-deploy.mjs
