@@ -277,5 +277,876 @@
     "blurb": "An open protocol for verifiable AI evidence — durable, tamper-evident, and independently checkable. The integrity of the record, not a judgment of the outcome.",
     "legal": "Open protocol · v1.0 public preview · Apache-2.0",
     "disclaimer": "TSP verifies evidence integrity within an instrumented boundary. It does not determine factual correctness, legality, safety, or compliance."
+  },
+  "why": {
+    "kicker": "Why now · the pressure is already here",
+    "h1": "The reasons to keep evidence aren't waiting for 2027.",
+    "lede_a": "Auditable AI records get framed as a future EU problem. They are already live — DORA since January 2025, US state and city laws now, insurers asking today. Across every one of them TSP is the same thing: an ",
+    "lede_strong": "evidence input",
+    "lede_b": ", never a legal verdict. It does not classify a system or settle an outcome.",
+    "boundary_label": "Boundary",
+    "blocks": [
+      {
+        "eyebrow": "EU AI Act · phased to Dec 2027",
+        "title": "Where signed receipts support the obligations",
+        "intro": "The Act asks teams to record runtime behaviour. Receipts are inspectable evidence for that record — never the compliance decision itself.",
+        "rows": [
+          {
+            "tag": "Art 12 · logging",
+            "title": "Record-keeping",
+            "evidence": "Signed event receipts — answer, action, refusal, review, override — chained, hashed and timestamped across the workflow.",
+            "boundary": "Evidence of what happened; not a compliance verdict."
+          },
+          {
+            "tag": "Art 14",
+            "title": "Human oversight",
+            "evidence": "Signed human-review and override receipts record who reviewed, what they decided, and when — sealed inside the digest.",
+            "boundary": "Shows oversight occurred; not that it was sufficient."
+          },
+          {
+            "tag": "Art 15",
+            "title": "Accuracy records",
+            "evidence": "Declared model, tool, data-scope and policy state captured in tamper-evident receipts.",
+            "boundary": "Evidence of declared state; not model quality."
+          },
+          {
+            "tag": "Art 19",
+            "title": "Logs retention",
+            "evidence": "An append-only, independently checkable feed of receipts an operator can retain and reproduce on request.",
+            "boundary": "Durable, reproducible evidence; retention duration is the operator's policy call."
+          },
+          {
+            "tag": "Art 50",
+            "title": "Transparency",
+            "evidence": "A TrustBadge and evidence view link an AI output to its provenance receipt for disclosure — a live obligation from August 2026.",
+            "boundary": "Supports disclosure; not a labelling decision."
+          },
+          {
+            "tag": "Annex III · Art 6",
+            "title": "High-risk support",
+            "evidence": "Portable receipts for decision-support workflows (e.g. creditworthiness) an assessor can inspect.",
+            "boundary": "Input to classification; not the classification answer."
+          }
+        ]
+      },
+      {
+        "eyebrow": "DORA · live since Jan 2025",
+        "title": "Financial-sector operational resilience",
+        "intro": "DORA already obliges financial entities to evidence ICT operations and incidents. Where an AI system sits in that chain, its decisions need the same tamper-evident trail.",
+        "rows": [
+          {
+            "tag": "ICT records",
+            "title": "Operations evidence",
+            "evidence": "Signed, chained receipts of automated ICT decisions and the controls around them — reproducible long after the event.",
+            "boundary": "Evidence of what was logged; not a resilience attestation."
+          },
+          {
+            "tag": "Incident trail",
+            "title": "Incident reconstruction",
+            "evidence": "An append-only record an institution and its supervisor can replay to reconstruct what a system did during an incident.",
+            "boundary": "Supports the incident file; not an incident finding."
+          }
+        ]
+      },
+      {
+        "eyebrow": "US · state & city laws, now",
+        "title": "Bias audits and AI-decision laws already in force",
+        "intro": "US obligations don't wait for Europe. NYC Local Law 144 is enforced; Colorado's AI Act and further state laws land through 2026. Each one turns on records of what an automated system actually did.",
+        "rows": [
+          {
+            "tag": "NYC LL144",
+            "title": "Automated employment decisions",
+            "evidence": "Portable receipts of the hiring and promotion decision events an annual bias audit examines.",
+            "boundary": "Evidence for the audit; not the bias-audit result."
+          },
+          {
+            "tag": "Colorado AI Act",
+            "title": "Consumer AI decisions",
+            "evidence": "Records of consumer-facing automated decisions and the human review around them.",
+            "boundary": "Evidence input; not a legal determination."
+          },
+          {
+            "tag": "IL · TX & more",
+            "title": "Sectoral notice & records",
+            "evidence": "Tamper-evident proof that a disclosed automated process ran as described, for jurisdictions adding notice and record duties.",
+            "boundary": "Evidence of the record; not a finding under any one statute."
+          }
+        ]
+      },
+      {
+        "eyebrow": "Insurance & disputes · today",
+        "title": "When something goes wrong, evidence is what's left",
+        "intro": "Underwriters, claims processes and courts increasingly want to see what an AI system did. Tamper-evident receipts are the forensic record — useful the day a dispute starts, not in 2027.",
+        "rows": [
+          {
+            "tag": "Underwriting",
+            "title": "AI-risk evidence",
+            "evidence": "A reproducible decision trail an underwriter or AI-assurance reviewer (against frameworks such as AIUC-1) can inspect.",
+            "boundary": "Strengthens the file; not a coverage decision."
+          },
+          {
+            "tag": "Dispute · forensic",
+            "title": "What happened, provably",
+            "evidence": "Signed, time-bound records that survive the incident — the crime-scene photograph, not the verdict.",
+            "boundary": "Evidence of the record; not proof of fault or liability."
+          }
+        ]
+      }
+    ],
+    "footnote": "Article and statute references point to where TSP evidence is useful — they are not legal advice. Confirm applicability and dates with your DPA and counsel before relying on them.",
+    "footnote_cta": "See the obligations in action in the playground →",
+    "eu": {
+      "eyebrow": "EU AI Act · aligned by design",
+      "title": "Built for the obligations that are already here.",
+      "sub": "TSP produces the tamper-evident evidence these duties turn on. It supports the record an Article 14 reviewer reads — it is never the compliance verdict itself.",
+      "col_article": "Article",
+      "col_obligation": "Obligation",
+      "col_evidence": "How TSP provides evidence",
+      "items": [
+        {
+          "art": "Art. 5",
+          "p": "Lawful & ethical",
+          "tsp": "Receipts evidence that the declared policy state and prohibited-use guardrails were in force at the moment of the decision."
+        },
+        {
+          "art": "Art. 11",
+          "p": "Documentation",
+          "tsp": "Each decision's technical context is captured in a tamper-evident envelope you can retain and reproduce on request."
+        },
+        {
+          "art": "Art. 12",
+          "p": "Record-keeping",
+          "tsp": "Signed, chained event receipts — answer, action, refusal, review — hashed and timestamped across the workflow."
+        },
+        {
+          "art": "Art. 13",
+          "p": "Transparency",
+          "tsp": "A receipt links an AI output to its provenance, so the disclosure shown to an affected person is backed by evidence."
+        },
+        {
+          "art": "Art. 14",
+          "p": "Human oversight",
+          "tsp": "Signed human-review and override receipts record who reviewed, what they decided, and when — sealed in the digest."
+        },
+        {
+          "art": "Art. 15",
+          "p": "Robustness & safety",
+          "tsp": "Declared model, tool and data-scope state are sealed into the digest as evidence of the configuration that actually ran."
+        },
+        {
+          "art": "Art. 16",
+          "p": "Accuracy & quality",
+          "tsp": "Tamper-evident records of declared inputs and outputs an assessor can independently re-check, byte-for-byte."
+        },
+        {
+          "art": "Art. 17",
+          "p": "Accountability",
+          "tsp": "An append-only, independently verifiable trail that fixes each decision to a registered issuer key."
+        }
+      ]
+    },
+    "precedents": {
+      "eyebrow": "The precedent is on the record",
+      "title": "This already went to court — and evidence is what was missing.",
+      "sub": "Across the cases that drew the lines of automated-decision law, the deciding failure wasn't only bad AI. It was the absence of a verifiable record.",
+      "missing_label": "Missing",
+      "items": [
+        {
+          "place": "EU AI Act",
+          "case": "High-risk systems",
+          "year": "In force",
+          "verdict": "Traceability becomes market access.",
+          "blocker": "Evidence infrastructure"
+        },
+        {
+          "place": "CJEU",
+          "case": "SCHUFA scoring",
+          "year": "2023",
+          "verdict": "Credit scoring crossed the automated-decision line.",
+          "blocker": "Explainable decision evidence"
+        },
+        {
+          "place": "Netherlands",
+          "case": "SyRI judgment",
+          "year": "2020",
+          "verdict": "Opaque public-sector risk scoring failed in court.",
+          "blocker": "Opacity in risk profiling"
+        },
+        {
+          "place": "Italy",
+          "case": "Garante v. ChatGPT",
+          "year": "2023",
+          "verdict": "AI services can be stopped at the data layer.",
+          "blocker": "Accountability & user rights"
+        }
+      ],
+      "punch": "The common failure is not only bad AI. It is missing evidence."
+    },
+    "stress": {
+      "eyebrow": "Regulatory stress test",
+      "title": "What if someone asks you to prove it?",
+      "sub": "Illustrative scenarios — each one a question a regulator, customer, or court can ask, and the gap between “we believe” and “here is evidence.” TSP produces proof, not promises, at the moment the action happens.",
+      "without_label": "Without TSP",
+      "with_label": "With TSP",
+      "positioning_label": "Positioning",
+      "full": [
+        {
+          "n": "Scenario 01",
+          "cat": "Auditing",
+          "q": "A regulator asks how an AI decision was made.",
+          "without": "The team reconstructs the event from app logs, private dashboards and human memory — vague, and dependent on internal trust.",
+          "with": "The output carries verifiable provenance: exact system context, prompt hash, and model / provider metadata.",
+          "outcome": "Promises replaced with cryptographically verifiable evidence."
+        },
+        {
+          "n": "Scenario 02",
+          "cat": "Authenticity",
+          "q": "A customer asks whether AI content is authentic.",
+          "without": "They see the content, but cannot verify its origin, its version, or whether it was modified in transit.",
+          "with": "The content carries a portable verification receipt proving generation context and data integrity.",
+          "outcome": "Trust becomes portable — it travels with the content."
+        }
+      ],
+      "compact": [
+        {
+          "n": "Scenario 03",
+          "cat": "Drift",
+          "q": "Silent model changes.",
+          "without": "Behaviour shifts in production, with no baseline record of versions, prompts or provider state.",
+          "with": "Outputs bind model details, so change is observable.",
+          "outcome": "Change tracking becomes observable."
+        },
+        {
+          "n": "Scenario 04",
+          "cat": "Containment",
+          "q": "A system-harm incident.",
+          "without": "Response starts in confusion over which model ran, under what controls.",
+          "with": "A verifiable chain isolates the prompt, model and lifecycle instantly.",
+          "outcome": "Incidents isolated instantly."
+        },
+        {
+          "n": "Scenario 05",
+          "cat": "Procurement",
+          "q": "Procurement blocks the deal.",
+          "without": "Security spreadsheets, bespoke audit loops, client-by-client reviews.",
+          "with": "Machine-verifiable trust dossiers simplify and speed reviews.",
+          "outcome": "Sales loops accelerate."
+        }
+      ],
+      "nuance": "A different question each time — the same answer. In every case the gap closes the moment the action carries its own verifiable evidence."
+    }
+  },
+  "boundary_box": {
+    "full_a": "TSP makes your AI evidence ",
+    "full_s1": "durable, tamper-evident, and verifiable offline",
+    "full_b": " — by anyone, without trusting the vendor. It does ",
+    "full_not": "not",
+    "full_c": " make you compliant, prove your model is right or safe, or confer official status. Verification reports the ",
+    "full_s2": "integrity",
+    "full_d": " of the evidence, never a legal verdict. That call stays with your DPA and counsel.",
+    "compact_a": "TSP makes your AI evidence ",
+    "compact_s1": "durable, tamper-evident, and verifiable offline",
+    "compact_b": ". It does ",
+    "compact_not": "not",
+    "compact_c": " make you compliant, prove your model is correct, or confer official status."
+  },
+  "seal": {
+    "kicker": "The Seal · the paid independent layer",
+    "h1": "You cannot notarize your own document.",
+    "lede_a": "Verifying a receipt is free and works offline forever — anyone can re-run the math. But a receipt you sealed entirely by yourself is ",
+    "lede_strong": "self-attested",
+    "lede_b": ": real and useful, yet worth little to an auditor on its own. The Seal is the independent layer that makes your evidence audit-credible.",
+    "flag_eyebrow": "The flag boundary",
+    "flag_title": "Where the evidence crosses from your word to an independent one.",
+    "free_label": "Free · local",
+    "free_title": "Self-attested",
+    "free_body": "Seal and verify locally with real Ed25519 + SHA-256. Permanent, honest, and entirely yours — but the seal vouches only for you.",
+    "free_points": [
+      "Real cryptography: one changed byte breaks the seal.",
+      "Offline, no account, no dependency on us.",
+      "An auditor still only has your word that you didn't reseal it."
+    ],
+    "paid_label": "Sealed · independent",
+    "paid_title": "Independently attested",
+    "paid_body": "An independent party anchors, timestamps and lists your evidence — so a third party can rely on it without trusting you or us.",
+    "paid_points": [
+      "Anchored beyond your own systems — you can't quietly rewrite history.",
+      "Time bound by an independent authority, not your clock.",
+      "Listed in a register a relying party can resolve."
+    ],
+    "adds_eyebrow": "What the Seal adds",
+    "adds_title": "Three things you cannot credibly do to your own records.",
+    "adds": [
+      {
+        "title": "Anchoring",
+        "body": "Your receipts' Merkle root is committed to TSP's independent Evidence-ledger on a fixed cadence — placing your history beyond your own reach. This is the recurring core of the Seal."
+      },
+      {
+        "title": "Qualified time",
+        "body": "Evidence is bound to an independent, eIDAS-qualified timestamp authority over RFC 3161 — never our own clock. A qualified timestamp carries a legal presumption of the integrity of the data and the time it indicates. We bind to an accredited authority; we are not one ourselves yet."
+      },
+      {
+        "title": "The register",
+        "body": "Attested evidence is listed in a public register a relying party can resolve — moving its status from self-declared to independently recorded."
+      }
+    ],
+    "how_eyebrow": "How the boundary is enforced",
+    "how_title": "Honest by construction.",
+    "how_points": [
+      "Three reserved states — anchored, qualified-timestamped, registered — are true only through the independent layer, never something you can emit yourself.",
+      "Payment never grants official status: the Seal makes evidence credible; it does not rubber-stamp content.",
+      "Enforcement is certificate expiry plus authenticated anchoring — no kill switch on your machine, and no remote off-switch for free verification."
+    ],
+    "line": "The Seal makes your evidence audit-credible. It does not make you compliant — that call stays with your auditor, DPA and counsel.",
+    "note": "The independent Seal layer is being built alongside the open protocol; qualified eIDAS time is bound through an accredited authority on a pilot / staging footing. The free local layer works fully today.",
+    "cta_a": "See pricing & tiers",
+    "cta_b": "Try the free local verifier"
+  },
+  "conformance": {
+    "kicker": "Conformance · the TSP-Certified mark",
+    "h1": "Anyone can implement it. Only conformant builds wear the mark.",
+    "lede_a": "The protocol name is open and generic on purpose — like HTTP or 802.11, anyone is free to implement TSP. What is governed is a distinct ",
+    "lede_strong": "certification mark",
+    "lede_b": ": you earn the right to display it by passing conformance against the register, not by declaring yourself conformant.",
+    "model_eyebrow": "The model · a conformance test kit (TCK)",
+    "model_title": "Open standard, governed mark — the proven split.",
+    "tracks": [
+      {
+        "label": "Open · anyone",
+        "title": "Implement freely",
+        "body": "The spec, the immutable conformance fixtures and the verifier cores are open (Apache-2.0). Build a verifier in any language; agreement across independent implementations is the trust anchor."
+      },
+      {
+        "label": "Governed · earned",
+        "title": "Wear the mark",
+        "body": "The TSP-Certified mark is a distinct, registrable certification mark — granted only to implementations that pass conformance and hold a licence. The mark, not the protocol, is the controlled asset."
+      }
+    ],
+    "precedent": "The same shape every durable standard uses: the spec is generic, the mark is distinctive — IEEE 802.11 → Wi-Fi, OpenJDK → Java, Kubernetes → Certified Kubernetes.",
+    "verify_eyebrow": "How conformance is verified",
+    "verify_title": "Checked against the register — never self-declared.",
+    "verify_points": [
+      "Your implementation recomputes the public fixtures and must match across the required checks — the same math everyone else runs.",
+      "Conformance status is resolved against the public register, so a relying party can confirm it independently — not take your word for it.",
+      "Payment never grants official status: a licence lets a conformant build wear the mark; it cannot buy conformance."
+    ],
+    "mark_eyebrow": "The mark itself",
+    "mark_title": "A distinct mark and seal, separate from the open TSP glyph.",
+    "mark_body": "\"TSP\" and \"Trust Standard Protocol\" are generic and descriptive — deliberately unprotected, so the protocol stays free to adopt. The TSP-Certified mark and its seal are the governed certification mark: controlled and licensed, in the UL / Fairtrade model, and kept separate from the open protocol glyph — so the standard stays open while the mark that vouches for it stays controlled.",
+    "cta_a": "See the register",
+    "cta_b": "Read the protocol spec"
+  },
+  "trust": {
+    "kicker": "Trust · who stands behind the Seal",
+    "h1": "Don't trust us. Hold us to something you can point at.",
+    "lede_a": "A notary is only credible if failing is expensive for it. So our commitments are deliberately explicit, external, and verifiable — the kind a ",
+    "lede_strong": "CISO, auditor or DPO can point to",
+    "lede_b": ". TSP is operated today by LexiCo AS (Norway, EU/EEA) as operator and licensee — not the owner of the standard and not a certification authority. Independent governance of the register and mark is planned, and flagged below as not yet in place.",
+    "neutral_eyebrow": "Neutrality by determinism",
+    "neutral_title": "We take no discretion — so there is nothing to be biased about.",
+    "neutral_body": "TSP attests cryptographic integrity: recompute the hash, verify the signature, check the chain, confirm the time. That is facts and physics, not judgement. The proof of neutrality is reproducibility — anyone recomputes the verdict and gets the same answer, needing to trust neither us nor a model. AI is never in the authority core; it can only be the subject we log.",
+    "bands_eyebrow": "Credible commitment",
+    "bands_title": "What we have put on the line — cheapest to most expensive.",
+    "bands_intro": "\"The whole company is at stake\" reassures no one in particular. These make the loss explicit, external, and checkable.",
+    "bands": [
+      {
+        "status": "In design",
+        "title": "A public, verifiable register",
+        "body": "Append-only and independently re-checkable by design — don't trust us, verify us. The public log is being stood up so our own behaviour is as inspectable as the doctrine we ask of you."
+      },
+      {
+        "status": "Live",
+        "title": "Payment never grants official status",
+        "body": "A public promise. If we rubber-stamped for money the mark would be worthless — so our incentive is structurally locked to rigour."
+      },
+      {
+        "status": "Live",
+        "title": "The doesNotMean boundary",
+        "body": "We attest evidence integrity — never truth, legality or compliance. It is both an honesty binding and our liability shield."
+      },
+      {
+        "status": "Planned",
+        "title": "Neutral governance charter",
+        "body": "Neutrality cannot stay one person. A governance transition — independent oversight of the register and the mark — is the plan, openly flagged as not yet in place."
+      },
+      {
+        "status": "Planned",
+        "title": "Liability terms + insurance",
+        "body": "Contractual limits and liability insurance — literal money to lose — sized to the responsibility and added as revenue and buyers require it."
+      },
+      {
+        "status": "On the path",
+        "title": "eIDAS qualified status",
+        "body": "A licence the state can revoke is the strongest external bond. We are on the path to qualified timestamps and seals (below), supervised by Nkom."
+      }
+    ],
+    "eidas_eyebrow": "eIDAS / QTSP status — stated plainly",
+    "eidas_title": "The law draws the same line we do.",
+    "eidas_body": "eIDAS qualified timestamps (Art 42) and qualified seals (Art 35) carry a legal presumption of the integrity of the data and of the time and origin it is bound to — and explicitly not that the content is true or lawful. That is exactly our doesNotMean boundary, written into EU law.",
+    "eidas_points": [
+      "Today: we bind to an accredited QTSP's qualified timestamp and seal, inheriting the presumption — we do not yet hold qualified status ourselves.",
+      "Next: our own qualification is a multi-step path — an accredited audit, then a national-regulator grant and Trusted List entry, with re-audits every two years at our own expense.",
+      "Supervised by Nkom, Norway's trust-service authority. We use \"notary\" to describe the role — TSP is not a Norwegian notarius publicus, which is a court function and not a company licence."
+    ],
+    "survive_eyebrow": "Evidence survives us",
+    "survive_title": "Designed so your evidence outlives the company.",
+    "survive_body": "A one-person bus-factor is a risk to you, not just to us. So the canonical register is backed by a public transparency log a customer can re-verify independently — and a continuity posture so the evidence, and its verifiability, outlast us.",
+    "cta_a": "See the register",
+    "cta_b": "Operational status"
+  },
+  "register": {
+    "kicker": "Register · the public backstop",
+    "h1": "Don't trust us. Verify us.",
+    "lede_a": "The register is the public, append-only record that lets anyone re-check our anchors ",
+    "lede_strong": "independently",
+    "lede_b": " — canonical-primary where the product lives, plus a public backstop so your evidence survives us.",
+    "layers_eyebrow": "Two layers, one record",
+    "layers_title": "Canonical-primary, with a public backstop.",
+    "layers": [
+      {
+        "label": "Canonical · primary",
+        "title": "The register we operate",
+        "body": "The authoritative, low-friction record where attestation lives — the product. Fast and convenient, and the place the recurring Seal is recorded."
+      },
+      {
+        "label": "Public · backstop",
+        "title": "An independent substrate",
+        "body": "By design, anchors are also committed to a public transparency log — the model behind Certificate Transparency — bound by independent qualified time, so the record need never depend on us alone."
+      }
+    ],
+    "how_eyebrow": "How it's published and re-verified — by design",
+    "how_title": "Re-checkable offline, by anyone, against published roots.",
+    "how_points": [
+      "A Merkle root of anchored evidence is committed on a fixed cadence — a single O(1) head that any gap or reorder would break.",
+      "Published roots can be pulled and recomputed offline by anyone — the same math, no account, no trust in the issuer or in us.",
+      "Inclusion is provable in O(log n); the head is O(1). The artifacts are the audit — re-verification needs nothing from us."
+    ],
+    "survive_eyebrow": "Evidence survives us",
+    "survive_title": "The record outlasts the company that started it.",
+    "survive_body": "A canonical register you could only reach through us would make us a single point of failure. The public backstop means the evidence — and the ability to re-verify it — outlives any one operator, the way a qualified provider's records must continue by law even if it stops.",
+    "note": "The public backstop is being stood up. Local, offline verification of every receipt already works today without it — the open layer never depends on the register.",
+    "cta_a": "Who stands behind it",
+    "cta_b": "Verify a receipt"
+  },
+  "status": {
+    "kicker": "Status · operational continuity",
+    "h1": "Evidence survives us — and you can watch it.",
+    "lede_a": "Operational status for the TSP services. This page is a ",
+    "lede_strong": "static placeholder",
+    "lede_b": " until the live status feed is wired — there is no live infrastructure to report yet, and we would rather say so than fake a dashboard.",
+    "components_eyebrow": "What this page will track",
+    "components_title": "The surfaces a relying party depends on.",
+    "components": [
+      {
+        "name": "Verification (open layer)",
+        "state": "Always offline",
+        "body": "Re-running TSP verification needs no service from us — it works in your browser and your runtime regardless of our uptime."
+      },
+      {
+        "name": "Anchoring service",
+        "state": "Pilot / staging",
+        "body": "The Seal's anchoring endpoint. Availability will be reported here once it runs beyond pilot."
+      },
+      {
+        "name": "Register & public backstop",
+        "state": "In design",
+        "body": "Publication of anchors and the public transparency log. Re-verification of past anchors stays possible offline."
+      },
+      {
+        "name": "Qualified timestamp authority",
+        "state": "Via accredited QTSP",
+        "body": "Bound to an external eIDAS-qualified authority; its status is published by that authority and its supervisor."
+      }
+    ],
+    "continuity_eyebrow": "Continuity, not just uptime",
+    "continuity_title": "Built so the evidence outlasts any outage — or us.",
+    "continuity_body": "Uptime matters, but continuity matters more for evidence. Past receipts stay verifiable offline whether or not our services are up, and the public backstop is designed so the record and its verifiability survive the company itself.",
+    "note": "No live metrics are shown because there is no production infrastructure to measure yet. When services run, this page will carry real, independently checkable status — never a decorative green light.",
+    "cta_a": "How continuity works",
+    "cta_b": "Report a security issue",
+    "static_chip": "Static page · no live infrastructure yet"
+  },
+  "security": {
+    "kicker": "Security · coordinated disclosure",
+    "h1": "Report it. We won't threaten you for it.",
+    "lede_a": "A trust system that can't take a vulnerability report isn't trustworthy. Report security issues to ",
+    "lede_strong": "security@truststandardprotocol.com",
+    "lede_b": " — good-faith research is met with coordinated handling, not legal threats.",
+    "posture_eyebrow": "Security posture",
+    "posture_title": "How we handle keys, disclosure, and your verification.",
+    "posture_points": [
+      "Coordinated disclosure: report → triage → fix → disclose → credit. No legal threat for good-faith research.",
+      "Separate dev / staging / production keys; rotation and revocation are tested before launch, and no production keys live in public repos.",
+      "No phone-home for self-hosted verification, no hidden telemetry, and no remote kill switch for free verification.",
+      "The root public key is published — on the site, in each SDK, and in /.well-known — so anyone can verify the certificate chain offline."
+    ],
+    "disclosure_eyebrow": "Coordinated disclosure",
+    "disclosure_title": "The machine-readable contacts.",
+    "disclosure_body": "The canonical contact and policy live in security.txt; the protocol surface descriptor lives in tsp.json. Both are linked below and from the agent surface.",
+    "cta_a": "security.txt",
+    "cta_b": ".well-known/tsp.json"
+  },
+  "pricing": {
+    "kicker": "Pricing",
+    "h1": "Free to verify, priced to operate.",
+    "lede": "Verification is free in every runtime. You pay to issue and operate at scale — not to verify. Figures below are deliberately omitted while we validate willingness-to-pay; we'll quote against your scope.",
+    "tiers": [
+      {
+        "name": "Verify",
+        "price": "Free, forever",
+        "body": "The browser verifier, the verifier-core packages, the TrustBadge component and sample receipts. Offline verification always works.",
+        "cta": "Open the verifier"
+      },
+      {
+        "name": "Pilot",
+        "price": "Fixed scope · talk to us",
+        "body": "One workflow wired into a signed evidence chain, in weeks. Issuer tooling on a pilot / staging key. Scope and price agreed up front.",
+        "cta": "Scope a pilot"
+      },
+      {
+        "name": "Evidence Pack",
+        "price": "By quote",
+        "body": "Operator modules (Explorer, Dossier, Oversight, Control Plane, Gateway) and ongoing issuance for higher-volume workflows, as you move beyond pilot.",
+        "cta": "Request a quote"
+      }
+    ],
+    "official_strong": "Official status is not a pricing tier.",
+    "official_body": " Issuer authorization, registry listing and official mark usage are governed grants — never unlocked by payment. Payment never grants official status."
+  },
+  "docs": {
+    "kicker": "Docs · quickstart",
+    "h1": "From zero to a trail anyone can verify.",
+    "lede": "Five steps; each one emits a receipt, so by the end the trail proves itself — no trust in us required. The full reference (Starlight) lands in Phase A.2; the quickstart and protocol tour are here now.",
+    "chip": "Reference docs site — coming in Phase A.2",
+    "steps": [
+      {
+        "title": "Register your issuer"
+      },
+      {
+        "title": "Instrument the decision"
+      },
+      {
+        "title": "Seal & chain the receipt"
+      },
+      {
+        "title": "Publish your receipt feed"
+      },
+      {
+        "title": "Verify — anyone can"
+      }
+    ],
+    "closing_a": "You now have an append-only trail anyone you share it with can re-verify from your own published feed — no trust in us required. Public, independent anchoring is the paid ",
+    "closing_seal": "Seal",
+    "closing_b": " layer; the local trail above stands on its own. Read how it's defined in the ",
+    "closing_spec": "protocol spec",
+    "closing_c": ", browse ",
+    "closing_tools": "tools & verifier cores",
+    "closing_d": ", or try the ",
+    "closing_verify": "live verifier",
+    "closing_e": "."
+  },
+  "verify": {
+    "kicker": "/verify · runs locally in your browser · nothing is uploaded",
+    "h1": "Verify a receipt",
+    "lede": "Paste or upload a TSP receipt and its issuer public key. The Ed25519 + SHA-256 cryptography is re-run here, in your browser, against that key — nothing trusts the issuer. Change a single byte and it fails.",
+    "key_label": "Issuer public key (JWK)",
+    "envelope_label": "TrustEnvelope (JSON) — or a { envelope, publicKey } bundle",
+    "btn_verify": "Verify cryptographically →",
+    "btn_sample": "Load a sample",
+    "btn_tamper": "Break one byte",
+    "btn_clear": "Clear",
+    "btn_upload": "Upload .json",
+    "result_label": "verification result",
+    "result_idle": "Paste a receipt and verify — or load a sample.",
+    "not_title": "What verification does not mean",
+    "not_items": [
+      "that the AI's answer is true or correct",
+      "that you are legally compliant",
+      "that the model is approved or safe",
+      "that the issuer holds official status — that needs authorization"
+    ],
+    "build_cta": "Want to build one end-to-end? Open the playground →"
+  },
+  "playground": {
+    "kicker": "Working slice · end to end",
+    "h1": "A signed AI evidence chain, verified live",
+    "lede": "A loan-onboarding workflow — AI recommendation, human override, decision — sealed as three chained receipts. Real Ed25519 + SHA-256, in your browser. Build it, verify it, then break one byte and watch the cryptography refuse it.",
+    "controls": "controls",
+    "btn_verify": "Verify the chain →",
+    "target_label": "Target",
+    "btn_break": "Break one byte",
+    "btn_reset": "Reset chain",
+    "btn_export": "Download dossier",
+    "badge_note_a": "TrustBadge",
+    "badge_note_b": " above reflects the live verification state. Use \"Open this receipt in /verify\" on any card to round-trip it through the standalone verifier.",
+    "outro": "This is one proven slice of the full vision — one workflow, fully evidenced. The demo signer runs in your browser to build receipts; real issuance is the governed, registry-bound path.",
+    "outro_cta_a": "See the Why page →",
+    "outro_cta_b": "Read the protocol spec →"
+  },
+  "leaderboard": {
+    "kicker": "Adoption leaderboard",
+    "h1": "Get listed — and prove you earned it.",
+    "lede": "Every score is recomputed from your own receipts. You can't buy a place, inflate a number, or self-report your way up — you can only evidence it.",
+    "metrics_title": "Four numbers. All recomputable from receipts.",
+    "metrics": [
+      {
+        "name": "Verifiability",
+        "formula": "receipts passing all checks ÷ receipts sampled × 100",
+        "note": "Every check — digest recomputes, Ed25519 signature valid, chain intact, issuer key resolves in the registry — is recomputed by the scorer, so it can't be self-reported."
+      },
+      {
+        "name": "Coverage",
+        "formula": "receipts that verify ÷ decisions in declared scope × 100",
+        "note": "The denominator is your declared scope — public and spot-checked."
+      },
+      {
+        "name": "Human oversight",
+        "formula": "receipts with valid human_review ÷ high-risk receipts × 100",
+        "note": "Maps to EU AI Act Art 14 — sealed inside the digest, so it can't be added after the fact."
+      }
+    ],
+    "overall": "Overall = 0.40 × Verifiability + 0.35 × Coverage + 0.25 × Human oversight.",
+    "tiers": [
+      {
+        "name": "Charter",
+        "rule": "≥ 95 and fully on (coverage ≥ 99, oversight ≥ 100)"
+      },
+      {
+        "name": "Verified",
+        "rule": "≥ 85"
+      },
+      {
+        "name": "Piloting",
+        "rule": "≥ 65"
+      },
+      {
+        "name": "Not yet listed",
+        "rule": "< 65"
+      }
+    ],
+    "enroll_title": "Enroll in five steps — and model your score now.",
+    "enroll_note_a": "Registry listing is a governed grant — currently a pilot — not an automatic result of sealing receipts. Sealing locally is free and needs none of this; publishing and anchoring to the registry is the independent ",
+    "enroll_note_link": "Seal",
+    "enroll_note_b": " layer.",
+    "steps": [
+      {
+        "title": "Register your issuer key",
+        "body": "Publish your org and public key to the registry so receipts can be attributed."
+      },
+      {
+        "title": "Declare your scope",
+        "body": "Name the decision type, jurisdiction and expected volume. This sets the Coverage denominator — public and spot-checked."
+      },
+      {
+        "title": "Publish a receipt feed",
+        "body": "Expose a public feed of your receipts so anyone — including the scorer — can pull and recompute them."
+      },
+      {
+        "title": "Run the conformance check",
+        "body": "The public scorer samples your receipts, recomputes digests, resolves keys and scores all four metrics."
+      },
+      {
+        "title": "Get listed",
+        "body": "A score and tier are assigned, a badge is issued, and you appear on the leaderboard — re-scored continuously."
+      }
+    ],
+    "score_label": "Your live score",
+    "verif_label": "Verifiability",
+    "cover_label": "Coverage",
+    "oversight_label": "Human oversight",
+    "score_note": "Modeled client-side from the published weights. The real score is recomputed by the scorer from your receipts — recompute, not self-report.",
+    "final_title": "Ready to be measured on what you can prove?",
+    "final_lede": "Charter pilots enroll first. You can't buy a place, only evidence one.",
+    "final_cta_a": "Scope a pilot",
+    "final_cta_b": "Build a receipt chain"
+  },
+  "protocol": {
+    "kicker": "/protocol · the specification",
+    "h1": "How TSP defines evidence",
+    "lede": "The website explains TSP; the spec and conformance suite define it. This is the human tour — the normative documents live in the protocol package.",
+    "toc": "On this page",
+    "toc_verify": "Try a live verify →",
+    "sec_overview": "Overview",
+    "sec_envelope": "TrustEnvelope",
+    "sec_manifest": "TrustManifest",
+    "sec_verification": "Verification",
+    "sec_conformance": "Conformance",
+    "sec_governance": "Threat & governance",
+    "overview_body": "An AI-mediated event is wrapped into a signed record, hashed so any change is detectable, and linked to the record before it. The spec fixes exactly how each step is computed so independent implementations agree byte-for-byte. It is a fixed, auditable definition — not a vendor convention.",
+    "overview_mono": "TrustEnvelope · TrustManifest · VerificationResult · fixtures",
+    "envelope_body": "Every receipt is a TrustEnvelope: the declared claims about the event, the canonical hash of those claims, a link to the previous record, and the issuer's signature.",
+    "envelope_mono": "content.hash = SHA-256 over canonical JSON (JCS, RFC 8785) of the content value.",
+    "manifest_body": "A TrustManifest is the key directory: it says which keys an issuer signs with and where to find them. A verifier uses it to resolve the key referenced by a receipt — without it you can check integrity but not provenance.",
+    "manifest_mono": "Ed25519 (EdDSA) public keys · published or customer-scoped.",
+    "verification_body": "Verification recomputes the hash, checks the Ed25519 signature against the manifest key, and confirms each receipt links to the prior one. It reports an evidence state — never a judgement of truth or legality.",
+    "check_integrity": "Integrity — canonical hash matches",
+    "check_signature": "Signature — signed by the manifest key",
+    "check_chain": "Chain — links to the prior receipt",
+    "check_shape": "Schema, manifest & redaction state — declared and inspectable",
+    "verification_note": "Verification ≠ correctness, compliance, or approval.",
+    "conformance_body": "A public set of immutable fixtures pins canonical examples. Every implementation — JS, Python, Go, Rust, Java, C# — must agree. Independent verifier agreement is the trust anchor. These non-JS runtimes are verifier cores: one signer issues, many verifiers check.",
+    "governance_body": "The spec defines evidence; it does not grant authority. Payment never grants official status — issuer authorization and registry listing are governed grants, resolved separately from verification.",
+    "version_note": "Version note: the envelope schema namespace (tsp: \"3.0\") and the product release (v1.0 public preview) are different version lines — schema maturity is not the product's release maturity.",
+    "conformance_link": "See conformance and the TSP-Certified mark →"
+  },
+  "tools": {
+    "kicker": "Tools & modules",
+    "h1": "Operationalize the evidence",
+    "lede": "Verification is free and offline, in every runtime. Issuance and signing live behind the licensed issuer path (pilot / staging). Official status stays separate — no phone-home, no kill switch for free verification.",
+    "cores_title": "One signer, many verifier cores",
+    "cores_lede": "TSP is one signer and N verifiers. The non-JS SDKs are verifier cores — they re-run the cryptography; they do not sign. Signing and issuance is the single licensed path.",
+    "core_signer": "signer + verifier",
+    "core_verifier": "verifier core",
+    "core_signer_note": "the single issuance/signing path",
+    "core_verifier_note": "browser-safe, verify-only",
+    "mcp_title": "Open MCP server & proxy",
+    "mcp_lede": "An open Model Context Protocol server and proxy let agents capture tool-call receipts and re-run verification inline. Distributed free with the verifier cores — the open layer of the protocol; the governed Seal is the product.",
+    "modules_title": "Operator modules",
+    "modules_lede": "Modules ship inactive; an offline license token activates them. Free verification always works.",
+    "modules": [
+      {
+        "name": "Evidence Explorer",
+        "body": "Search and filter receipts across a workflow."
+      },
+      {
+        "name": "Audit Dossier",
+        "body": "Package receipts, reviews and manifests into one exportable bundle."
+      },
+      {
+        "name": "Risk Monitor",
+        "body": "Flag missing evidence and stale keys — alerts, not a safety verdict."
+      },
+      {
+        "name": "Oversight Workflow",
+        "body": "Review, escalate and override — every step signed."
+      },
+      {
+        "name": "Control Plane",
+        "body": "Tenants, licenses, issuers and audit trail — no official status by payment."
+      },
+      {
+        "name": "Agent Gateway",
+        "body": "Tool-call receipts and policy state — captures, never claims correctness."
+      }
+    ],
+    "badge_title": "TrustBadge — the evidence entry point",
+    "badge_lede": "A drop-in component that links an AI output to its provenance receipt. The resolver decides whether official wording is allowed; the badge itself only ever reflects verification state.",
+    "badge_cta": "See a TrustBadge react to live verification →",
+    "sec_title": "Security posture",
+    "sec_points": [
+      "Report to security@truststandardprotocol.com — coordinated handling, no legal threat for good-faith research.",
+      "Separate dev / staging / production keys. Rotation and revocation tested before launch. No production keys in public repos.",
+      "No phone-home for self-hosted verification · no hidden telemetry · no remote kill switch for free verification."
+    ],
+    "sec_note": "Open layer: spec, fixtures, verifier cores and the TrustBadge component are source-available and citable (Apache-2.0). The closed Seal — issuance tooling and commercial modules — is under a commercial TSP license. Marks (TSP, Trust Standard Protocol, TrustEnvelope, TrustBadge) are controlled.",
+    "sec_link": "Full security posture and disclosure →"
+  },
+  "hardq": {
+    "kicker": "Hard questions",
+    "h1": "The objections we don't dodge.",
+    "lede": "Five questions a serious reviewer asks in the first meeting. Two could kill the idea if we got them wrong — so we answer those in full, then the three that are harder than they look.",
+    "q1_eyebrow": "Q1 · the one that kills the project if we get it wrong",
+    "q1_title": "\"Doesn't publishing receipts leak everyone's private data?\"",
+    "q1_body": "What's public is never the decision — it's a commitment: cryptographic proof that a specific, unaltered decision was sealed at a specific time by a registered key. The decision itself is revealed only to a party with legal standing to see it, who then checks it against that commitment.",
+    "q1_cards": [
+      {
+        "title": "Commit, don't expose",
+        "body": "The register stores a salted hash of the payload — enough to prove integrity, useless for reconstructing the data."
+      },
+      {
+        "title": "Reveal on legal basis",
+        "body": "A subject, regulator or court receives cleartext and verifies it hashes to the commitment."
+      },
+      {
+        "title": "Aggregate, not individual",
+        "body": "Outcome rates are published as windowed statistics. The public sees patterns; never a person."
+      }
+    ],
+    "q2_eyebrow": "Q2 · we publish the attack surface and pay you to break it",
+    "q2_title": "\"What stops someone from faking the whole thing?\"",
+    "q2_body": "A trust system that can't say how it fails isn't trustworthy. Here's the attack surface, and what stops each one.",
+    "attacks": [
+      {
+        "attack": "Forge a receipt from nothing",
+        "stop": "The signature must resolve to a registered Ed25519 key in the registry. No key, no provenance.",
+        "residual": "Residual: a stolen key — out of scope here, handled by rotation + revocation."
+      },
+      {
+        "attack": "Backdate a decision",
+        "stop": "Append-only log + chain position. A receipt can't be quietly inserted into the past.",
+        "residual": "Residual: timestamp accuracy depends on the TSA you bind."
+      },
+      {
+        "attack": "Only publish flattering decisions",
+        "stop": "The Coverage metric divides verifying receipts by declared scope volume — the denominator is public and spot-checked.",
+        "residual": "Residual: a wildly under-declared scope is itself a visible signal."
+      },
+      {
+        "attack": "Collude with the scorer",
+        "stop": "Scoring is reproducible from public artifacts — anyone can recompute it. No trust in the scorer required.",
+        "residual": "Residual: none cryptographic; the artifacts are the audit."
+      },
+      {
+        "attack": "Alter the payload after sealing",
+        "stop": "The content hash commitment self-invalidates. One changed byte fails verification.",
+        "residual": "Residual: none — this is the core property."
+      },
+      {
+        "attack": "Replay an old receipt",
+        "stop": "Unique ID + chain position make a replayed receipt detectable as out of place.",
+        "residual": "Residual: depends on consumers checking chain position."
+      }
+    ],
+    "disclosure": "Disclosure loop: report → triage → fix → disclose → credit. Good-faith research is never met with legal threats.",
+    "q3_eyebrow": "Q3–5 · the harder ones",
+    "q3_title": "Three that are harder than they look.",
+    "harder": [
+      {
+        "q": "Who decides what's 'official'?",
+        "a": "A governed registry and authorization process — never payment. We say so in plain text: payment never grants official status, and the registry is a pilot."
+      },
+      {
+        "q": "Isn't this just a fancy log?",
+        "a": "A log you control proves nothing to a second party. The difference is independent verification: anyone re-runs the math against a published key and gets the same answer."
+      },
+      {
+        "q": "What if the spec is wrong?",
+        "a": "The spec, fixtures and verifier cores are open. Independent verifier agreement across runtimes is the trust anchor — and the standing challenge pays you to break it."
+      }
+    ],
+    "pilot_title": "Where a claim isn't proven yet, we say so.",
+    "pilot_body": "This is a pilot. None of the above is settled law or a ratified standard — it's the protocol's current, testable position. Where a claim isn't yet proven, we've said so in plain text rather than rounded it up. If your hardest question isn't here, send it — the gaps are the roadmap.",
+    "disclosure_link": "Read the full security policy →"
+  },
+  "islands": {
+    "playground": {
+      "dossier_note": "Each receipt verifies in /verify with this publicKey. Demo issuance — not governed official status."
+    },
+    "verify": {
+      "need_key": "Paste the issuer public key (JWK), or a { envelope, publicKey } bundle in the receipt box.",
+      "paste_placeholder": "Paste a TSP receipt JSON here…"
+    },
+    "checks": {
+      "schema": "Schema & shape",
+      "content_hash": "Content integrity (SHA-256)",
+      "ledger_hash": "Ledger / chain hash (SHA-256)",
+      "signature": "Issuer signature (Ed25519)",
+      "passed": "Passed",
+      "failed": "Failed",
+      "skipped": "Skipped"
+    },
+    "verdict": {
+      "valid": "VERIFIED — evidence integrity intact",
+      "unsupported": "UNSUPPORTED — not a TSP v3 receipt",
+      "invalid": "FAILED — this receipt was altered or is invalid"
+    },
+    "badge": {
+      "unverified": "Not yet verified",
+      "unverified_sub": "sealed locally — run the verify step to populate this badge",
+      "valid": "Evidence verified",
+      "valid_sub": "TrustEnvelope v3 · Ed25519 · integrity only",
+      "invalid": "Evidence broken",
+      "invalid_sub": "verification failed — do not rely on this receipt"
+    }
   }
 }
