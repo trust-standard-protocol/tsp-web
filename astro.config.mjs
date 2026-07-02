@@ -18,6 +18,13 @@ export default defineConfig({
   build: {
     inlineStylesheets: 'auto'
   },
+  // Force hoisted island scripts to external /_astro/*.js files (no inline
+  // <script>), so the live CSP can hold script-src 'self' without hashes.
+  vite: {
+    build: {
+      assetsInlineLimit: 0
+    }
+  },
   server: {
     host: '127.0.0.1',
     port: 4321

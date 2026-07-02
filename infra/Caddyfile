@@ -9,8 +9,9 @@
 }
 
 # Security headers applied to every site block. The CSP is deliberately tight:
-# a static site with no external origins. script-src 'self' holds because Astro
-# bundles the island <script>s to external /_astro/*.js (no inline scripts);
+# a static site with no external origins. script-src 'self' holds because
+# astro.config.mjs sets vite.build.assetsInlineLimit: 0, forcing every hoisted
+# script to an external /_astro/*.js file (zero inline <script> in the build);
 # style-src needs 'unsafe-inline' because pages use inline style="" attributes
 # and Astro inlines small stylesheets (inlineStylesheets:'auto'). frame-ancestors
 # + X-Frame-Options block clickjacking of the live verifier.
