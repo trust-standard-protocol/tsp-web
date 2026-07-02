@@ -17,10 +17,15 @@ const statusChip = (s: string): string =>
   description="Who stands behind TSP, and the credible commitments a CISO, auditor or DPO can point to: a public register, payment never grants official status, the doesNotMean boundary, governance, liability, and the eIDAS / QTSP path."
 >
   <section class="section section--tight">
-    <div class="container">
-      <p class="eyebrow" data-i18n="trust.kicker">{tr.kicker}</p>
-      <h1 data-i18n="trust.h1">{tr.h1}</h1>
-      <p class="lede"><span data-i18n="trust.lede_a">{tr.lede_a}</span><strong data-i18n="trust.lede_strong">{tr.lede_strong}</strong><span data-i18n="trust.lede_b">{tr.lede_b}</span></p>
+    <div class="container hero-spot">
+      <div>
+        <p class="eyebrow" data-i18n="trust.kicker">{tr.kicker}</p>
+        <h1 data-i18n="trust.h1">{tr.h1}</h1>
+        <p class="lede"><span data-i18n="trust.lede_a">{tr.lede_a}</span><strong data-i18n="trust.lede_strong">{tr.lede_strong}</strong><span data-i18n="trust.lede_b">{tr.lede_b}</span></p>
+      </div>
+      <div class="hero-spot__art" aria-hidden="true">
+        <Icon name="gavel" size={220} weight={30} />
+      </div>
     </div>
   </section>
 

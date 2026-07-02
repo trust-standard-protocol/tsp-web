@@ -33,7 +33,7 @@ const stepCode = [
       <ol class="steps">
         {dc.steps.map((step, i) => (
           <li>
-            <h3 style="font-size:1.05rem" data-i18n={`docs.steps.${i}.title`}>{step.title}</h3>
+            <h2 style="font-size:1.05rem" data-i18n={`docs.steps.${i}.title`}>{step.title}</h2>
             <pre style="margin-top:0.5rem"><code>{stepCode[i]}</code></pre>
           </li>
         ))}

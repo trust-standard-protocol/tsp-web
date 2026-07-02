@@ -764,7 +764,8 @@
     "continuity_body": "Oppetid betyr noe, men kontinuitet betyr mer for bevis. Tidligere kvitteringer forblir verifiserbare offline enten tjenestene våre er oppe eller ikke, og den offentlige backstoppen er utformet så opptegnelsen og etterprøvbarheten overlever selskapet selv.",
     "note": "Ingen live målinger vises fordi det ennå ikke finnes produksjonsinfrastruktur å måle. Når tjenester kjører, vil denne siden bære ekte, uavhengig etterprøvbar status — aldri et dekorativt grønt lys.",
     "cta_a": "Hvordan kontinuitet virker",
-    "cta_b": "Rapporter et sikkerhetsproblem"
+    "cta_b": "Rapporter et sikkerhetsproblem",
+    "static_chip": "Statisk side · ingen live infrastruktur ennå"
   },
   "security": {
     "kicker": "Sikkerhet · koordinert avsløring",
@@ -986,7 +987,8 @@
     "verification_note": "Verifisering ≠ korrekthet, samsvar eller godkjenning.",
     "conformance_body": "Et offentlig sett av uforanderlige fixturer fester kanoniske eksempler. Hver implementasjon — JS, Python, Go, Rust, Java, C# — må være enig. Uavhengig verifikator-enighet er tillitsankeret. Disse ikke-JS-kjøretidene er verifikatorkjerner: én signerer utsteder, mange verifikatorer sjekker.",
     "governance_body": "Spesifikasjonen definerer bevis; den gir ikke autoritet. Betaling gir aldri offisiell status — utsteder-autorisasjon og registeroppføring er styrte tildelinger, avgjort separat fra verifisering.",
-    "version_note": "Versjonsnotat: envelope-skjemaets navnerom (tsp: \"3.0\") og produktutgivelsen (v1.0 offentlig forhåndsvisning) er ulike versjonslinjer — skjemamodenhet er ikke produktets utgivelsesmodenhet."
+    "version_note": "Versjonsnotat: envelope-skjemaets navnerom (tsp: \"3.0\") og produktutgivelsen (v1.0 offentlig forhåndsvisning) er ulike versjonslinjer — skjemamodenhet er ikke produktets utgivelsesmodenhet.",
+    "conformance_link": "Se samsvar og TSP-Certified-merket →"
   },
   "tools": {
     "kicker": "Verktøy og moduler",
@@ -1037,7 +1039,8 @@
       "Atskilte dev-/staging-/produksjonsnøkler. Rotasjon og tilbakekalling testet før lansering. Ingen produksjonsnøkler i offentlige repoer.",
       "Ingen phone-home for selvhostet verifisering · ingen skjult telemetri · ingen fjernbryter for gratis verifisering."
     ],
-    "sec_note": "Åpent lag: spesifikasjon, fixturer, verifikatorkjerner og TrustBadge-komponenten er kildeåpne og siterbare (Apache-2.0). Det lukkede Seglet — utstedelsesverktøy og kommersielle moduler — er under en kommersiell TSP-lisens. Merker (TSP, Trust Standard Protocol, TrustEnvelope, TrustBadge) er kontrollert."
+    "sec_note": "Åpent lag: spesifikasjon, fixturer, verifikatorkjerner og TrustBadge-komponenten er kildeåpne og siterbare (Apache-2.0). Det lukkede Seglet — utstedelsesverktøy og kommersielle moduler — er under en kommersiell TSP-lisens. Merker (TSP, Trust Standard Protocol, TrustEnvelope, TrustBadge) er kontrollert.",
+    "sec_link": "Full sikkerhetstilnærming og ansvarlig varsling →"
   },
   "hardq": {
     "kicker": "Vanskelige spørsmål",
@@ -1113,7 +1116,8 @@
       }
     ],
     "pilot_title": "Der en påstand ennå ikke er bevist, sier vi det.",
-    "pilot_body": "Dette er en pilot. Ingenting av det over er avgjort lov eller en ratifisert standard — det er protokollens nåværende, testbare posisjon. Der en påstand ennå ikke er bevist, har vi sagt det i klartekst heller enn å runde det opp. Hvis ditt vanskeligste spørsmål ikke er her, send det — hullene er veikartet."
+    "pilot_body": "Dette er en pilot. Ingenting av det over er avgjort lov eller en ratifisert standard — det er protokollens nåværende, testbare posisjon. Der en påstand ennå ikke er bevist, har vi sagt det i klartekst heller enn å runde det opp. Hvis ditt vanskeligste spørsmål ikke er her, send det — hullene er veikartet.",
+    "disclosure_link": "Les hele sikkerhetspolicyen →"
   },
   "islands": {
     "playground": {

@@ -763,7 +763,8 @@
     "continuity_body": "Uptime matters, but continuity matters more for evidence. Past receipts stay verifiable offline whether or not our services are up, and the public backstop is designed so the record and its verifiability survive the company itself.",
     "note": "No live metrics are shown because there is no production infrastructure to measure yet. When services run, this page will carry real, independently checkable status — never a decorative green light.",
     "cta_a": "How continuity works",
-    "cta_b": "Report a security issue"
+    "cta_b": "Report a security issue",
+    "static_chip": "Static page · no live infrastructure yet"
   },
   "security": {
     "kicker": "Security · coordinated disclosure",
@@ -985,7 +986,8 @@
     "verification_note": "Verification ≠ correctness, compliance, or approval.",
     "conformance_body": "A public set of immutable fixtures pins canonical examples. Every implementation — JS, Python, Go, Rust, Java, C# — must agree. Independent verifier agreement is the trust anchor. These non-JS runtimes are verifier cores: one signer issues, many verifiers check.",
     "governance_body": "The spec defines evidence; it does not grant authority. Payment never grants official status — issuer authorization and registry listing are governed grants, resolved separately from verification.",
-    "version_note": "Version note: the envelope schema namespace (tsp: \"3.0\") and the product release (v1.0 public preview) are different version lines — schema maturity is not the product's release maturity."
+    "version_note": "Version note: the envelope schema namespace (tsp: \"3.0\") and the product release (v1.0 public preview) are different version lines — schema maturity is not the product's release maturity.",
+    "conformance_link": "See conformance and the TSP-Certified mark →"
   },
   "tools": {
     "kicker": "Tools & modules",
@@ -1036,7 +1038,8 @@
       "Separate dev / staging / production keys. Rotation and revocation tested before launch. No production keys in public repos.",
       "No phone-home for self-hosted verification · no hidden telemetry · no remote kill switch for free verification."
     ],
-    "sec_note": "Open layer: spec, fixtures, verifier cores and the TrustBadge component are source-available and citable (Apache-2.0). The closed Seal — issuance tooling and commercial modules — is under a commercial TSP license. Marks (TSP, Trust Standard Protocol, TrustEnvelope, TrustBadge) are controlled."
+    "sec_note": "Open layer: spec, fixtures, verifier cores and the TrustBadge component are source-available and citable (Apache-2.0). The closed Seal — issuance tooling and commercial modules — is under a commercial TSP license. Marks (TSP, Trust Standard Protocol, TrustEnvelope, TrustBadge) are controlled.",
+    "sec_link": "Full security posture and disclosure →"
   },
   "hardq": {
     "kicker": "Hard questions",
@@ -1112,7 +1115,8 @@
       }
     ],
     "pilot_title": "Where a claim isn't proven yet, we say so.",
-    "pilot_body": "This is a pilot. None of the above is settled law or a ratified standard — it's the protocol's current, testable position. Where a claim isn't yet proven, we've said so in plain text rather than rounded it up. If your hardest question isn't here, send it — the gaps are the roadmap."
+    "pilot_body": "This is a pilot. None of the above is settled law or a ratified standard — it's the protocol's current, testable position. Where a claim isn't yet proven, we've said so in plain text rather than rounded it up. If your hardest question isn't here, send it — the gaps are the roadmap.",
+    "disclosure_link": "Read the full security policy →"
   },
   "islands": {
     "playground": {

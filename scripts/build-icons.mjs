@@ -28,7 +28,10 @@ const MAP = {
   eye: "VHeI9s1Ccwe5TMOVMIuB",           // eye in shield (private / inspection)
   search: "cZ83sbUUer9IJonnnfxB",        // magnifier (anyone can check)
   bolt: "ieDMrdF2uruqDR6htQtVaH",        // lightning bolt (break a byte)
-  warning: "063a773953f145fe81e3"        // alert triangle
+  warning: "063a773953f145fe81e3",       // alert triangle
+  "seal-rosette": "sLmf3m06SEQAxoFLNxXs", // large scalloped award seal (hero spot art)
+  gavel: "dWM4wY6JRSQQQaaZjVCme5",         // gavel (accountability — /trust hero spot)
+  gauge: "JKQZKFkhExvs4da9KfZm"            // dial/gauge (operational status — /status hero spot)
 };
 
 // Source 2: brand pack (6), vendored repo-local for reproducibility.

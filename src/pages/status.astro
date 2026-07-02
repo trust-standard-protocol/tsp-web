@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Icon from "../components/Icon.astro";
 import en from "../i18n/en.json";
 
 // /status — operational continuity / uptime ("evidence survives us"). Honest
@@ -14,11 +15,16 @@ const stateChip = (s: string): string =>
   description="Operational continuity for TSP. A clearly-labelled static placeholder until the live status feed is wired — past receipts stay verifiable offline regardless of our uptime."
 >
   <section class="section section--tight">
-    <div class="container">
-      <p class="eyebrow" data-i18n="status.kicker">{st.kicker}</p>
-      <h1 data-i18n="status.h1">{st.h1}</h1>
-      <p class="lede"><span data-i18n="status.lede_a">{st.lede_a}</span><strong data-i18n="status.lede_strong">{st.lede_strong}</strong><span data-i18n="status.lede_b">{st.lede_b}</span></p>
-      <p class="chip chip--copper" style="margin-top:1rem">Static page · no live infrastructure yet</p>
+    <div class="container hero-spot">
+      <div>
+        <p class="eyebrow" data-i18n="status.kicker">{st.kicker}</p>
+        <h1 data-i18n="status.h1">{st.h1}</h1>
+        <p class="lede"><span data-i18n="status.lede_a">{st.lede_a}</span><strong data-i18n="status.lede_strong">{st.lede_strong}</strong><span data-i18n="status.lede_b">{st.lede_b}</span></p>
+        <p class="chip chip--copper" style="margin-top:1rem" data-i18n="status.static_chip">{st.static_chip}</p>
+      </div>
+      <div class="hero-spot__art" aria-hidden="true">
+        <Icon name="gauge" size={220} weight={30} />
+      </div>
     </div>
   </section>
 

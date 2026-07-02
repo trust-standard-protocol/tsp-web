@@ -13,10 +13,15 @@ const sec = en.security;
   description="Coordinated vulnerability disclosure for TSP and our security posture: separate keys, no phone-home, no kill switch for free verification, and a published root key. Report to security@truststandardprotocol.com."
 >
   <section class="section section--tight">
-    <div class="container">
-      <p class="eyebrow" data-i18n="security.kicker">{sec.kicker}</p>
-      <h1 data-i18n="security.h1">{sec.h1}</h1>
-      <p class="lede"><span data-i18n="security.lede_a">{sec.lede_a}</span><a class="textlink textlink--accent" href="mailto:security@truststandardprotocol.com" data-i18n="security.lede_strong">{sec.lede_strong}</a><span data-i18n="security.lede_b">{sec.lede_b}</span></p>
+    <div class="container hero-spot">
+      <div>
+        <p class="eyebrow" data-i18n="security.kicker">{sec.kicker}</p>
+        <h1 data-i18n="security.h1">{sec.h1}</h1>
+        <p class="lede"><span data-i18n="security.lede_a">{sec.lede_a}</span><a class="textlink textlink--accent" href="mailto:security@truststandardprotocol.com" data-i18n="security.lede_strong">{sec.lede_strong}</a><span data-i18n="security.lede_b">{sec.lede_b}</span></p>
+      </div>
+      <div class="hero-spot__art" aria-hidden="true">
+        <Icon name="shield-lock" size={220} weight={30} />
+      </div>
     </div>
   </section>
 

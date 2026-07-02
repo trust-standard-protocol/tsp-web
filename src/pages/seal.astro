@@ -16,10 +16,15 @@ const addIcons = ["registry", "lock", "badge-check"]; // anchoring · qualified 
   description="The independent layer that makes AI evidence audit-credible: anchoring, qualified eIDAS time, and the register. You cannot notarize your own document — and it does not make you compliant."
 >
   <section class="section section--tight">
-    <div class="container">
-      <p class="eyebrow" data-i18n="seal.kicker">{seal.kicker}</p>
-      <h1 data-i18n="seal.h1">{seal.h1}</h1>
-      <p class="lede"><span data-i18n="seal.lede_a">{seal.lede_a}</span><strong data-i18n="seal.lede_strong">{seal.lede_strong}</strong><span data-i18n="seal.lede_b">{seal.lede_b}</span></p>
+    <div class="container hero-spot">
+      <div>
+        <p class="eyebrow" data-i18n="seal.kicker">{seal.kicker}</p>
+        <h1 data-i18n="seal.h1">{seal.h1}</h1>
+        <p class="lede"><span data-i18n="seal.lede_a">{seal.lede_a}</span><strong data-i18n="seal.lede_strong">{seal.lede_strong}</strong><span data-i18n="seal.lede_b">{seal.lede_b}</span></p>
+      </div>
+      <div class="hero-spot__art" aria-hidden="true">
+        <Icon name="seal-rosette" size={230} weight={30} />
+      </div>
     </div>
   </section>
 
@@ -81,7 +86,7 @@ const addIcons = ["registry", "lock", "badge-check"]; // anchoring · qualified 
         {seal.adds.map((item, i) => (
           <article class="why-card">
             <span class="why-card__icon" aria-hidden="true"><Icon name={addIcons[i]} size={26} weight={56} /></span>
-            <h3 data-i18n={`seal.adds.${i}.title`}>{item.title}</h3>
+            <h3>{i === 2 ? <a class="textlink" href="/register/" data-i18n={`seal.adds.${i}.title`}>{item.title}</a> : <span data-i18n={`seal.adds.${i}.title`}>{item.title}</span>}</h3>
             <p data-i18n={`seal.adds.${i}.body`}>{item.body}</p>
           </article>
         ))}

@@ -614,6 +614,19 @@ label { font-size: var(--tsp-small); font-weight: 500; display: block; margin-bo
 .hero h1 { max-width: 18ch; }
 .hero .lede { margin-top: 1.1rem; max-width: 56ch; }
 
+/* Hero spot illustration — decorative line-art mark beside a text-heavy page
+   hero (DESIGN.md §6: fills the empty column, same stroke family as the icon
+   set, palette via currentColor). Hidden on narrow viewports where the column
+   collapses; aria-hidden at the use site. */
+.hero-spot { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2.5rem; align-items: center; }
+.hero-spot__art { color: var(--tsp-accent); line-height: 0; padding-right: clamp(0px, 4vw, 56px); }
+@media (max-width: 900px) { .hero-spot { grid-template-columns: 1fr; } .hero-spot__art { display: none; } }
+
+/* Affordance: every clickable thing gives hover feedback (DESIGN.md §5).
+   Bare in-prose links (no class) and the mobile nav toggle previously had none. */
+main a:not([class]):hover { color: var(--tsp-accent); text-decoration-thickness: 2px; }
+.nav-toggle:hover { color: var(--tsp-accent); }
+
 /* 15. Footer ------------------------------------------------------------ */
 .site-footer {
   background: var(--tsp-footer-bg);

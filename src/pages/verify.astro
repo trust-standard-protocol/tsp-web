@@ -57,7 +57,7 @@ const vf = en.verify;
             <div id="vf-checks" class="checks"></div>
             <p id="vf-warnings" class="muted mono" style="font-size:var(--fs-micro)" role="status" aria-live="polite"></p>
             <div>
-              <h3 style="font-size:1.02rem; margin-bottom:0.5rem;" data-i18n="verify.not_title">{vf.not_title}</h3>
+              <h2 style="font-size:1.02rem; margin-bottom:0.5rem;" data-i18n="verify.not_title">{vf.not_title}</h2>
               <ul class="muted stack not-list" style="list-style:none; font-size:var(--fs-small);">
                 {vf.not_items.map((item, i) => (
                   <li><Icon name="x" size={14} weight={100} /><span data-i18n={`verify.not_items.${i}`}>{item}</span></li>

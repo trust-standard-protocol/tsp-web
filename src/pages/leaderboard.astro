@@ -51,7 +51,7 @@ const weights = ["0.40", "0.35", "0.25"];
       <div id="lb-wizard" class="split" style="margin-top:1.5rem">
         <ol class="steps">
           {lb.steps.map((step, i) => (
-            <li><h3 style="font-size:1.02rem" data-i18n={`leaderboard.steps.${i}.title`}>{step.title}</h3><p class="muted" style="font-size:var(--fs-small)" data-i18n={`leaderboard.steps.${i}.body`}>{step.body}</p></li>
+            <li><h3 style="font-size:1.02rem">{i === 3 ? <a class="textlink" href="/conformance/" data-i18n={`leaderboard.steps.${i}.title`}>{step.title}</a> : <span data-i18n={`leaderboard.steps.${i}.title`}>{step.title}</span>}</h3><p class="muted" style="font-size:var(--fs-small)" data-i18n={`leaderboard.steps.${i}.body`}>{step.body}</p></li>
           ))}
         </ol>
 
