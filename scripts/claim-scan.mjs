@@ -38,10 +38,16 @@ const LEXICO_AS_ALLOW = new Set([
   "src/i18n/no.json",
   "src/pages/trust.astro"
 ]);
+// The published issuer manifest is a SIGNED artifact and the canonical operator
+// disclosure: organization.name ("LexiCo AS") and instance ids ("lexico-issuer-…")
+// are cryptographic facts — rewording them requires a new key ceremony, and hiding
+// the operator's name in the trust root would be anti-transparency. The LexiCo rule
+// is therefore fully waived for this one file.
+const SIGNED_MANIFEST = "public/.well-known/tsp-manifest.json";
 // Hard-banned tokens — must not appear anywhere on the public surface.
 const HARD_BANS = [
   { id: "tamper-proof", re: /tamper[\s-]?proof/gi, hint: "use tamper-evident" },
-  { id: "LexiCo", re: /\bLexiCo\b(?:\s+AS\b)?/gi, hint: "internal holding brand — bare \"LexiCo\" is banned everywhere; the operator disclosure \"LexiCo AS\" is allowed only in the operator-disclosure files (/trust page + i18n trust.lede_b)", allow: (rel, match) => /\bLexiCo\s+AS\b/i.test(match) && LEXICO_AS_ALLOW.has(rel) },
+  { id: "LexiCo", re: /\bLexiCo\b(?:\s+AS\b)?/gi, hint: "internal holding brand — bare \"LexiCo\" is banned everywhere; the operator disclosure \"LexiCo AS\" is allowed only in the operator-disclosure files (/trust page + i18n trust.lede_b)", allow: (rel, match) => rel === SIGNED_MANIFEST || (/\bLexiCo\s+AS\b/i.test(match) && LEXICO_AS_ALLOW.has(rel)) },
   { id: "ECDSA", re: /\bECDSA\b/gi, hint: "TSP signs with Ed25519" },
   { id: "P-256", re: /\bP-?256\b/gi, hint: "TSP signs with Ed25519, not P-256" },
   { id: "ES256", re: /\bES256\b/gi, hint: "TSP signs with Ed25519 (EdDSA), not ES256" },
