@@ -1,0 +1,42 @@
+{
+  "tsp": "3.0",
+  "organization": {
+    "name": "LexiCo AS",
+    "domain": "truststandardprotocol.com"
+  },
+  "rootKey": {
+    "key_ops": [
+      "verify"
+    ],
+    "ext": true,
+    "alg": "Ed25519",
+    "crv": "Ed25519",
+    "x": "j01aKrIuS94ldv8P_O6vNHJEZ1uP3OjtKdgI6jXkq-w",
+    "kty": "OKP"
+  },
+  "instances": [
+    {
+      "id": "lexico-issuer-prod-2026-06-22",
+      "publicKey": {
+        "key_ops": [
+          "verify"
+        ],
+        "ext": true,
+        "alg": "Ed25519",
+        "crv": "Ed25519",
+        "x": "q5uxU0iD-Qjxc2OXa8mAwcvosWXogV0eQxTzHxrZHc0",
+        "kty": "OKP"
+      },
+      "validFrom": "2026-06-22T20:49:04.183Z",
+      "validUntil": "2026-12-19T20:49:04.183Z",
+      "rootSignature": "11kpPmTpz0lsbW4UsxDmqslcYOAZTaqArK+H7e9K0+Gni6Lb5MkK75ds4bdhPgjDXw2two7oUhJwez/LPfbqBQ=="
+    }
+  ],
+  "revoked": [],
+  "sequence": 2,
+  "issuedAt": "2026-06-22T20:57:03.530Z",
+  "acceptableAge": {
+    "seconds": 2592000
+  },
+  "rootSignatureOverManifest": "xlqOhZT8//fqJWD35q1W6zhXgjka1dtt6z/nLCQ+Yt/2PcM9gneHsbtFd3TT3po1eNR7yM+OmKDmHxaJOrzMAw=="
+}
